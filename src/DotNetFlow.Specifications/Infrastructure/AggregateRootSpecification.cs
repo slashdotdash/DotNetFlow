@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ncqrs.Commanding;
 using Ncqrs.Domain;
+using Ncqrs.Eventing;
 using NUnit.Framework;
 using Ncqrs.Eventing.Sourcing;
 
@@ -9,11 +11,11 @@ namespace DotNetFlow.Specifications.Infrastructure
     public abstract class AggregateRootSpecification<TAggregateRoot> where TAggregateRoot : AggregateRoot, new()
     {
         protected abstract IEnumerable<ISourcedEvent> Given();
-        protected abstract void When();
+        protected abstract ICommand When();
 
         protected TAggregateRoot Subject;
         protected Exception RaisedException;
-        protected IEnumerable<ISourcedEvent> Events;
+        protected IEnumerable<IEvent> Events;
 
         [SetUp]
         public void Setup()
@@ -32,4 +34,10 @@ namespace DotNetFlow.Specifications.Infrastructure
             }
         }
     }
+
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    public sealed class SpecificationAttribute : TestFixtureAttribute { }
+
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    public sealed class ThenAttribute : TestAttribute { }
 }
