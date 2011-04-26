@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DotNetFlow.Core.DomainModel;
 using Ncqrs.Commanding;
+using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
 
 namespace DotNetFlow.Core.Commands
 {
+    //[MapsToAggregateRootConstructor(typeof(Item))]
     public sealed class SubmitNewItemCommand : CommandBase
     {
         public string UsersName { get; private set; }

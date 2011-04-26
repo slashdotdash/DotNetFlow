@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using DotNetFlow.Core.Infrastructure;
 using Ncqrs.Commanding;
+using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Eventing;
 using NUnit.Framework;
 using Ncqrs.Eventing.Sourcing;
+using StructureMap;
 
 namespace DotNetFlow.Specifications.Infrastructure
 {
-    public abstract class AggregateRootSpecification<TAggregateRoot> where TAggregateRoot : AggregateRoot, new()
+    public abstract class AggregateRootSpecification<TAggregateRoot> where TAggregateRoot : AggregateRoot
     {
         protected abstract IEnumerable<ISourcedEvent> Given();
         protected abstract ICommand When();
@@ -20,12 +24,12 @@ namespace DotNetFlow.Specifications.Infrastructure
         [SetUp]
         public void Setup()
         {
-            Subject = new TAggregateRoot();
-            Subject.InitializeFromHistory(Given());
+            ConfigureCommandExecution();
+            CreateSubjectAndInitialiseFromGivenEvents();
 
             try
             {
-                When();
+                ExecuteWhenCommand();
                 Events = Subject.GetUncommittedEvents();
             }
             catch (Exception ex)
@@ -33,11 +37,22 @@ namespace DotNetFlow.Specifications.Infrastructure
                 RaisedException = ex;
             }
         }
+
+        private static void ConfigureCommandExecution()
+        {
+            Bootstrapper.Configure();
+        }
+
+        private void CreateSubjectAndInitialiseFromGivenEvents()
+        {
+            // Create subject via parameterless private ctor
+            Subject = (TAggregateRoot)typeof(TAggregateRoot).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { }, null).Invoke(new object[] { });
+            Subject.InitializeFromHistory(Given());
+        }
+
+        private void ExecuteWhenCommand()
+        {
+            ObjectFactory.GetInstance<ICommandService>().Execute(When());            
+        }
     }
-
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public sealed class SpecificationAttribute : TestFixtureAttribute { }
-
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class ThenAttribute : TestAttribute { }
 }
