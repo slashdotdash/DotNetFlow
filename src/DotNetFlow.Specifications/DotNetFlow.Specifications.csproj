@@ -53,9 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnonymousUserSubmitsNewItemSpec.cs" />
+    <Compile Include="SubmittingNewItems\AnonymousUserSubmitsNewItemSpec.cs" />
+    <Compile Include="Builders\SubmitNewItemBuilder.cs" />
     <Compile Include="Infrastructure\AggregateRootSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubmittingNewItems\SubmittedItemContentIsConvertedToHtmlSpec.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetFlow.Core\DotNetFlow.Core.csproj">
