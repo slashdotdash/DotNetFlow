@@ -5,6 +5,11 @@ Feature: Anonymous visitor submits item
 
   Scenario: Successful submission
     Given I am on the submit item page
-    And I enter complete the mandatory fields
-	When I click "Post Item"
-    Then I should see the message "Thank-you for submitting a new item, it is now pending approval."
+	#When I fill in "Your Name" with "Ben Smith"
+    When I fill in the following:
+	  | Your Name		| Ben Smith											|
+	  | Title			| Fantastic new .NET resource						|
+	  | Content         | Check out [dotnetflow](http://www.dotnetflow.com) |
+	And I press "Submit Item"
+	Then I should be on the home page
+    And I should see the message "Thank-you for submitting a new item, it is now pending approval."

@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Core", "DotNetFl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications", "DotNetFlow.Specifications\DotNetFlow.Specifications.csproj", "{74B5ECB4-CC0A-412D-B967-CA4826326114}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{77380DB8-0DFB-4F2A-80A5-7A6D416F077D}"
+	ProjectSection(SolutionItems) = preProject
+		..\features\submit_items\anonymous_visitor_submits_item.feature = ..\features\submit_items\anonymous_visitor_submits_item.feature
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

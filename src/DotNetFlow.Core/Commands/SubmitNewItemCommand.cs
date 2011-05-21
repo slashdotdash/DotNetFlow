@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DotNetFlow.Core.DomainModel;
-using Ncqrs.Commanding;
-using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
+﻿using Ncqrs.Commanding;
 
 namespace DotNetFlow.Core.Commands
 {
-    //[MapsToAggregateRootConstructor(typeof(Item))]
     public sealed class SubmitNewItemCommand : CommandBase
     {
-        public string UsersName { get; private set; }
-        public string Title { get; private set; }
-        public string Content { get; private set; }
+        public string UsersName { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+
+        public SubmitNewItemCommand()
+        {            
+        }
 
         public SubmitNewItemCommand(string usersName, string title, string content)
         {

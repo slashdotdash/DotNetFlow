@@ -55,6 +55,7 @@
     <Compile Include="DomainModel\Item.cs" />
     <Compile Include="Events\NewItemSubmittedEvent.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\DomainRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
