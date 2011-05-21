@@ -1,4 +1,4 @@
-﻿using StructureMap;
+﻿using Ncqrs;
 
 namespace DotNetFlow.Core.Infrastructure
 {
@@ -6,7 +6,8 @@ namespace DotNetFlow.Core.Infrastructure
     {
         public static void Configure()
         {
-            ObjectFactory.Initialize(x => x.AddRegistry<DomainRegistry>());
+            var config = new StructureMapConfiguration(cfg => cfg.AddRegistry<DomainRegistry>());
+            NcqrsEnvironment.Configure(config);
         }
     }
 }

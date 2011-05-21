@@ -1,5 +1,5 @@
-﻿using DotNetFlow.Core.Commands.Executors;
-using Ncqrs;
+﻿using System.Configuration;
+using DotNetFlow.Core.Commands.Executors;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Storage;
@@ -12,9 +12,9 @@ namespace DotNetFlow.Core.Infrastructure
     {
         public DomainRegistry()
         {
-            For<IEventStore>().Singleton().Use(InitializeEventStore);
-            For<IEventBus>().Singleton().Use(InitializeEventBus);
-            For<ICommandService>().Singleton().Use(InitializeCommandService);
+            For<IEventStore>().Use(InitializeEventStore);
+            For<IEventBus>().Use(InitializeEventBus);
+            For<ICommandService>().Use(InitializeCommandService);
         }
 
         private static ICommandService InitializeCommandService()
@@ -24,13 +24,6 @@ namespace DotNetFlow.Core.Infrastructure
 
             return service;
         }
-
-        //public static void BootUp()
-        //{
-        //    NcqrsEnvironment.SetDefault(InitializeCommandService());
-        //    NcqrsEnvironment.SetDefault(InitializeEventStore());
-        //    NcqrsEnvironment.SetDefault<IEventBus>(InitializeEventBus());
-        //}
 
         private static IEventBus InitializeEventBus()
         {
@@ -42,7 +35,7 @@ namespace DotNetFlow.Core.Infrastructure
 
         private static IEventStore InitializeEventStore()
         {
-            return new MsSqlServerEventStore("Data Source=.\\SQLEXPRESS;Integrated Security=SSPI;User Instance=True;AttachDbFilename=|DataDirectory|\\EventStore.mdf;");
+            return new MsSqlServerEventStore(ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString);
         }
     }
 }

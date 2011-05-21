@@ -48,16 +48,16 @@ namespace DotNetFlow.Controllers
         [HttpPost]
         public ActionResult Create(SubmitNewItemCommand command)
         {
-            try
-            {
+            //try
+            //{
                 _commandService.Execute(command);
                 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+              //  return RedirectToAction("Index");
+            //}
+            //catch
+            //{
                 return View();
-            }
+            //}
         }
         
         //
