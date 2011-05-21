@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\FluentValidation\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\..\lib\FluentValidation\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\..\lib\MarkdownSharp\MarkdownSharp.dll</HintPath>
     </Reference>
@@ -52,12 +58,14 @@
   <ItemGroup>
     <Compile Include="Commands\Executors\SubmitNewItemExecutor.cs" />
     <Compile Include="Commands\SubmitNewItemCommand.cs" />
+    <Compile Include="Commands\Validators\SubmitNewItemValidator.cs" />
     <Compile Include="DomainModel\ApprovalStatus.cs" />
     <Compile Include="DomainModel\Item.cs" />
     <Compile Include="Events\NewItemSubmittedEvent.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\DomainRegistry.cs" />
     <Compile Include="Infrastructure\StructureMapConfiguration.cs" />
+    <Compile Include="Infrastructure\StructureMapValidatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

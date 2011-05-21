@@ -2,6 +2,7 @@
 using System.Web.Routing;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Infrastructure;
+using FluentValidation.Mvc;
 
 namespace DotNetFlow
 {
@@ -35,6 +36,14 @@ namespace DotNetFlow
 
             Bootstrapper.Configure();
             ControllerBuilder.Current.SetControllerFactory(new ControllerFactory());
+
+            EnableFluentValidation();
+        }
+
+        private static void EnableFluentValidation()
+        {
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
+            ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new StructureMapValidatorFactory())); 
         }
     }
 }
