@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\lib\Dapper\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\..\lib\FluentValidation\FluentValidation.dll</HintPath>
     </Reference>

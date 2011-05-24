@@ -1,14 +1,17 @@
 ﻿using System.Configuration;
-using DotNetFlow.Core.Commands.Executors;
-using DotNetFlow.Core.Commands.Validators;
-using FluentValidation;
+using System.Data;
+using System.Data.SqlClient;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Storage;
 using Ncqrs.Eventing.Storage.SQL;
+using StructureMap;
 using StructureMap.Configuration.DSL;
+using FluentValidation;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.Commands.Executors;
+using DotNetFlow.Core.Commands.Validators;
 
 namespace DotNetFlow.Core.Infrastructure
 {
@@ -20,27 +23,22 @@ namespace DotNetFlow.Core.Infrastructure
             For<IEventBus>().Use(InitializeEventBus);
             For<ICommandService>().Use(InitializeCommandService);
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
+            For<IDbConnection>().Use(CreateReadModelDbConnection);
+
             ConfigureValidators();
         }
-
-        private void ConfigureValidators()
-        {
-            For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
-        }
-
+             
         private static ICommandService InitializeCommandService()
         {
             var service = new CommandService();
             service.RegisterExecutor(new SubmitNewItemExecutor());
-
             return service;
         }
 
         private static IEventBus InitializeEventBus()
         {
             var bus = new InProcessEventBus();
-            //bus.RegisterHandler(new TweetListItemDenormalizer());
-
+            bus.RegisterAllHandlersInAssembly(typeof(DomainRegistry).Assembly, ObjectFactory.GetInstance);
             return bus;
         }
 
@@ -56,5 +54,18 @@ namespace DotNetFlow.Core.Infrastructure
         {
             return new GuidCombGenerator();
         }
+
+        private static IDbConnection CreateReadModelDbConnection()
+        {
+            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
+            connection.Open();
+            return connection;
+        }
+
+        private void ConfigureValidators()
+        {
+            For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
+        }
+
     }
 }
