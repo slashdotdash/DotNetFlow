@@ -6,8 +6,8 @@ namespace DotNetFlow.Core.Commands.Validators
     {
         public SubmitNewItemValidator()
         {
-            RuleFor(x => x.Title).NotEmpty().Length(100);
-            RuleFor(x => x.Content).NotEmpty().Length(1000);
+            RuleFor(x => x.Title).NotEmpty().Length(10, 140);
+            RuleFor(x => x.Content).NotEmpty().Length(1, 2000);
         }
     }
 }

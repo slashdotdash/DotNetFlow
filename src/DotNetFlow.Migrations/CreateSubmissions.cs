@@ -12,8 +12,8 @@ namespace DotNetFlow.Migrations
                               new Column("ItemId", DbType.Guid, ColumnProperty.PrimaryKey),
                               new Column("SubmittedAt", DbType.DateTime),
                               new Column("UsersName", DbType.String, 1000),
-                              new Column("Title", DbType.String, 1000),
-                              new Column("HtmlContent", DbType.String, 5000)
+                              new Column("Title", DbType.String, 140),
+                              new Column("HtmlContent", DbType.String, 2000)
                 );
         }
 
