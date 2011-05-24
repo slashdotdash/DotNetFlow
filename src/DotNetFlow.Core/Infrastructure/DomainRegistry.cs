@@ -2,6 +2,7 @@
 using DotNetFlow.Core.Commands.Executors;
 using DotNetFlow.Core.Commands.Validators;
 using FluentValidation;
+using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Storage;
@@ -18,7 +19,7 @@ namespace DotNetFlow.Core.Infrastructure
             For<IEventStore>().Use(InitializeEventStore);
             For<IEventBus>().Use(InitializeEventBus);
             For<ICommandService>().Use(InitializeCommandService);
-
+            For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
             ConfigureValidators();
         }
 
@@ -46,6 +47,14 @@ namespace DotNetFlow.Core.Infrastructure
         private static IEventStore InitializeEventStore()
         {
             return new MsSqlServerEventStore(ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString);
+        }
+
+        /// <summary>
+        /// The comb algorithm is designed to make the use of GUIDs as Primary Keys, Foreign Keys, and Indexes nearly as efficient as ints.
+        /// </summary>
+        private static IUniqueIdentifierGenerator InitializeIdGenerator()
+        {
+            return new GuidCombGenerator();
         }
     }
 }

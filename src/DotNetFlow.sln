@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{77
 		..\features\submit_items\anonymous_visitor_submits_item.feature = ..\features\submit_items\anonymous_visitor_submits_item.feature
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Migrations", "DotNetFlow.Migrations\DotNetFlow.Migrations.csproj", "{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
 using Ncqrs.Commanding.ServiceModel;
-using Ncqrs;
 
 namespace DotNetFlow.Controllers
 {
@@ -51,12 +50,10 @@ namespace DotNetFlow.Controllers
             if (ModelState.IsValid)
             {
                 _commandService.Execute(command);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
-            else
-            {
-                return View();            
-            }
+            
+            return View();            
         }
         
         //

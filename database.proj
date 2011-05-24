@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <ClassLibraryOutputDirectory>bin\$(Configuration)</ClassLibraryOutputDirectory>
+        <MigratorTasksPath>$(MSBuildProjectDirectory)\lib\Migrator.Net</MigratorTasksPath>
+        <MigrationsProject>src\DotNetFlow.Migrations\DotNetFlow.Migrations.csproj</MigrationsProject>
+    </PropertyGroup>
+    
+    <Import Project="$(MigratorTasksPath)\Migrator.Targets" />
+    
+    <Target Name="Build-Migrations">
+        <MSBuild Projects="$(MigrationsProject)" Targets="Build">
+            <Output TaskParameter="TargetOutputs" ItemName="MigrationAssemblies" />
+        </MSBuild>
+        
+        <Message Text="Built: @(MigrationAssemblies)"/>
+    </Target>
+    
+    <Target Name="Migrate" DependsOnTargets="Build-Migrations">
+        <Message Text="Migrating: @(MigrationAssemblies)"/>
+        
+        <CreateProperty Value="-1"  Condition="'$(SchemaVersion)'==''">
+            <Output TaskParameter="Value" PropertyName="SchemaVersion"/>
+        </CreateProperty>
+		
+        <Migrate Provider="SqlServer"
+            Connectionstring="Data Source=.\SQLEXPRESS;Initial Catalog=DotNetFlow;Persist Security Info=True;User ID=DotNetFlow;Password=DotNetFlow;"
+            Migrations="@(MigrationAssemblies)"
+            To="$(SchemaVersion)"
+			Scriptfile="database\ReadModel.sql" />
+    </Target>
+</Project>

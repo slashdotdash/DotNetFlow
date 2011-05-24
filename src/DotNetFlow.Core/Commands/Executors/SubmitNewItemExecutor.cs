@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetFlow.Core.DomainModel;
+﻿using DotNetFlow.Core.DomainModel;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Domain;
 
@@ -9,7 +8,7 @@ namespace DotNetFlow.Core.Commands.Executors
     {
         protected override void ExecuteInContext(IUnitOfWorkContext context, SubmitNewItemCommand command)
         {
-            new Item(Guid.NewGuid(), command.UsersName, command.Title, command.Content);
+            new Item(command.ItemId, command.UsersName, command.Title, command.Content);
             context.Accept();
         }
     }

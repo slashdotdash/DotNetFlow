@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}</ProjectGuid>
+    <ProjectGuid>{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetFlow.Core</RootNamespace>
-    <AssemblyName>DotNetFlow.Core</AssemblyName>
+    <RootNamespace>DotNetFlow.Migrations</RootNamespace>
+    <AssemblyName>DotNetFlow.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,23 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation">
-      <HintPath>..\..\lib\FluentValidation\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation.Mvc">
-      <HintPath>..\..\lib\FluentValidation\FluentValidation.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="MarkdownSharp">
-      <HintPath>..\..\lib\MarkdownSharp\MarkdownSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Ncqrs">
-      <HintPath>..\..\lib\Ncqrs\Ncqrs.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\lib\StructureMap\StructureMap.dll</HintPath>
+    <Reference Include="Migrator.Framework">
+      <HintPath>..\..\lib\Migrator.Net\Migrator.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,20 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Executors\SubmitNewItemExecutor.cs" />
-    <Compile Include="Commands\SubmitNewItemCommand.cs" />
-    <Compile Include="Commands\Validators\SubmitNewItemValidator.cs" />
-    <Compile Include="DomainModel\ApprovalStatus.cs" />
-    <Compile Include="DomainModel\Item.cs" />
-    <Compile Include="Events\NewItemSubmittedEvent.cs" />
-    <Compile Include="Infrastructure\Bootstrapper.cs" />
-    <Compile Include="Infrastructure\DomainRegistry.cs" />
-    <Compile Include="Infrastructure\StructureMapConfiguration.cs" />
-    <Compile Include="Infrastructure\StructureMapValidatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadModel\Denormalizers\SubmittedItemDenormalizer.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="CreateSubmissions.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

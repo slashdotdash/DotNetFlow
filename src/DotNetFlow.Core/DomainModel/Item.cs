@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DotNetFlow.Core.Events;
 using MarkdownSharp;
 using Ncqrs.Domain;
@@ -22,11 +19,6 @@ namespace DotNetFlow.Core.DomainModel
             StrictBoldItalic = true,
             LinkEmails = true
         });
-
-        private Item()
-        {
-            // Required default ctor for Ncqrs
-        }
 
         public Item(Guid itemId, string usersName, string title, string content)
         {
