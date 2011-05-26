@@ -23,11 +23,16 @@ namespace DotNetFlow.Core.Infrastructure
             For<IEventBus>().Use(InitializeEventBus);
             For<ICommandService>().Use(InitializeCommandService);
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
-            For<IDbConnection>().Use(CreateReadModelDbConnection);
+            For<IUnitOfWork>().HybridHttpOrThreadLocalScoped().Use(InitializeUnitOfWork);
 
             ConfigureValidators();
         }
-             
+
+        private static IUnitOfWork InitializeUnitOfWork()
+        {
+            return new UnitOfWork(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
+        }
+
         private static ICommandService InitializeCommandService()
         {
             var service = new CommandService();
@@ -57,15 +62,14 @@ namespace DotNetFlow.Core.Infrastructure
 
         private static IDbConnection CreateReadModelDbConnection()
         {
-            var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            connection.Open();
-            return connection;
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
+            //connection.Open();
+            //return connection;
         }
 
         private void ConfigureValidators()
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
         }
-
     }
 }

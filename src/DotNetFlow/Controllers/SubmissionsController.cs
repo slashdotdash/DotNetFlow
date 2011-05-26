@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.Infrastructure;
+using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Controllers
@@ -11,10 +13,12 @@ namespace DotNetFlow.Controllers
     public class SubmissionsController : Controller
     {
         private readonly ICommandService _commandService;
+        private readonly IUniqueIdentifierGenerator _idGenerator;
 
-        public SubmissionsController(ICommandService commandService)
+        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator)
         {
             _commandService = commandService;
+            _idGenerator = idGenerator;
         }
 
         //
@@ -45,10 +49,12 @@ namespace DotNetFlow.Controllers
         // POST: /Submissions/Create
 
         [HttpPost]
+        [UseUnitOfWork]
         public ActionResult Create(SubmitNewItemCommand command)
         {
             if (ModelState.IsValid)
             {
+                command.ItemId = _idGenerator.GenerateNewId();
                 _commandService.Execute(command);
                 return RedirectToAction("Details");
             }
