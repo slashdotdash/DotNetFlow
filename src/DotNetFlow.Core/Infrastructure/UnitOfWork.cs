@@ -17,11 +17,12 @@ namespace DotNetFlow.Core.Infrastructure
 
             _connectionString = connectionString;
         }
-        
+
         public void Initialize()
         {
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
+
             _transaction = _connection.BeginTransaction();
         }
 
@@ -37,7 +38,13 @@ namespace DotNetFlow.Core.Infrastructure
 
         public IDbConnection Connection
         {
-            get { return _connection; }
+            get
+            {
+                if (_connection == null || _connection.State != ConnectionState.Open)
+                    throw new InvalidOperationException("Connection has not yet been opened");
+
+                return _connection;
+            }
         }
 
         public IDbTransaction Transaction
@@ -56,6 +63,5 @@ namespace DotNetFlow.Core.Infrastructure
                 _connection.Dispose();
             }
         }
-
     }
 }

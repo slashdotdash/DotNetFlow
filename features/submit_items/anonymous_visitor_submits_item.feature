@@ -10,5 +10,5 @@ Feature: Anonymous visitor submits item
 	  | Title			| Fantastic new .NET resource						|
 	  | Content         | Check out [dotnetflow](http://www.dotnetflow.com) |
 	And I press "Submit Item"
-	Then I should see the submitted item
+	Then I should be redirected to view the submitted item
     And I should see the message "Thank-you for submitting a new item, it is now pending approval."
