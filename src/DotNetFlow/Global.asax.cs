@@ -12,7 +12,7 @@ namespace DotNetFlow
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            //filters.Add(new UseUnitOfWork(ObjectFactory.GetInstance<IUnitOfWork>()));
+            filters.Add(new UseUnitOfWork());
         }
 
         public static void RegisterRoutes(RouteCollection routes)

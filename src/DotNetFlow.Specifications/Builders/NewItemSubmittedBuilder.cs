@@ -6,6 +6,7 @@ namespace DotNetFlow.Specifications.Builders
     internal sealed class NewItemSubmittedBuilder
     {
         private Guid _id = Guid.NewGuid();
+        private DateTime _submittedAt = DateTime.Now;
         private string _submissionUsersName = "Anonymous";
         private string _title = "Announcing release of ASP.NET MVC 3, IIS Express, SQL CE 4, Web Farm Framework, Orchard, WebMatrix";
         private string _rawContent = "Scott Gu has [announced the release of ASP.NET MVC 3](http://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx\">announced)";
@@ -36,11 +37,18 @@ namespace DotNetFlow.Specifications.Builders
             return this;
         }
 
+        public NewItemSubmittedBuilder SubmittedAt(DateTime time)
+        {
+            _submittedAt = time;
+            return this;
+        }
+
         public NewItemSubmittedEvent Build()
         {
             return new NewItemSubmittedEvent
             {
                 ItemId = _id,
+                SubmittedAt = _submittedAt,
                 SubmissionUsersName = _submissionUsersName,
                 Title = _title,
                 RawContent = _rawContent,

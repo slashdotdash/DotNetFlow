@@ -1,0 +1,37 @@
+﻿@model DotNetFlow.Core.ReadModel.Models.Submission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="message">Thank-you for submitting a new item, it is now pending approval.</div>
+
+<fieldset>
+    <legend>Submission</legend>
+
+    <div class="display-label">SubmittedAt</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubmittedAt)
+    </div>
+
+    <div class="display-label">Your Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UsersName)
+    </div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Content</div>
+    <div class="display-field">
+        @Html.Raw(Model.HtmlContent)
+    </div>
+</fieldset>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ })*@ |
+    @Html.ActionLink("Back to List", "Index")
+</p>

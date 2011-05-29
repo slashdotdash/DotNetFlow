@@ -8,6 +8,7 @@ namespace DotNetFlow.Core.DomainModel
     public sealed class Item : AggregateRootMappedByConvention
     {
         private string _usersName;
+        private DateTime _submittedAt;
         private string _title, _rawContent, _htmlContent;
         private ApprovalStatus _status;
 
@@ -27,6 +28,7 @@ namespace DotNetFlow.Core.DomainModel
             ApplyEvent(new NewItemSubmittedEvent
             {
                 ItemId = itemId,
+                SubmittedAt = DateTime.Now,
                 SubmissionUsersName = usersName,
                 Title = title,
                 RawContent = content,
@@ -37,6 +39,7 @@ namespace DotNetFlow.Core.DomainModel
 
         private void OnNewItemSubmitted(NewItemSubmittedEvent @event)
         {
+            _submittedAt = @event.SubmittedAt;
             _usersName = @event.SubmissionUsersName;
             _title = @event.Title;
             _rawContent = @event.RawContent;

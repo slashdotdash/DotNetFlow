@@ -73,6 +73,9 @@
     <Compile Include="Infrastructure\UseUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadModel\Denormalizers\SubmittedItemDenormalizer.cs" />
+    <Compile Include="ReadModel\Models\Submission.cs" />
+    <Compile Include="ReadModel\Repositories\IRepository.cs" />
+    <Compile Include="ReadModel\Repositories\SubmissionRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

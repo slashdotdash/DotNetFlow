@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.ReadModel.Models;
+using DotNetFlow.Core.ReadModel.Repositories;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 
@@ -14,11 +16,13 @@ namespace DotNetFlow.Controllers
     {
         private readonly ICommandService _commandService;
         private readonly IUniqueIdentifierGenerator _idGenerator;
+        private readonly IRepository<Submission> _repository;
 
-        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator)
+        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IRepository<Submission> repository)
         {
             _commandService = commandService;
             _idGenerator = idGenerator;
+            _repository = repository;
         }
 
         //
@@ -32,9 +36,10 @@ namespace DotNetFlow.Controllers
         //
         // GET: /Submissions/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            var submission = _repository.Get(id);
+            return View(submission);
         }
 
         //
@@ -49,14 +54,14 @@ namespace DotNetFlow.Controllers
         // POST: /Submissions/Create
 
         [HttpPost]
-        [UseUnitOfWork]
         public ActionResult Create(SubmitNewItemCommand command)
         {
             if (ModelState.IsValid)
             {
                 command.ItemId = _idGenerator.GenerateNewId();
                 _commandService.Execute(command);
-                return RedirectToAction("Details");
+
+                return RedirectToAction("Details", new { id = command.ItemId });
             }
             
             return View();            

@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+using DotNetFlow.Core.ReadModel.Models;
+using DotNetFlow.Core.ReadModel.Repositories;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -19,13 +19,26 @@ namespace DotNetFlow.Core.Infrastructure
     {
         public DomainRegistry()
         {
+            ConfigureNcqrsInfrastructure();
+            ConfigureUnitOfWorkPerHttpRequest();
+            ConfigureCommandValidators();
+            ConfigureReadModelRepositories();
+        }
+
+        private void ConfigureNcqrsInfrastructure()
+        {
             For<IEventStore>().Use(InitializeEventStore);
             For<IEventBus>().Use(InitializeEventBus);
             For<ICommandService>().Use(InitializeCommandService);
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
-            For<IUnitOfWork>().HybridHttpOrThreadLocalScoped().Use(InitializeUnitOfWork);
+        }
 
-            ConfigureValidators();
+        /// <summary>
+        /// Share the same unit-of-work instance within a single HTTP request
+        /// </summary>
+        private void ConfigureUnitOfWorkPerHttpRequest()
+        {
+            For<IUnitOfWork>().HybridHttpOrThreadLocalScoped().Use(InitializeUnitOfWork);
         }
 
         private static IUnitOfWork InitializeUnitOfWork()
@@ -60,16 +73,14 @@ namespace DotNetFlow.Core.Infrastructure
             return new GuidCombGenerator();
         }
 
-        private static IDbConnection CreateReadModelDbConnection()
-        {
-            return new SqlConnection(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            //connection.Open();
-            //return connection;
-        }
-
-        private void ConfigureValidators()
+        private void ConfigureCommandValidators()
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
+        }
+
+        private void ConfigureReadModelRepositories()
+        {
+            For<IRepository<Submission>>().Use(c => new SubmissionRepository(c.GetInstance<IUnitOfWork>()));
         }
     }
 }

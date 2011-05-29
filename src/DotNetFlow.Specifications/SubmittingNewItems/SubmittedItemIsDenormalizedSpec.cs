@@ -18,8 +18,6 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
     public sealed class SubmittedItemIsDenormalizedSpec : EventTestFixture<NewItemSubmittedEvent>
     {
         private IUnitOfWork _unitOfWork;
-        private IDbConnection _connection;
-        private IDbTransaction _transaction;
 
         protected override NewItemSubmittedEvent WhenExecutingEvent()
         {
@@ -34,33 +32,23 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
         [Then]
         public void Should_Insert_SubmittedItem()
         {
-            var submissions = _unitOfWork.Connection.Query<int>("select count(*) from Submissions", null, _transaction);
+            var submissions = _unitOfWork.Connection.Query<int>("select count(*) from Submissions", null, _unitOfWork.Transaction);
             Assert.AreEqual(1, submissions.Single());
         }
 
         protected override void SetupDependencies()
         {
             _unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            _unitOfWork.Initialize();
-            //_connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            //_connection.Open();
-
-            //_transaction = _connection.BeginTransaction();
+            _unitOfWork.Initialize();            
         }
 
         [TestFixtureTearDown]
         public void Dispose()
         {
-            if (_unitOfWork != null)
-            {
-                _unitOfWork.Rollback();
-                _unitOfWork.Dispose();
-            }
-            //if (_transaction != null) 
-            //    _transaction.Rollback();
-            
-            //if (_connection != null) 
-            //    _connection.Close();
+            if (_unitOfWork == null) return;
+
+            _unitOfWork.Rollback();
+            _unitOfWork.Dispose();
         }
     }
 }
