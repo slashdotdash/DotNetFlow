@@ -1,0 +1,29 @@
+#basic-modal-content, #basic-modal-content2  {display:none;}
+
+/* Overlay */
+#simplemodal-overlay { cursor:wait; position:relative;   }
+
+/* Container */
+#simplemodal-container { padding:12px; display:block; }
+#simplemodal-container a.modalCloseImg { width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container #basic-modal-content {padding:8px; height:100%;  }
+
+#simplemodal-container h3 { margin:0 0 20px 0; padding:0 0 5px 0; font:22px Georgia, "Times New Roman", Times, serif; } 
+#simplemodal-container .row {    margin-right:10px; margin-bottom:10px;   }
+#simplemodal-container .row  label  { display:block; float:left; font-size:13px; color:#333; padding:5px 0; width:95px;  }
+ #simplemodal-container .row textarea {  height:150px;  }
+
+#simplemodal-container .row  input, #simplemodal-container .row  textarea { font:14px Arial, Helvetica, sans-serif; padding:5px; width:268px; float:left;  }
+
+
+#simplemodal-container .button { font:bold 12px Arial, Helvetica, sans-serif; padding:5px; margin-right:5px; clear: left; cursor:pointer; margin-left:95px; }
+
+#simplemodal-container { top:20px !important; }
+#basic-modal-content2 { height:430px;  width:390px; }
+#basic-modal-content { width:400px; height:480px; }
+
+#basic-modal-content { height:556px; }
+#basic-modal-content .message_error2, #basic-modal-content2 .message_error2  { margin-left:95px;  }
+
+
+ 

@@ -3,7 +3,6 @@ using System.Web.Routing;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Infrastructure;
 using FluentValidation.Mvc;
-using StructureMap;
 
 namespace DotNetFlow
 {
@@ -19,6 +18,7 @@ namespace DotNetFlow
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
             routes.MapRoute("SubmitItem", "submit", new { controller = "Submissions", action = "Create" });
             routes.MapRoute("Home", "", new { controller = "Items", action = "Index" });
 

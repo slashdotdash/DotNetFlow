@@ -36,7 +36,13 @@ namespace DotNetFlow.Specifications.Builders
 
         public SubmitNewItemCommand Build()
         {
-            return new SubmitNewItemCommand(_id, _submittingUsersName, _title, _content);
+            return new SubmitNewItemCommand
+            {
+                ItemId = _id,
+                UsersName = _submittingUsersName,
+                Title = _title,
+                Content = _content
+            };
         }
     }
 }

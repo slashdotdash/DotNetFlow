@@ -1,0 +1,326 @@
+/*	--------------------------------------------------
+Global Reset - Resets all browser defaults to 0
+-------------------------------------------------- */
+body { color:#333; background:#e8f5fd; }
+a { color:#0d5488; text-decoration:none; }
+a:hover { color:#333; }
+
+
+hr { color:#fffdea; border:none; border-top:1px dotted #372322; }
+
+.alignleft { border:2px solid #ccc; background:#fff;  }
+.alignright { border:2px solid #ccc; background:#fff;  }
+
+/* headings ---------------------- */
+h1.page_head, h1.single_head { color:#0e5285; border-bottom:1px solid #e5e5e5; }
+
+h1 { color:#0d5488; }
+h2 { color:#000; }
+h4 { color:#0d5488; }
+h6 { color:#1b110d; }
+
+/* STRUCTURE ---------------------*/
+#top_strip { background:#1a96c1 url(1-default/top_strip.png) repeat-x bottom; }
+#header { background:#017fc1 url(1-default/headerbg.png) repeat-x top; border-top:1px solid #4fc2ef; border-bottom:1px solid #2f90cb; }
+
+#nav { background:#09649c url(1-default/navbg.png) repeat-x top; _background:url(1-default/navbg.png) repeat-x top; }
+
+#wrapper {  background: url(1-default/content_centerbg.png) repeat-y left top;   }
+/*#content { background:#fff url(1-default/content_centerbg.png) repeat-y left top;  }
+*/.content_top { background:url(1-default/content_top.png) no-repeat left top;  }
+.content_bottom { padding:30px;  }
+
+#footer { background:url(1-default/content_bottom.png) no-repeat left top; height:100%; overflow:hidden;   }
+
+
+/* HEADER ****************************/
+#top_strip p { color:#b6eaff;  }
+#top_strip p a { color:#b6eaff; }
+#top_strip p a:hover { color:#fff; }
+
+.header .logo p { color:#847e6a; }
+.search  { background:url(1-default/searchbg.png) no-repeat left top; }
+.search .textfield { background:none; border:none; color:#94bdd7; }
+
+
+/*#content  ------------------- */
+
+#content .question_list { border-bottom:1px solid #dae6ee; background:#fff;   }
+#content .question_list:hover { border-bottom:1px solid #dae6ee; background:#f6fafd; }
+
+#content .question_list h3 { color:#555; border-bottom:none; }
+#content .question_list h3 a { color:#555;  }
+#content .question_list h3 a:hover { color:#0e5285; }
+
+#content .question_list p { color:#777; border-bottom:none; }
+#content .question_list p a { color:#777; }
+#content .question_list p a:hover  { color:#000; }
+
+#content .answers_total { color:#555; } 
+#content .answers_total a { color:#fff; }
+#content .answers_total a:hover { color:#fff;}
+
+
+#content .posts .question_list { background:none; border:none; }
+
+/* --------------------- */
+
+
+#content .answers_total { background:url(1-default/i_answerbg.png) no-repeat center top; }
+#content .question_list p span.user { background:url(1-default/i_user.png) no-repeat left top; }
+#content .question_list p span.views { background:url(1-default/i_views.png) no-repeat left 3px;   }
+#content .question_list p span.ptags {  background:url(1-default/i_tags.png) no-repeat left 0px;   }
+#content span.pcate {  background:url(1-default/i_cate.png) no-repeat left 0px;   }
+
+
+#content #tab { background:#e8f5fd; }
+#content #tab li { background:url(1-default/navtabr.png) top right no-repeat; }
+#content #tab li.page_item a { color: #82939d;  background: url(1-default/navtabl.png) top left no-repeat; }
+#content #tab .page_item a { color: #cde7ff; }
+
+#content #tab .page_item a:hover { background-position: 0px 0px; border: none; color:#0e5285; }
+#content #tab li.current_page_item { color:#0e5285; background: url(1-default/navtabr.png) no-repeat right; background-position: 100% -52px;}
+#content #tab li.current_page_item a { color:#0e5285; background: url(1-default/navtabl.png) no-repeat; background-position: 0px -52px; }
+#content #tab li.current_page_item a:hover { background: url(1-default/navtabl.png) no-repeat; background-position: 0px -52px; color:#333; }
+
+.info { background:#f5f5f5; border:1px solid #e1e1e1; color:#686868; }
+
+#content .user_tab { background:url(1-default/tab_bg.png) repeat-x bottom; height:43px; }
+#content .user_tab li { background:none; }
+#content .user_tab li a {  border:1px solid #ccc; border-bottom:none; color:#b3b3b3; }
+#content .user_tab li a:hover {  background:#e4e4e4; border-bottom:none; color:#333;  }
+#content .user_tab li.current_page_item a {  background:#fff; border:1px solid #b2dbf0; border-bottom:1px solid #fff; color:#034668;  }
+
+
+/* content -------------*/
+#content li { background:url(1-default/i_bullet.gif) no-repeat left 8px; }
+#content ol li { background:none; }
+#content p.more a { color:#333; }
+#content p.more a:hover { color:#000; }
+#content h3 { border-bottom:1px solid #ccc;  }
+#content h5.form_title { color:#9c5500; }
+
+#content .post_top .avatar { border:1px solid #b09b86; padding:3px; background:#fff; }
+#content .post_top h1 { border-bottom:none;}
+#content .post_top h3 { border-bottom:none; }
+
+.commentcount a { color:#666; }
+.commentcount a:hover { color:#000; }
+#content p.postmetadata a { border-bottom:1px dotted #ccc; }
+#content .post_top p.postmetadata { color:#838383; }
+
+/* -------- */
+code { background:#ccc; }
+blockquote { background:url(1-default/quote.png) no-repeat left 5px;    } 
+blockquote p { color:#333;  }
+blockquote cite { color:#666; }
+
+blockquote a { color:#333; }
+blockquote a:hover { color:#000; }
+
+#content .post_top { background:url(1-default/i_post.png) no-repeat left 5px;  }
+#content .post_top h2 a { color:#000; }
+#content .post_top h2 a:hover { color:#333; }
+.commentcount { background:url(1-default/i_comment.png) no-repeat left 1px; }
+.commentcount a { border-bottom:1px dotted #838383; }
+
+#content .post_top a { color:#666; }
+#content .post_top a:hover { color:#333;}
+#content .posts { border-bottom:3px solid #eee;  }
+#content .posts h3 a { color:#333; }
+#content .posts h3 a:hover { color:#0d5488; }
+
+#content p.post_bottom {color:#555; }
+#content p.post_bottom a { color:#444; }
+#content p.post_bottom a:hover { color:#000; }
+
+#comments .commentlist li.selectedans{ background-color:#E8F5FD !important;   } 
+#comments .commentlist span.bestanswer { background:url(1-default/best_answer.png) no-repeat left top; }
+
+
+
+/*---------COMMENTS --------- */
+#comments h3 { border-bottom:none; color:#0d5488; }
+#comments  p.authorcomment a {  color:#666; }
+#comments  p.authorcomment a:hover { color:#000; }
+
+#comments .comment p.author { border-bottom:1px solid #D0DCE3; }
+
+#comments .comment .meta-left { color:#aaa }
+#comments .comment .text-right { border:none;  }
+#comments .comment .authcomment{ background:#fff; border:none;  }
+#comments .comment .authcomment p { color:#333; }
+
+#comments .comment { border-bottom:2px solid #e5e5e5; }
+
+span.comm-reply{ color:#666; }
+input#submit{ background:url(1-default/b_submit.png) no-repeat left top; border:none;  }
+input#submit:hover { background-position:0 -47px; }
+
+.avatar { border:2px solid #eee; background:#fff; }
+
+.content_left strong { color:#084069; }
+
+#respond .textarea { border:1px solid #c7c7c7; padding:8px; width:590px; font:14px Arial, Helvetica, sans-serif; }
+#respond .textfield { border:1px solid #c7c7c7; float:left; padding:8px; width:380px; font:14px Arial, Helvetica, sans-serif; }
+#respond .textfield2 { border:1px solid #c7c7c7; float:left; padding:8px; width:180px; font:14px Arial, Helvetica, sans-serif; }
+
+.votes { background:#fff; border:1px solid #026c9e; }
+.votes span { background:#026c9e  url(1-default/votes.png) no-repeat right top; color:#fff;    }
+.votes span b { color:#fff; }
+.votes span.bnone { border:none; }
+
+#respond h3 { color:#505050; }
+
+/* BREADCRUMBS **************************/
+.breadcrumbs p { color:#777; }
+.breadcrumbs a { color:#34718C; }
+.breadcrumbs a:hover { color:#000; }
+.breadcrumbs strong { color: #605d5d; }
+.breadcrumbs span.findproperties { background:url(1-default/i-findpropertiesbg.png) no-repeat;}
+.breadcrumbs span.findproperties a {  color:#f6f2e3; background:url(../images/i-icon-findproperty.png) left no-repeat; }
+
+
+/* sidebar ------------------------------------*/
+a.b_askquestions { background:url(1-default/b_ask_questions.png) no-repeat left top; }
+a:hover.b_askquestions { background-position:0 -46px; }
+
+#sidebar .widget h3 { background:url(1-default/side_headbg.png) no-repeat center bottom; color:#6f96b4;  }
+#sidebar li {background:url(1-default/bullet.png) no-repeat left 10px;  border-bottom:1px solid #d0dce3;  }
+
+#sidebar .login_widget { background:#fff; border:1px solid #cbdfec;  }
+#sidebar .login_widget h3 { background:#fff !important; border-bottom:1px solid #ccc; }
+
+#sidebar .topusers li a { color:#555;  }
+#sidebar .topusers li a:hover { color:#000;  }
+
+#sidebar .topusers li { background:none; }
+#sidebar .topusers li img {  border:1px solid #a6c9de; }
+#sidebar .widget h3 span.point { color:#555; }
+
+
+
+/* form ------ */
+.form_row .textfield { border:1px solid #ccc; }
+.form_row .textarea { border:1px solid #ccc; }
+.indicates { color:#F00; }
+.error_msg { color:#900; }
+
+.btn_input_highlight { background:#0e5184 url(1-default/buttonbg.png) repeat-x top; border:none; color:#fff;    }
+.btn_input_highlight:hover { background:#084069; color:#fff; }
+
+.btn_input_normal { background:#777; border:1px solid #666; color:#fff;    }
+.btn_input_normal:hover { background:#333; color:#fff; }
+
+#content p.success_msg { padding:5px; margin-top:20px; text-align:center; }
+#content p.success_msg { color:#356c1d; background:#cee8c3; border-top:1px solid #7ea96b; border-bottom:1px solid #7ea96b; }
+
+
+/* ask a question form  ------ */
+.ask_row label { color:#6a96b5; }
+.ask_row .textfield { border:1px solid #c7c7c7;  }
+.ask_row .textarea { border:1px solid #c7c7c7; }
+.ask_row .notice { color:#686868;  }
+
+/* FOOTER ------------------------------------*/
+#footer { color:#6c6858; }
+#footer p {color:#6c6858; }
+#footer .copyrights { color:#8b8674; }
+#footer .copyrights p.author { color:#8b8674; }
+#footer .footerright { color:#333; text-align:center; }
+#footer ul li { color:#6c6858; }
+#footer ul li a { color:#6c6858; }
+#footer ul li a:hover { color:#000; }
+#footer p span.templatic { color:#fff;  background:url(../images/templatic.png) no-repeat 0;   }
+
+/* Post Pagination */
+.pagination .on { background:#0e5184; color:#fff; }
+.pagination a { background:#e3e3e3; color:#333;  }
+.pagination a:hover { color:#fff; background:#666;  }
+
+ 
+
+/*---------TOP NAVIGATION for PAGES---------*/
+#nav_in ul li ul  {  }
+#nav_in ul li ul li {  background:#fff; color:#6f5345;    }
+#nav_in ul li a { color:#b6dbeb; cursor:pointer; }
+#nav_in ul li a:hover { color:#fff; cursor:pointer;   }
+
+#nav_in ul li.current_page_item a, #nav_in ul li.current_page_parent a { background:url(1-default/nav_h.png) no-repeat center top; color:#0f5183; }
+#nav_in ul li ul li a, #nav_in ul li.current_page_item ul li a, #nav_in ul li.current_page_parent ul li a { background: #092e49; color:#fff; cursor:pointer;  }
+#nav_in ul li ul li a:hover, #nav_in ul li ul li:hover, #nav_in ul li ul li.current_page_item a, #nav_in ul li ul li.current_page_parent a, #nav_in ul li ul li.current_page_item a { background:#02131f; color:#fff; cursor:pointer; }
+
+#nav_in ul li.current_page_item a:hover { color:#333;   }
+#nav_in ul li.current_page_item ul li a:hover { color:#fff; }
+#nav_in ul li.current_page_parent ul li.current_page_item a:hover { color:#fff; }
+
+#nav_in ul li.current-menu-item a { background:url(1-default/nav_h.png) no-repeat center top; color:#0f5183; }
+#nav_in ul li ul li a, #nav_in ul li.current-menu-item ul li a  { background: #092e49; color:#fff; cursor:pointer;  }
+#nav_in  ul li ul li a:hover { background:#02131f; color:#fff; }
+
+
+
+
+/*---------TOP NAVIGATION for PAGES---------*/
+#top_strip_in ul li ul li {/* border:1px solid #497c9c;*/ background:#fff; color:#6f5345;  }
+#top_strip_in ul li a { color:#b6dbeb; cursor:pointer;  }
+#top_strip_in ul li a:hover { color:#fff; cursor:pointer;  }
+
+#top_strip_in ul li.current_page_item a, #top_strip_in ul li.current_page_parent a { background:#1283ac;  color:#fff; }
+#top_strip_in ul li ul li a, #top_strip_in ul li.current_page_item ul li a, #top_strip_in ul li.current_page_parent ul li a { background: #fff; color:#666; cursor:pointer;  }
+#top_strip_in ul li ul li a:hover, #top_strip_in ul li ul li:hover, #top_strip_in ul li ul li.current_page_item a, #top_strip_in ul li ul li.current_page_parent a, #top_strip_in ul li ul li.current_page_item a { background:#e8f5fd; color:#0f5183;  cursor:pointer; }
+
+
+#top_strip_in ul li.current-menu-item a { background:#1283ac;  color:#fff; }
+#top_strip_in ul li ul li a, #top_strip_in ul li.current-menu-item ul li a  { background:#e8f5fd; color:#0f5183;  }
+#top_strip_in  ul li ul li a:hover { background:#e8f5fd; color:#0f5183;  }
+
+
+
+
+/* user listing --------------------------- */
+#content .userlistings li { border-bottom:1px solid #e5e5e5; }
+#content .userlistings li img { border:1px solid #ccc; border-right:1px solid #ccc;  border-bottom:1px solid #ddd; background:#fff;  }
+#content .userlistings li h3 { background:#eee; color:#222;  border-bottom:none; }
+#content .userlistings li h3 a { color:#0e5285; }
+#content .userlistings li h3 a:hover { color:#333; }
+
+#content .userlistings li p { color:#666; }
+#content .userlistings li p.links a { color:#0e5285; }
+#content .userlistings li p.links a:hover { color:#333; }
+
+#content .alphabetical li { background:none; }
+#content .alphabetical li a  { background:#e3e3e3; color:#333; }
+#content .alphabetical li a:hover  { background:#898989; color:#fff; }
+
+#content .alphabetical li.current a  { background:#0e5184; color:#fff; }
+
+
+
+/* popup window ---------*/
+#simplemodal-overlay { background-color:#000;}
+#simplemodal-container { color:#666; background-color:#fff; border:4px solid #ccc; }
+#simplemodal-container a.modalCloseImg {background:url(../images/x.png) no-repeat; }
+#simplemodal-container h3 { color:#000; border-bottom:2px solid #cdc4a6; } 
+#simplemodal-container .row  label  { color:#333; }
+#simplemodal-container .row  input, #simplemodal-container .row  textarea { border:1px solid #ccc;}
+#simplemodal-container .button { background:#666; color:#fff; }
+#simplemodal-container .button:hover { background:#333; }
+
+
+/* landing page css ---------------------- */
+#page_landing a { color:#0E5285; text-decoration:underline; }
+#page_landing a:hover { color:#000; }
+
+.body { background:#E8F5FD; }
+#page_landing { background:#fff; border:3px double #ccc; } 
+
+#page_landing h1 { color:#0E5285; }
+#page_landing h2, #page_landing h3, #page_landing h4, #page_landing h5, #page_landing h6 { color:#333; }
+
+#page_landing blockquote { background:url(1-default/blockquote.png) no-repeat;    } 
+#page_landing blockquote p { color:#333;  }
+#page_landing blockquote cite { color:#666; }
+
+#page_landing li { background:url(1-default/i_bullet.gif) no-repeat left 8px; }
+#page_landing ol li { background:none; }

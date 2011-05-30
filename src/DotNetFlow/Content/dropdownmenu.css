@@ -1,0 +1,34 @@
+#nav_in ul, #nav_in ul li, #nav_in ul ul, #top_strip_in ul, #top_strip_in ul li, #top_strip_in ul ul { list-style: none; margin: 0; padding: 0; }
+#nav_in ul, #top_strip_in ul { position: relative; z-index: 597; float: left; }
+#nav_in ul li, #top_strip_in ul li { float: left; line-height: 1.8em; vertical-align: middle; zoom: 1; }
+#nav_in ul li.hover, #nav_in ul li:hover, #top_strip_in ul li.hover, #top_strip_in ul li:hover { position: relative; z-index: 599; cursor: default; }
+#nav_in ul ul   { visibility: hidden; position: absolute; top:40px; left: 0; z-index: 598; width: 100%;}
+
+#top_strip_in ul ul  { visibility: hidden; position: absolute; top:31px; left: 0; z-index: 598; width: 100%;}
+
+#nav_in ul ul li, #top_strip_in ul ul li { float: none;}
+#nav_in ul ul ul, #top_strip_in ul ul ul { top: 0px; left: 99%; }
+#nav_in ul li:hover > ul, #top_strip_in ul li:hover > ul  { visibility: visible; }
+
+/* Default CSS Drop-Down Menu Theme*/
+#nav_in ul { font-size:16px; }
+#nav_in ul li a { padding: 6px 15px 14px 15px; display:block; }
+#nav_in ul li a:link, #nav_in ul li a:visited	{  text-decoration: none; }
+	
+/* -- level mark -- */
+#nav_in ul ul, #top_strip_in ul ul { width: 150px;  }
+#nav_in ul li ul li a, #top_strip_in ul li ul li a { padding:9px 10px; line-height:normal; font-size:12px; }
+#nav_in ul li ul li ul  { margin-left:2px;  }
+#nav_in ul ul li { font-weight: bold;  margin-top:0px;  }
+
+#top_strip_in ul ul li {   margin-top:-1px;  }
+
+#nav ul.dropdown ul { width: 150px; top:42px; }
+#nav ul.dropdown ul li ul { top:1px; }
+
+#top_strip_in ul { float:left;}
+#top_strip_in ul li { font:11px Verdana, Geneva, sans-serif; }
+#top_strip_in ul li a { padding: 8px 15px 9px 15px; display:block; }
+#top_strip_in ul li ul li a { padding:9px 10px; line-height:normal; font-size:11px; }
+#top_strip_in ul ul li ul { top:1px; } 
+

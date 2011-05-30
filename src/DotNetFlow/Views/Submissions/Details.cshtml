@@ -1,37 +1,74 @@
 ﻿@model DotNetFlow.Core.ReadModel.Models.Submission
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
+@{ ViewBag.Title = "Thank-you for your submission"; }
 
 <div class="message">Thank-you for submitting a new item, it is now pending approval.</div>
 
-<fieldset>
-    <legend>Submission</legend>
-
-    <div class="display-label">SubmittedAt</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SubmittedAt)
+<div class="posts">
+    <h1 class="page_head">@Html.DisplayFor(model => model.Title)</h1>
+    <!--div class="breadcrumbs">
+		<p><a href="http://localhost/dotnetflow">Home</a> &raquo; <a href="http://localhost/dotnetflow/?cat=3" title="View all posts in Blog">Blog</a> &raquo; Increase your home value</p>
+ 	</div-->
+                
+    <div class="post_left">
+        <span>Posted by @Html.DisplayFor(model => model.UsersName)</span>
+        <span>on @Html.DisplayFor(model => model.SubmittedAt)</span>
+        @*<span> <a href="http://localhost/dotnetflow/?p=4#commentarea">0 Comments</a> </span>
+        <span>  Category : <a href="http://localhost/dotnetflow/?cat=3" title="View all posts in Blog" rel="category">Blog</a> </span>
+        <span> Tags : <a href="http://localhost/dotnetflow/?tag=home-value" rel="tag">home value</a>, <a href="http://localhost/dotnetflow/?tag=increase-home-value" rel="tag">Increase home value</a><br /> </span> *@
     </div>
 
-    <div class="display-label">Your Name</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UsersName)
-    </div>
-
-    <div class="display-label">Title</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-
-    <div class="display-label">Content</div>
-    <div class="display-field">
+    <div class="post_right">
         @Html.Raw(Model.HtmlContent)
-    </div>
-</fieldset>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ })*@ |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+ 	</div>
+</div>
+
+
+                @*
+	          <div id="comments">  
+<!-- You can start editing here. -->
+
+<div id="comments_wrap">
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+</div> <!-- end #comments_wrap -->
+
+
+<div id="respond">
+
+    <h3>Leave a Reply</h3>
+
+    	
+        <form action="http://localhost/dotnetflow/wp-comments-post.php" method="post" id="commentform" class="comment_blog">
+
+            
+                <p class="commpadd"> <label for="author">Name <span class="indicates">* </span></label> <input type="text" name="author" id="author" value="" size="22" tabindex="1" class="textfield" />
+				</p>
+
+                <p class="commpadd"> <label for="email"> E-mail <span class="indicates">*</span></label> <input type="text" name="email" id="email" value="" size="22" tabindex="2"  class="textfield"  />
+				</p>
+
+				<p class="commpadd"> <label for="url"><small>Website</small></label> <input type="text" name="url" id="url" value="" size="22" tabindex="3"  class="textfield"  />
+			    </p>
+
+            
+        <p class="commpadd"> <label> Comment </label><textarea name="comment" id="comment"  rows="10" cols="10" tabindex="4" class="textarea"></textarea></p>
+
+        <div class="aleft" ><input name="submit" type="submit" id="submit" class="b_spacer3" tabindex="5" value="" />
+
+		    <input type='hidden' name='comment_post_ID' value='4' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+		</div>
+
+		
+        </form>
+
+    
+    <div class="fix"></div>
+	
+</div> <!-- end #respond -->
+*@

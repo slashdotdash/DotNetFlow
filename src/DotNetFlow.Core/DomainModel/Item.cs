@@ -7,6 +7,7 @@ namespace DotNetFlow.Core.DomainModel
 {
     public sealed class Item : AggregateRootMappedByConvention
     {
+        private Guid _id;
         private string _usersName;
         private DateTime _submittedAt;
         private string _title, _rawContent, _htmlContent;
@@ -21,13 +22,13 @@ namespace DotNetFlow.Core.DomainModel
             LinkEmails = true
         });
 
-        public Item(Guid itemId, string usersName, string title, string content)
+        public Item(Guid id, string usersName, string title, string content)
         {
             var htmlContent = Markdown.Transform(content);
 
             ApplyEvent(new NewItemSubmittedEvent
             {
-                ItemId = itemId,
+                ItemId = id,
                 SubmittedAt = DateTime.Now,
                 SubmissionUsersName = usersName,
                 Title = title,
@@ -39,6 +40,7 @@ namespace DotNetFlow.Core.DomainModel
 
         private void OnNewItemSubmitted(NewItemSubmittedEvent @event)
         {
+            _id = @event.ItemId;
             _submittedAt = @event.SubmittedAt;
             _usersName = @event.SubmissionUsersName;
             _title = @event.Title;
