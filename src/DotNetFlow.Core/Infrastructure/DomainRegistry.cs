@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
+using DotNetFlow.Core.Services;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -23,6 +24,7 @@ namespace DotNetFlow.Core.Infrastructure
             ConfigureUnitOfWorkPerHttpRequest();
             ConfigureCommandValidators();
             ConfigureReadModelRepositories();
+            ConfigureServices();
         }
 
         private void ConfigureNcqrsInfrastructure()
@@ -78,11 +80,18 @@ namespace DotNetFlow.Core.Infrastructure
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
             For<IValidator<RegisterUserAccountCommand>>().Singleton().Use<RegisterUserAccountValidator>();
+            For<IValidator<LoginUserCommand>>().Singleton().Use<LoginUserValidator>();
+        }
+
+        private void ConfigureServices()
+        {
+            For<IAuthenticationService>().Use(c => new AuthenticationService(c.GetInstance<IUserRepository>()));
         }
 
         private void ConfigureReadModelRepositories()
         {
             For<IRepository<Submission>>().Use(c => new SubmissionRepository(c.GetInstance<IUnitOfWork>()));
+            For<IUserRepository>().Use(c => new UserRepository(c.GetInstance<IUnitOfWork>()));
         }
     }
 }

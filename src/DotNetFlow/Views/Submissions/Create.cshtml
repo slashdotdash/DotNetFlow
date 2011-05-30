@@ -1,41 +1,53 @@
 ﻿@model DotNetFlow.Core.Commands.SubmitNewItemCommand
-@{ ViewBag.Title = "Post to DotNetFlow"; }
+@{ ViewBag.Title = "Post new item"; }
 
-<h2>Post to DotNetFlow</h2>
+<h1 class="page_head">Post an Item</h1>
+<div class="breadcrumbs"></div>
 
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UsersName, "Your Name")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UsersName)
-            @Html.ValidationMessageFor(model => model.UsersName)
+<div class="registration_form">
+    <div id="sign_up">
+        <div class="login_content">
+            <p>Submit a .NET related news story, annoucement, event or interesting article.</p>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title, "Title")
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+        <div class="registration_form_box">
+            @using (Html.BeginForm()) {
+                @Html.ValidationSummary(true)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Content, "Content")
+                <div class="form_row clearfix" >
+                    @Html.LabelFor(model => model.UsersName, "Your Name")
+	                @Html.EditorFor(model => model.UsersName)
+                    @Html.ValidationMessageFor(model => model.UsersName)
+                    <div class="information">Will be shown with your submission</div>
+	            </div>
+                
+                <div class="form_row clearfix" >
+                    @Html.LabelFor(model => model.Title, "Title")
+	                @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                    <div class="information">Enter a short, reader-friendly title, without a URL</div>
+	            </div>
+            
+                <div class="form_row clearfix" >
+                    @Html.LabelFor(model => model.Content, "Content")
+	                @Html.TextAreaFor(model => model.Content)
+                    @Html.ValidationMessageFor(model => model.Content)
+                    <div class="information">Write a single paragraph containing a brief description, including a link.</div>
+                    <div class="information"><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> syntax formatting is allowed.</div>
+                    <div class="information">Submissions are moderated before appearing on the site.</div>
+	            </div>
+                                
+                <p><input type="submit" value="Submit Item" class="btn_input_highlight btn_spacer" /></p>
+                
+            }
         </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Content)
-            @Html.ValidationMessageFor(model => model.Content)
-        </div>
+    </div>
+</div>
 
-        <p>
-            <input type="submit" value="Submit Item" />
-        </p>
-    </fieldset>
-}
+<script type="text/javascript">
+    $(function () {
+        $('#nav li.submit-item').addClass('current_page_item');
+        $('#content form :input').addClass('textfield');
+        $('#content form .input-validation-error:first, #content form :input:first').focus();
+    });
+</script>

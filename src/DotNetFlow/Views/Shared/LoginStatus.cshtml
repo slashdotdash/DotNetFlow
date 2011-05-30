@@ -1,0 +1,10 @@
+﻿@using DotNetFlow.Extensions;
+
+@if (Request.IsAuthenticated)
+{
+    <p>Welcome @Html.Encode(User.Identity.Name). <a href="@Url.Logout()">Sign out</a></p>
+}
+else
+{
+    <p>Welcome Guest. <a href="@Url.Login()">Sign in</a> or <a href="@Url.SignUp()">Signup</a></p>
+}

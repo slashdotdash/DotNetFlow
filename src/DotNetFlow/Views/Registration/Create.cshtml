@@ -18,12 +18,10 @@
                 <h5 class="rfh">Your Information</h5>
                 
                 <div class="form_row clearfix" >
-	                <div class="form_row clearfix">
-                        @Html.LabelFor(model => model.FullName, "Full Name")
-	                    @Html.EditorFor(model => model.FullName)
-                        @Html.ValidationMessageFor(model => model.FullName)
-                        <div class="information">Will be shown for each of your submissions and comments</div>
-	                </div>
+                    @Html.LabelFor(model => model.FullName, "Full Name")
+	                @Html.EditorFor(model => model.FullName)
+                    @Html.ValidationMessageFor(model => model.FullName)
+                    <div class="information">Will be shown for each of your submissions and comments</div>
 	            </div>
 
                 <div class="form_row clearfix">
@@ -41,6 +39,7 @@
                 </div>
 		           
 	            <div class="fix"></div>
+                
 	            <h5>Optional Information</h5>
 
 	            <div class="form_row clearfix">

@@ -140,6 +140,7 @@ p.blog-description{ font-style:italic; font-size:12px; margin:0; padding:0;  }
 #content .question_cat li input { position:relative; top:-2px; margin-right:8px; }
 
 #content .field-validation-error { clear:both; display:block; color:#900;  padding:4px; margin-left:190px; } 
+#content .validation-summary-errors { clear:both; display:block; color:#900;  padding:4px; } 
 #content input-validation-error { }
 
 blockquote { clear:both; height:100%; margin:10px 0 0px 5px; overflow:hidden; padding:0 0 5px 30px; }

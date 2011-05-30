@@ -13,7 +13,7 @@ namespace DotNetFlow.Core.DomainModel
         private readonly string _hashedPassword, _passwordSalt;
 
         /// <summary>
-        /// Create a new hashed password
+        /// Create a new hashed password with a random salt
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>

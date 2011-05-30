@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using DotNetFlow.Core.Infrastructure;
@@ -18,6 +19,11 @@ namespace DotNetFlow.Core.ReadModel.Repositories
         public Submission Get(Guid id)
         {
             return _context.Connection.Query<Submission>("select * from Submissions where ItemId = @Id", new { Id = id }, _context.Transaction).Single();
+        }
+
+        public IEnumerable<Submission> All()
+        {
+            return _context.Connection.Query<Submission>("select * from Submissions", null, _context.Transaction);
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DotNetFlow.Core.ReadModel.Models.Submission>
+@{ ViewBag.Title = "Submissions pending approval"; }
+
+<h2>Submissions Pending Approval</h2>
+
+<table>
+    <tr>
+        <th>
+            SubmittedAt
+        </th>
+        <th>
+            User's Name
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Content
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmittedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsersName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.Raw(item.HtmlContent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+</table>

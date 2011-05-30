@@ -1,4 +1,6 @@
-﻿<div id="top_strip">
+﻿@using DotNetFlow.Extensions;
+
+<div id="top_strip">
     <div id="top_strip_in">
         <ul class="dropdown dropdown-horizontal" >
 			<li class="page_item page-item-28"><a href="http://localhost/dotnetflow/?page_id=28" title="About">About</a>
@@ -12,13 +14,13 @@
             <li class="page_item page-item-33"><a href="http://localhost/dotnetflow/?page_id=33" title="Site Map">Site Map</a></li>
 		</ul>
             
-        <p>Welcome Guest. <a href="http://localhost/dotnetflow/?ptype=login&page1=sign_in">Sign in</a> or <a href="@Url.RouteUrl("Register")">Signup</a></p>
+        @Html.Partial("LoginStatus")
     </div>
 </div>
 
 <div id="header">
     <div id="header_in">
-        <div class="logo"><a href="@Url.Content("~")">Dot Net Flow</a></div>
+        <div class="logo"><a href="@Url.Home()">Dot Net Flow</a></div>
         <div class="header_right"></div>
     </div>
 </div>
@@ -26,8 +28,8 @@
 <div id="nav">
     <div id="nav_in">				 	
 		<ul>
-            <li class="hometab"><a href="http://localhost/dotnetflow/">Home</a></li>                        
-            <li class="page_item page-item-2"><a href="http://localhost/dotnetflow/?page_id=2" title="Sample Page">Sample Page</a></li>
+            <li class="hometab"><a href="@Url.Home()">Home</a></li>
+            <li class="submit-item"><a href="@Url.SubmitItem()">Post an Item</a></li>
             <li class="page_item page-item-28"><a href="http://localhost/dotnetflow/?page_id=28" title="About">About</a>
                 <ul class='children'>
 	                <li class="page_item page-item-29"><a href="http://localhost/dotnetflow/?page_id=29" title="Sub Page 1">Sub Page 1</a></li>
@@ -35,7 +37,6 @@
                 </ul>
             </li>
             <li class="page_item page-item-33"><a href="http://localhost/dotnetflow/?page_id=33" title="Site Map">Site Map</a></li>
-            <li class=""><a href=" http://localhost/dotnetflow/?ptype=ask-a-question" >Ask a Question</a></li>
             <li class=""><a href=" http://localhost/dotnetflow/?ptype=users">Users</a></li>
             <li ><a href="http://localhost/dotnetflow/?cat=3" title="Blog">Blog</a></li>                                     
   		</ul>

@@ -1,0 +1,17 @@
+﻿@{ ViewBag.Title = "Logout"; }
+       
+<h1 class="page_head">Sign Out</h1>    
+<div class="breadcrumbs"></div>
+
+<div class="login_form">
+    <div class="login_content">
+        <p>Are you sure you want to logout?</p>
+    </div>
+    
+    @using (Html.BeginForm())
+    {
+        <p>
+            <input class="btn_input_highlight btn_spacer" type="submit" value="Log Out"  name="submit" />
+        </p>
+    }
+</div>

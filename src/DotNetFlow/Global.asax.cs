@@ -18,10 +18,12 @@ namespace DotNetFlow
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Login", "login", new { controller = "Session", action = "Create" });
+            routes.MapRoute("Logout", "logout", new { controller = "Session", action = "Delete" });
             routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
             routes.MapRoute("SubmitItem", "submit", new { controller = "Submissions", action = "Create" });
             routes.MapRoute("Home", "", new { controller = "Items", action = "Index" });
-
+            
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters

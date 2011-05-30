@@ -1,0 +1,48 @@
+﻿@model DotNetFlow.Core.Commands.LoginUserCommand
+@{ ViewBag.Title = "Login"; }
+       
+<h1 class="page_head">Sign In</h1>    
+<div class="breadcrumbs"></div>
+
+<div class="login_form">
+    <div class="login_content">
+        <p>Enter the email address and password you used to register on the site.</p>
+    </div>
+    
+    @using (Html.BeginForm("Create", "Session", FormMethod.Post, new { id = "loginform" }))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="form_row clearfix">
+            @Html.LabelFor(model => model.Email, "E-mail")
+	        @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="form_row clearfix">
+            @Html.LabelFor(model => model.Password, "Password")
+	        @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p class="rember">
+            <input name="rememberme" type="checkbox" id="rememberme" value="forever" class="fl" /> Remember me on this computer
+        </p>
+        
+        <p>
+            <input class="btn_input_highlight btn_spacer" type="submit" value="Sign In"  name="submit" />
+            @Html.ValidationMessage("*")
+        </p>
+
+        <p class="links">
+            <a href="@Url.RouteUrl("Register")">New User? Register Now</a> | <a href="">Forgot Password?</a> 
+        </p>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#content form :input').addClass('textfield');
+        $('#content form .input-validation-error:first, #content form :input:first').focus();
+    });
+</script>

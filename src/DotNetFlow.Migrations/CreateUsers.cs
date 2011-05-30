@@ -14,7 +14,7 @@ namespace DotNetFlow.Migrations
                               new Column("FullName", DbType.String, 200),
                               new Column("Email", DbType.String, 1000),
                               new Column("HashedPassword", DbType.StringFixedLength, 40),
-                              new Column("PasswordSalt", DbType.StringFixedLength, 8),
+                              new Column("PasswordSalt", DbType.StringFixedLength, 12),
                               new Column("Website", DbType.String, 1000),
                               new Column("Twitter", DbType.String, 200)
                 );
