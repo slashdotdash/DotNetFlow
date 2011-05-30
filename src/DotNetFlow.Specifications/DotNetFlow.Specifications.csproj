@@ -65,12 +65,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\UserAccountRegisteredBuilder.cs" />
     <Compile Include="Builders\NewItemSubmittedBuilder.cs" />
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
     <Compile Include="Infrastructure\DatabaseMigrator.cs" />
+    <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
     <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccount.cs" />
+    <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />
     <Compile Include="SubmittingNewItems\AnonymousUserSubmitsNewItemSpec.cs" />
     <Compile Include="Builders\SubmitNewItemBuilder.cs" />
     <Compile Include="Infrastructure\AggregateRootSpecification.cs" />

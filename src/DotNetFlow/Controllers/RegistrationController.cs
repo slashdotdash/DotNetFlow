@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.ReadModel.Models;
+using DotNetFlow.Core.ReadModel.Repositories;
+using Ncqrs;
+using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Controllers
 {
     public class RegistrationController : Controller
     {
+        private readonly ICommandService _commandService;
+        private readonly IUniqueIdentifierGenerator _idGenerator;
+        private readonly IRepository<Submission> _repository;
+
+        public RegistrationController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IRepository<Submission> repository)
+        {
+            _commandService = commandService;
+            _idGenerator = idGenerator;
+            _repository = repository;
+        }
+
         //
         // GET: /Registration/
 
@@ -36,18 +53,20 @@ namespace DotNetFlow.Controllers
         // POST: /Registration/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RegisterUserAccountCommand command)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                command.UserId = _idGenerator.GenerateNewId();
+                _commandService.Execute(command);
 
-                return RedirectToAction("Index");
+                // TODO: Log user in
+                
+                FormsAuthentication.SetAuthCookie(command.Email.Trim(), true);
+                return RedirectToRoute("Home");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View();
         }
         
         //

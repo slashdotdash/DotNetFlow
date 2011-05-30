@@ -1,0 +1,28 @@
+﻿using System.Data;
+using Migrator.Framework;
+
+namespace DotNetFlow.Migrations
+{
+    /// <summary>
+    /// Table for recording unique, registered email addresses (ensure unique logins & prevent duplicate user registrations)
+    /// </summary>
+    [Migration(20110530140000)]
+    public sealed class CreateRegisteredEmailAddresses : Migration
+    {
+        public override void Up()
+        {
+            Database.AddTable("RegisteredEmailAddresses",
+                              new Column("UserId", DbType.Guid, ColumnProperty.PrimaryKey),
+                              new Column("Email", DbType.String, 1000)
+                );
+
+            Database.AddIndex("RegisteredEmailAddresses", "Email");
+            Database.AddUniqueConstraint("IX_RegisteredEmailAddresses_Unique_Email", "RegisteredEmailAddresses", "Email");
+        }
+
+        public override void Down()
+        {
+            Database.RemoveTable("RegisteredEmailAddresses");
+        }        
+    }
+}

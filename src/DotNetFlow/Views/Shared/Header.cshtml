@@ -12,17 +12,14 @@
             <li class="page_item page-item-33"><a href="http://localhost/dotnetflow/?page_id=33" title="Site Map">Site Map</a></li>
 		</ul>
             
-        <p>Welcome Guest. <a href="http://localhost/dotnetflow/?ptype=login&page1=sign_in">Sign in</a> or <a href="http://localhost/dotnetflow/?ptype=login&page1=sign_up">Signup</a></p>
+        <p>Welcome Guest. <a href="http://localhost/dotnetflow/?ptype=login&page1=sign_in">Sign in</a> or <a href="@Url.RouteUrl("Register")">Signup</a></p>
     </div>
 </div>
 
 <div id="header">
     <div id="header_in">
-        <div class="logo"><a href="http://localhost/dotnetflow/"><img src="http://localhost/dotnetflow/wp-content/themes/Answers/images/logo.png" alt="DotNetFlow" /></a>
-    </div>
-    <div class="header_right">
-        <a href="http://templatic.com" ><img src="http://localhost/dotnetflow/wp-content/themes/Answers/images/dummy/advt.png" alt="" /> </a>                     
-    </div>
+        <div class="logo"><a href="@Url.Content("~")">Dot Net Flow</a></div>
+        <div class="header_right"></div>
     </div>
 </div>
 
@@ -46,7 +43,7 @@
         <div class="search">
             <form method="get" id="searchform" action="http://localhost/dotnetflow">
                 <input type="text" value="Find a Question" name="s" id="s" class="textfield" onfocus="if (this.value == 'Find a Question') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Find a Question';}" />
-                <input type="image" class="b_search" src="http://localhost/dotnetflow/wp-content/themes/Answers/images/b_search.png" alt="Submit button" />
+                <input type="image" class="b_search" src="@Url.Content("~/Content/images/b_search.png")" alt="Submit button" />
             </form>
         </div>
     </div> 

@@ -14,6 +14,9 @@ module NavigationHelpers
     when /submit item page/
       '/submit'
 
+	when /registration page/
+      '/register'
+	  
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

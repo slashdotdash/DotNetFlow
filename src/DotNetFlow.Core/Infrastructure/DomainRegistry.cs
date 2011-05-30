@@ -50,6 +50,7 @@ namespace DotNetFlow.Core.Infrastructure
         {
             var service = new CommandService();
             service.RegisterExecutor(new SubmitNewItemExecutor());
+            service.RegisterExecutor(new RegisterUserAccountExecutor());
             return service;
         }
 
@@ -76,6 +77,7 @@ namespace DotNetFlow.Core.Infrastructure
         private void ConfigureCommandValidators()
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
+            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use<RegisterUserAccountValidator>();
         }
 
         private void ConfigureReadModelRepositories()

@@ -1,8 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using DotNetFlow.Core.Infrastructure;
+﻿using System.Linq;
 using Ncqrs.Spec;
 using NUnit.Framework;
 using Dapper;
@@ -15,10 +11,8 @@ using Ncqrs.Eventing.ServiceModel.Bus;
 namespace DotNetFlow.Specifications.SubmittingNewItems
 {
     [Specification, Integration]
-    public sealed class SubmittedItemIsDenormalizedSpec : EventTestFixture<NewItemSubmittedEvent>
+    public sealed class SubmittedItemIsDenormalizedSpec : EventDenormalizerTestFixture<NewItemSubmittedEvent>
     {
-        private IUnitOfWork _unitOfWork;
-
         protected override NewItemSubmittedEvent WhenExecutingEvent()
         {
             return new NewItemSubmittedBuilder().Build();
@@ -26,29 +20,14 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
 
         protected override IEventHandler<NewItemSubmittedEvent> BuildEventHandler()
         {
-            return new SubmittedItemDenormalizer(_unitOfWork);
+            return new SubmittedItemDenormalizer(UnitOfWork);
         }
 
         [Then]
         public void Should_Insert_SubmittedItem()
         {
-            var submissions = _unitOfWork.Connection.Query<int>("select count(*) from Submissions", null, _unitOfWork.Transaction);
+            var submissions = UnitOfWork.Connection.Query<int>("select count(*) from Submissions", null, UnitOfWork.Transaction);
             Assert.AreEqual(1, submissions.Single());
-        }
-
-        protected override void SetupDependencies()
-        {
-            _unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            _unitOfWork.Initialize();            
-        }
-
-        [TestFixtureTearDown]
-        public void Dispose()
-        {
-            if (_unitOfWork == null) return;
-
-            _unitOfWork.Rollback();
-            _unitOfWork.Dispose();
         }
     }
 }

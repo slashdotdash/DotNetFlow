@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{77380DB8-0DFB-4F2A-80A5-7A6D416F077D}"
 	ProjectSection(SolutionItems) = preProject
+		..\features\register_account\anonymous_visitor_registers_an_account.feature = ..\features\register_account\anonymous_visitor_registers_an_account.feature
 		..\features\submit_items\anonymous_visitor_submits_item.feature = ..\features\submit_items\anonymous_visitor_submits_item.feature
 	EndProjectSection
 EndProject

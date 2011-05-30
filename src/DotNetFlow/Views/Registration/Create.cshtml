@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Register an account";
-}
+﻿@model DotNetFlow.Core.Commands.RegisterUserAccountCommand
+@{ ViewBag.Title = "Register an account"; }
 
 <h1 class="page_head">Sign Up</h1>
 <div class="breadcrumbs"></div>
@@ -11,49 +10,61 @@
             <p>Create an account for submitting new items and commenting on posts.</p>
         </div>
 
-        <div class="registration_form_box">   
-            <form name="registerform" id="registerform" action="http://localhost/dotnetflow/?ptype=login&amp;action=register" method="post">
-                <h5 class="rfh">Your Information</h5>
+        <div class="registration_form_box">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
 
+                <h5 class="rfh">Your Information</h5>
+                
                 <div class="form_row clearfix" >
 	                <div class="form_row clearfix">
-	                    <label>Full Name <span class="indicates">*</span></label>
-	                    <input type="text" name="user_fname" id="user_fname" class="textfield" value="" size="25"  />
-                        <div class="information">Will be shown for each of your submissions and comments</div>	                    
+                        @Html.LabelFor(model => model.FullName, "Full Name")
+	                    @Html.EditorFor(model => model.FullName)
+                        @Html.ValidationMessageFor(model => model.FullName)
+                        <div class="information">Will be shown for each of your submissions and comments</div>
 	                </div>
 	            </div>
 
                 <div class="form_row clearfix">
-                    <label>E-mail <span class="indicates">*</span></label>
-                    <input type="text" name="user_email" id="user_email" class="textfield" value="" size="25" />
+                    @Html.LabelFor(model => model.Email, "E-mail")
+	                @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
                     <div class="information">This will be your login to the site and used for resetting your password</div>
-                    <span id="user_emailInfo"></span>
                 </div>
 	
                 <div class="form_row clearfix">
-                    <label>Password <span class="indicates">*</span></label>
-                    <input type="password" name="user_pwd" id="user_pwd" class="textfield" value="" size="25" />
-
+                    @Html.LabelFor(model => model.Password, "Password")
+	                @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
                     <div class="information">Password should be minimum of 6 characters long.</div>
-                    <span id="user_pwdInfo"></span>
                 </div>
 		           
 	            <div class="fix"></div>
 	            <h5>Optional Information</h5>
 
 	            <div class="form_row clearfix">
-	                <label>Your Web Site</label>
-	                <input type="text" name="user_web" id="user_web" class="textfield" value="" size="25" />
+                    @Html.LabelFor(model => model.Website, "Your Web Site")
+	                @Html.EditorFor(model => model.Website)
+                    @Html.ValidationMessageFor(model => model.Website)
 	            </div>
 	                    
 	            <div class="form_row clearfix">
-	                <label>Twitter Name</label>
-	                <input type="text" name="user_twitter" id="user_twitter" class="textfield" value="" size="25" />
+                    @Html.LabelFor(model => model.Twitter, "Twitter Name")
+	                @Html.EditorFor(model => model.Twitter)
+                    @Html.ValidationMessageFor(model => model.Twitter)
 	            </div>
 
                 <br />
-	            <input type="submit" name="registernow" value="Register Now" class="btn_input_highlight btn_spacer" />
-            </form>
+	            <input type="submit" value="Register Now" class="btn_input_highlight btn_spacer" />
+            }
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#content form :input').addClass('textfield');
+        $('#content form .input-validation-error:first, #content form :input:first').focus();
+    });
+</script>

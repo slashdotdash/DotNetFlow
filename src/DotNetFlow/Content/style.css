@@ -139,6 +139,9 @@ p.blog-description{ font-style:italic; font-size:12px; margin:0; padding:0;  }
 #content .question_cat li { background:none; margin:0 0 12px 0; padding:0; display:block;  width:220px; float:left; color:#666;  }
 #content .question_cat li input { position:relative; top:-2px; margin-right:8px; }
 
+#content .field-validation-error { clear:both; display:block; color:#900;  padding:4px; margin-left:190px; } 
+#content input-validation-error { }
+
 blockquote { clear:both; height:100%; margin:10px 0 0px 5px; overflow:hidden; padding:0 0 5px 30px; }
 #content blockquote p, #sidebar blockquote p { font:italic 18px Georgia, "Times New Roman", Times, serif; margin:0 0 5px 0; padding:0; line-height:23px; }
 blockquote cite, #sidebar cite { font-size:12px; font-weight:bold ; float:right; line-height:18px; text-align:right; display:block;   }
@@ -289,10 +292,8 @@ a.b_askquestions { margin-top:4px; width:220px; height:46px; text-indent:-9009px
 #content .registration_form_box h5 { margin:20px 0 10px 0; padding:0 0 5px 0; font-size:18px; border-bottom:1px solid #ccc;  }
 #content .registration_form_box label { width:180px;  }
 #content .registration_form_box .message_error2 { clear:both; display:block; color:#900; padding:4px; margin-left:190px; }
-
-#content .registration_form_box .information { clear:both; display:block; color:#666; padding:4px; margin-left:190px; } 
-
-
+#content .registration_form_box .information { clear:both; display:block; color:#666; padding:4px; margin-left:190px; }
+#content .registration_form_box .field-validation-error { clear:both; display:block; color:#900;  padding:4px; margin-left:190px; } 
 
 
 /* ask a question form  ------ */
