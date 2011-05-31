@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Faker">
+      <HintPath>..\..\lib\Faker\Faker.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Migrator">
       <HintPath>..\..\lib\Migrator.Net\Migrator.dll</HintPath>
@@ -72,7 +75,9 @@
     <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
-    <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccount.cs" />
+    <Compile Include="Infrastructure\InternalEventStore.cs" />
+    <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
+    <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccountSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />
     <Compile Include="SubmittingNewItems\AnonymousUserSubmitsNewItemSpec.cs" />
     <Compile Include="Builders\SubmitNewItemBuilder.cs" />

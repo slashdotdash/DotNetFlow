@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Security;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
@@ -12,7 +11,7 @@ using NUnit.Framework;
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
     [Specification]
-    public sealed class AnonymousUserRegistersAnAccount : CommandTestFixture<RegisterUserAccountCommand>
+    public sealed class AnonymousUserRegistersAnAccountSpec : CommandTestFixture<RegisterUserAccountCommand>
     {
         protected override RegisterUserAccountCommand WhenExecutingCommand()
         {

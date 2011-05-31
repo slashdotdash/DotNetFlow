@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubmissionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublishingController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -248,7 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Areas\Admin\Views\Publishing\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Submissions\Index.cshtml" />
     <None Include="Content\images\Thumbs.db" />
     <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\Shared\LoginStatus.cshtml" />
