@@ -249,7 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Areas\Admin\Views\Submissions\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PendingApproval\Index.cshtml" />
     <None Include="Content\images\Thumbs.db" />
     <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\Shared\LoginStatus.cshtml" />
