@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\SubmissionsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PendingApprovalController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublishingController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />

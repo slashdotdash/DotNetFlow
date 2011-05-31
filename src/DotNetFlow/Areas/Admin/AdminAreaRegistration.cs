@@ -14,7 +14,7 @@ namespace DotNetFlow.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute("PendingSubmisions", "admin/submissions", new { controller = "Submissions", action = "Index" });
+            context.MapRoute("PendingApproval", "admin/pending", new { controller = "PendingApproval", action = "Index" });
             context.MapRoute("Publish", "admin/publish", new { controller = "Publishing", action = "Index" });
 
             context.MapRoute(

@@ -9,12 +9,12 @@ using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Areas.Admin.Controllers
 {
-    public class SubmissionsController : Controller
+    public class PendingApprovalController : Controller
     {
         private readonly ICommandService _commandService;
         private readonly IRepository<Submission> _repository;
 
-        public SubmissionsController(ICommandService commandService, IRepository<Submission> repository)
+        public PendingApprovalController(ICommandService commandService, IRepository<Submission> repository)
         {
             _commandService = commandService;            
             _repository = repository;
