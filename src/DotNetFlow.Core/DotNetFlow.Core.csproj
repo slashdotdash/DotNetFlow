@@ -75,6 +75,7 @@
     <Compile Include="Events\ItemPublishedEvent.cs" />
     <Compile Include="Events\NewItemSubmittedEvent.cs" />
     <Compile Include="Events\UserAccountRegisteredEvent.cs" />
+    <Compile Include="Extensions\UnitOfWorkExtensions.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\DomainRegistry.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
@@ -89,8 +90,10 @@
     <Compile Include="ReadModel\Models\AuthenticationModel.cs" />
     <Compile Include="ReadModel\Models\Submission.cs" />
     <Compile Include="ReadModel\Models\UserAccountModel.cs" />
+    <Compile Include="ReadModel\Repositories\IRegisteredEmailRepository.cs" />
     <Compile Include="ReadModel\Repositories\IRepository.cs" />
     <Compile Include="ReadModel\Repositories\IUserRepository.cs" />
+    <Compile Include="ReadModel\Repositories\RegisteredEmailRepository.cs" />
     <Compile Include="ReadModel\Repositories\SubmissionRepository.cs" />
     <Compile Include="ReadModel\Repositories\UserRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />

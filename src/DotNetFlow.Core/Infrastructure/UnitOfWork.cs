@@ -9,7 +9,7 @@ namespace DotNetFlow.Core.Infrastructure
         private readonly string _connectionString;
         private IDbConnection _connection;
         private IDbTransaction _transaction;
-
+        
         public UnitOfWork(string connectionString)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
@@ -20,6 +20,8 @@ namespace DotNetFlow.Core.Infrastructure
 
         public void Initialize()
         {
+            if (_connection != null) return;
+
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
 
@@ -35,11 +37,15 @@ namespace DotNetFlow.Core.Infrastructure
         {
             _transaction.Rollback();
         }
-
+       
         public IDbConnection Connection
         {
             get
             {
+                // Initialise connection if not already opened
+                if (_connection == null) Initialize();
+
+                // Now raise an exception if the connection was still not opened
                 if (_connection == null || _connection.State != ConnectionState.Open)
                     throw new InvalidOperationException("Connection has not yet been opened");
 

@@ -32,6 +32,14 @@ namespace DotNetFlow.Core.Infrastructure
                     _unitOfWork.Dispose();
                 }
             }
-        }
+            else
+            {
+                if (_unitOfWork != null)
+                {
+                    _unitOfWork.Rollback();
+                    _unitOfWork.Dispose();
+                }
+            }
+        }        
     }
 }

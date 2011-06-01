@@ -78,6 +78,7 @@
     <Compile Include="Infrastructure\InternalEventStore.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccountSpec.cs" />
+    <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />
     <Compile Include="SubmittingNewItems\AnonymousUserSubmitsNewItemSpec.cs" />
     <Compile Include="Builders\SubmitNewItemBuilder.cs" />

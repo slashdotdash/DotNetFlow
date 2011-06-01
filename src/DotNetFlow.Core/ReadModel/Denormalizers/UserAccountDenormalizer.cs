@@ -35,7 +35,7 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         {
             _context.Connection.Execute(
                 "insert into RegisteredEmailAddresses (UserId, Email) values (@UserId, @Email)",
-                new { evnt.UserId, evnt.Email },
+                new { evnt.UserId, Email = evnt.Email.ToLower() }, // Email address is stored in lowercase
                 _context.Transaction);
         }
     }

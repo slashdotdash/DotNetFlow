@@ -90,8 +90,9 @@ namespace DotNetFlow.Core.Infrastructure
 
         private void ConfigureReadModelRepositories()
         {
-            For<IRepository<Submission>>().Use(c => new SubmissionRepository(c.GetInstance<IUnitOfWork>()));
-            For<IUserRepository>().Use(c => new UserRepository(c.GetInstance<IUnitOfWork>()));
+            For<IRepository<Submission>>().Use<SubmissionRepository>();
+            For<IUserRepository>().Use<UserRepository>();
+            For<IRegisteredEmailRepository>().Use<RegisteredEmailRepository>();
         }
     }
 }
