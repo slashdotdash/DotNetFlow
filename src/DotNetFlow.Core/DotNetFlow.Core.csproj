@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\..\lib\BCrypt.Net\BCrypt.Net.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\..\lib\FluentValidation\FluentValidation.dll</HintPath>
     </Reference>
@@ -70,7 +73,6 @@
     <Compile Include="Commands\Validators\SubmitNewItemValidator.cs" />
     <Compile Include="DomainModel\ApprovalStatus.cs" />
     <Compile Include="DomainModel\Item.cs" />
-    <Compile Include="DomainModel\HashedPassword.cs" />
     <Compile Include="DomainModel\UserAccount.cs" />
     <Compile Include="Events\ItemPublishedEvent.cs" />
     <Compile Include="Events\NewItemSubmittedEvent.cs" />
@@ -97,7 +99,9 @@
     <Compile Include="ReadModel\Repositories\SubmissionRepository.cs" />
     <Compile Include="ReadModel\Repositories\UserRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\BCryptPasswordHashing.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\IHashPasswords.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

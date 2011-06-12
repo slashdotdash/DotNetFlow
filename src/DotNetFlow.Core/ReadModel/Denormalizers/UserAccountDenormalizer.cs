@@ -26,8 +26,8 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         private void CreateUser(UserAccountRegisteredEvent evnt)
         {
             _context.Connection.Execute(
-                "insert into Users (UserId, RegisteredAt, FullName, Email, HashedPassword, PasswordSalt, Website, Twitter) values (@UserId, @RegisteredAt, @FullName, @Email, @HashedPassword, @PasswordSalt, @Website, @Twitter)",
-                new { evnt.UserId, evnt.RegisteredAt, evnt.FullName, evnt.Email, evnt.HashedPassword, evnt.PasswordSalt, evnt.Website, evnt.Twitter },
+                "insert into Users (UserId, RegisteredAt, FullName, Email, HashedPassword, Website, Twitter) values (@UserId, @RegisteredAt, @FullName, @Email, @HashedPassword, @Website, @Twitter)",
+                new { evnt.UserId, evnt.RegisteredAt, evnt.FullName, evnt.Email, evnt.HashedPassword, evnt.Website, evnt.Twitter },
                 _context.Transaction);
         }
 

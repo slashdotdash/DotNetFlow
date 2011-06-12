@@ -20,8 +20,6 @@ namespace DotNetFlow.Core.Infrastructure
 
         public void Initialize()
         {
-            if (_connection != null) return;
-
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
 
@@ -30,12 +28,14 @@ namespace DotNetFlow.Core.Infrastructure
 
         public void Commit()
         {
-            _transaction.Commit();
+            if (_transaction != null)
+                _transaction.Commit();
         }
 
         public void Rollback()
         {
-            _transaction.Rollback();
+            if (_transaction != null)
+                _transaction.Rollback();
         }
        
         public IDbConnection Connection
@@ -43,7 +43,8 @@ namespace DotNetFlow.Core.Infrastructure
             get
             {
                 // Initialise connection if not already opened
-                if (_connection == null) Initialize();
+                if (_connection == null) 
+                    Initialize();
 
                 // Now raise an exception if the connection was still not opened
                 if (_connection == null || _connection.State != ConnectionState.Open)

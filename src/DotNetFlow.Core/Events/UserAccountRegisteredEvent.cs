@@ -11,7 +11,6 @@ namespace DotNetFlow.Core.Events
         public string Email { get; set; }
         public string Website { get; set; }
         public string Twitter { get; set; }
-        public string PasswordSalt { get; set; }
         public string HashedPassword { get; set; }
     }
 }

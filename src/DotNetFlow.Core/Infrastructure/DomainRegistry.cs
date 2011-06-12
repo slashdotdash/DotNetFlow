@@ -85,7 +85,8 @@ namespace DotNetFlow.Core.Infrastructure
 
         private void ConfigureServices()
         {
-            For<IAuthenticationService>().Use(c => new AuthenticationService(c.GetInstance<IUserRepository>()));
+            For<IHashPasswords>().Use(c => new BCryptPasswordHashing());
+            For<IAuthenticationService>().Use<AuthenticationService>();            
         }
 
         private void ConfigureReadModelRepositories()

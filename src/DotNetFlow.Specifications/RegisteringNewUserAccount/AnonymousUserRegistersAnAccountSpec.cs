@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Web.Security;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
 using DotNetFlow.Core.Events;
@@ -28,7 +27,7 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         {
             Assert.IsInstanceOf(typeof(UserAccountRegisteredEvent), PublishedEvents.Single());
         }
-       
+
         [And]
         public void Should_Set_Event_Properties()
         {
@@ -36,22 +35,7 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
             Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
             Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);
             Assert.AreEqual(ExecutedCommand.Email, @event.Email);
-        }
-
-        [And]
-        public void Should_Hash_Password_With_Salt()
-        {
-            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();
-            Assert.IsNotEmpty(@event.PasswordSalt);
-
-            var hashedPassword = HashPassword(ExecutedCommand.Password, @event.PasswordSalt);
-            Assert.AreEqual(hashedPassword, @event.HashedPassword);
-        }
-
-        private static string HashPassword(string password, string salt)
-        {
-            var saltAndPwd = string.Concat(password, salt);
-            return FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "sha1");
+            Assert.AreEqual(ExecutedCommand.Password, @event.HashedPassword);
         }
     }
 }

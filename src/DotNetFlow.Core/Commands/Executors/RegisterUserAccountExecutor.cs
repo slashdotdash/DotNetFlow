@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetFlow.Core.DomainModel;
+﻿using DotNetFlow.Core.DomainModel;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Domain;
 

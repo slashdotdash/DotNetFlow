@@ -10,8 +10,7 @@ namespace DotNetFlow.Core.Infrastructure
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            _unitOfWork = ObjectFactory.GetInstance<IUnitOfWork>();
-            _unitOfWork.Initialize();
+            _unitOfWork = ObjectFactory.GetInstance<IUnitOfWork>();            
         }
         
         public override void OnActionExecuted(ActionExecutedContext filterContext)

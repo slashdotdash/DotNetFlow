@@ -7,22 +7,18 @@ namespace DotNetFlow.Core.DomainModel
     public sealed class UserAccount : AggregateRootMappedByConvention
     {
         private Guid _id;
-        private string _fullName, _email, _website, _twitter;
-        private DateTime _registeredAt;
-        private HashedPassword _password;
+        private string _fullName, _hashedPassword, _email, _website, _twitter;
+        private DateTime _registeredAt;        
 
-        public UserAccount(Guid id, string fullName, string email, string password, string website, string twitter)
+        public UserAccount(Guid id, string fullName, string email, string hashedPassword, string website, string twitter)
         {
-            var hashedPassword = HashedPassword.Create(password);
-
             ApplyEvent(new UserAccountRegisteredEvent
             {
                 UserId = id,
                 RegisteredAt = DateTime.Now,
                 FullName = fullName,
                 Email = email,
-                HashedPassword = hashedPassword.Hashed,
-                PasswordSalt = hashedPassword.Salt,
+                HashedPassword = hashedPassword,                
                 Website = website,
                 Twitter = twitter
             });
@@ -34,7 +30,7 @@ namespace DotNetFlow.Core.DomainModel
             _registeredAt = @event.RegisteredAt;
             _fullName = @event.FullName;
             _email = @event.Email;
-            _password = new HashedPassword(@event.HashedPassword, @event.PasswordSalt);
+            _hashedPassword = @event.HashedPassword;
             _website = @event.Website;
             _twitter = @event.Twitter;
         }

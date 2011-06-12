@@ -1,5 +1,4 @@
-﻿using System.Web.Security;
-using DotNetFlow.Core.ReadModel.Models;
+﻿using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
 
 namespace DotNetFlow.Core.Services
@@ -7,10 +6,12 @@ namespace DotNetFlow.Core.Services
     public sealed class AuthenticationService : IAuthenticationService
     {
         private readonly IUserRepository _repository;
+        private readonly IHashPasswords _passwordHashing;
 
-        public AuthenticationService(IUserRepository repository)
+        public AuthenticationService(IUserRepository repository, IHashPasswords passwordHashing)
         {
             _repository = repository;
+            _passwordHashing = passwordHashing;
         }
 
         public AuthenticationModel Authenticate(string email, string password)
@@ -18,19 +19,12 @@ namespace DotNetFlow.Core.Services
             var user = _repository.FindByEmail(email);
             if (user != null)
             {
-                // Compare hash of submitted password with that stored for the user, using the same salt
-                var hashedSubmittedPassword = HashPassword(password, user.PasswordSalt);
-                if (hashedSubmittedPassword == user.HashedPassword)
+                // Compare hash of submitted password with that stored for the user, using the same salt                
+                if (_passwordHashing.Verify(password, user.HashedPassword))
                     return AuthenticationModel.Authorised(user);
             }
 
             return AuthenticationModel.NotAuthorised();
-        }
-
-        private static string HashPassword(string password, string salt)
-        {
-            var saltAndPwd = string.Concat(password, salt);
-            return FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "sha1");
         }
     }
 }

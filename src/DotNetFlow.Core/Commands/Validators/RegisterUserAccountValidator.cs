@@ -17,7 +17,9 @@ namespace DotNetFlow.Core.Commands.Validators
             RuleFor(x => x.Twitter).Length(0, 200);
 
             // Enforce unique email address when entered
-            RuleFor(x => x.Email).Must(x => BeUniqueEmailAddress(x)).Unless(x => string.IsNullOrWhiteSpace(x.Email)).WithMessage("Email address has already been registered");
+            RuleFor(x => x.Email).Must(BeUniqueEmailAddress)
+                .Unless(x => string.IsNullOrWhiteSpace(x.Email))
+                .WithMessage("Email address has already been registered");
         }
 
         /// <summary>

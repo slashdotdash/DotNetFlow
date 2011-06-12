@@ -9,8 +9,7 @@ namespace DotNetFlow.Specifications.Builders
         private DateTime _registeredAt = DateTime.Now;
         private string _fullName = "Ben Smith";
         private string _email = "ben@dotnetflow.com";
-        private string _hashedPassword = "password1234";
-        private string _passwordSalt = "salt";
+        private string _hashedPassword = "password1234";        
         private string _website = "www.dotnetflow.com";
         private string _twitter = "dotnetflow";
 
@@ -32,10 +31,9 @@ namespace DotNetFlow.Specifications.Builders
             return this;
         }
 
-        public UserAccountRegisteredBuilder Password(string hashed, string salt)
+        public UserAccountRegisteredBuilder Password(string hashed)
         {
             _hashedPassword = hashed;
-            _passwordSalt = salt;
             return this;
         }
 
@@ -48,7 +46,6 @@ namespace DotNetFlow.Specifications.Builders
                 FullName = _fullName,
                 Email = _email,
                 HashedPassword = _hashedPassword,
-                PasswordSalt = _passwordSalt,
                 Website = _website,
                 Twitter = _twitter
             };
