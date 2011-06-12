@@ -11,7 +11,6 @@ Feature: Anonymous visitor registers an account
 	And I should be logged in
     #And I should see the message "Thank-you for registering an account."
 
-  @wip
   Scenario: Attempts to register with an already registered email
     Given an account has been registered with an email address
 	When I am on the registration page

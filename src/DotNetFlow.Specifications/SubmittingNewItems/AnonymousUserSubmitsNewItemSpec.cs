@@ -38,6 +38,13 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
         }
 
         [And]
+        public void Should_Set_EventSourceId_As_ItemId()
+        {
+            var @event = (NewItemSubmittedEvent)PublishedEvents.Single();
+            Assert.AreEqual(ExecutedCommand.ItemId, @event.EventSourceId);
+        }
+
+        [And]
         public void Should_Set_Event_Properties()
         {
             var @event = (NewItemSubmittedEvent)PublishedEvents.Single();

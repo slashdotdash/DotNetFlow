@@ -29,6 +29,13 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         }
 
         [And]
+        public void Should_Set_EventSourceId_As_UserId()
+        {
+            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();
+            Assert.AreEqual(ExecutedCommand.UserId, @event.EventSourceId);
+        }
+
+        [And]
         public void Should_Set_Event_Properties()
         {
             var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();

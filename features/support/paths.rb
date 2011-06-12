@@ -16,7 +16,18 @@ module NavigationHelpers
 
 	when /registration page/
       '/register'
-	  
+
+	when /login page/
+	  '/login'
+	
+	when /logout page/
+	  '/logout'
+	
+	# Admin area
+	
+	when /submissions pending approval page/
+		'/admin/pending'
+	
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

@@ -10,7 +10,7 @@ namespace DotNetFlow.Core.DomainModel
         private string _fullName, _hashedPassword, _email, _website, _twitter;
         private DateTime _registeredAt;        
 
-        public UserAccount(Guid id, string fullName, string email, string hashedPassword, string website, string twitter)
+        public UserAccount(Guid id, string fullName, string email, string hashedPassword, string website, string twitter) : base(id)
         {
             ApplyEvent(new UserAccountRegisteredEvent
             {
@@ -24,7 +24,7 @@ namespace DotNetFlow.Core.DomainModel
             });
         }
 
-        private void OnNewItemSubmitted(UserAccountRegisteredEvent @event)
+        private void OnUserAccountRegistered(UserAccountRegisteredEvent @event)
         {
             _id = @event.UserId;
             _registeredAt = @event.RegisteredAt;

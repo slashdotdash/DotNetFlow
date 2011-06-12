@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
-using DotNetFlow.Core.ReadModel.Models;
-using DotNetFlow.Core.ReadModel.Repositories;
 using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Areas.Admin.Controllers
@@ -16,33 +10,20 @@ namespace DotNetFlow.Areas.Admin.Controllers
 
         public PublishingController(ICommandService commandService)
         {
-            _commandService = commandService;            
+            _commandService = commandService;
         }
-
-        //
-        // GET: /admin/publish
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
 
         //
         // POST: /admin/publish
 
         [HttpPost]
-        public ActionResult Create(PublishItemCommand collection)
+        public ActionResult Create(PublishItemCommand command)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            //command.ApprovedBy = TODO
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }        
+            _commandService.Execute(command);
+
+            return RedirectToRoute("PendingApproval");
+        }
     }
 }

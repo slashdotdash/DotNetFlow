@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
-using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Areas.Admin.Controllers
 {
     public class PendingApprovalController : Controller
     {
-        private readonly ICommandService _commandService;
         private readonly IRepository<Submission> _repository;
 
-        public PendingApprovalController(ICommandService commandService, IRepository<Submission> repository)
-        {
-            _commandService = commandService;            
+        public PendingApprovalController(IRepository<Submission> repository)
+        {            
             _repository = repository;
         }
 
@@ -38,34 +32,8 @@ namespace DotNetFlow.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Publishing/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Admin/Publishing/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
         // GET: /Admin/Publishing/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -80,33 +48,7 @@ namespace DotNetFlow.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        //
-        // GET: /Admin/Publishing/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Publishing/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
                 return RedirectToAction("Index");
             }
             catch

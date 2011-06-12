@@ -87,6 +87,7 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Infrastructure\UseUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadModel\Denormalizers\PublishedItemDenormalizer.cs" />
     <Compile Include="ReadModel\Denormalizers\SubmittedItemDenormalizer.cs" />
     <Compile Include="ReadModel\Denormalizers\UserAccountDenormalizer.cs" />
     <Compile Include="ReadModel\Models\AuthenticationModel.cs" />

@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\HashedPasswordVerification.cs" />
+    <Compile Include="Builders\ItemPublishedBuilder.cs" />
     <Compile Include="Builders\UserAccountRegisteredBuilder.cs" />
     <Compile Include="Builders\NewItemSubmittedBuilder.cs" />
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
     <Compile Include="Infrastructure\InternalEventStore.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
+    <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
+    <Compile Include="PublishItems\SubmittedItemIsRemovedSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccountSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />

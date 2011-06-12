@@ -5,7 +5,7 @@ using DotNetFlow.Core.Events;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
 {
-    public sealed class SubmittedItemDenormalizer : IEventHandler<NewItemSubmittedEvent>
+    public sealed class SubmittedItemDenormalizer : IEventHandler<NewItemSubmittedEvent>, IEventHandler<ItemPublishedEvent>
     {
         private readonly IUnitOfWork _context;
 
@@ -20,6 +20,14 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
                 "insert into Submissions (ItemId, SubmittedAt, UsersName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @SubmissionUsersName, @Title, @HtmlContent)",
                 new { evnt.ItemId, evnt.SubmittedAt, evnt.SubmissionUsersName, evnt.Title, evnt.HtmlContent },
                 _context.Transaction);
+        }
+
+        /// <summary>
+        /// Delete the submission details on approve/publish
+        /// </summary>
+        public void Handle(ItemPublishedEvent evnt)
+        {
+            _context.Connection.Execute("delete from Submissions where ItemId = @ItemId", new { evnt.ItemId }, _context.Transaction);
         }
     }
 }

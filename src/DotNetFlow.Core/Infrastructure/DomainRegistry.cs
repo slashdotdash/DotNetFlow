@@ -53,6 +53,7 @@ namespace DotNetFlow.Core.Infrastructure
             var service = new CommandService();
             service.RegisterExecutor(new SubmitNewItemExecutor());
             service.RegisterExecutor(new RegisterUserAccountExecutor());
+            service.RegisterExecutor(new PublishItemExecutor());
             return service;
         }
 

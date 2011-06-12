@@ -10,9 +10,9 @@ namespace DotNetFlow.Core.DomainModel
         private Guid _id;
         private string _usersName;
         private DateTime _submittedAt;
+        private DateTime _publishedAt;
         private string _title, _rawContent, _htmlContent;
         private ApprovalStatus _status;
-        private DateTime _approvedAt;
         private Guid _approvedBy;
 
         private static readonly Markdown Markdown = new Markdown(new MarkdownOptions
@@ -29,10 +29,10 @@ namespace DotNetFlow.Core.DomainModel
             // Private ctor for NCQRS
         }
 
-        public Item(Guid id, string usersName, string title, string content)
+        public Item(Guid id, string usersName, string title, string content) : base(id)
         {
             var htmlContent = Markdown.Transform(content);
-
+            
             ApplyEvent(new NewItemSubmittedEvent
             {
                 ItemId = id,
@@ -47,11 +47,18 @@ namespace DotNetFlow.Core.DomainModel
 
         public void Approve(Guid approvedBy)
         {
+            if (_status == ApprovalStatus.Approved)
+                throw new InvalidOperationException("Item has already been approved");
+
             ApplyEvent(new ItemPublishedEvent
             {
-                ApprovedAt = DateTime.Now,
+                PublishedAt = DateTime.Now,                
                 ApprovedBy = approvedBy,
-                Status = ApprovalStatus.Approved
+                Status = ApprovalStatus.Approved,
+                Title = _title,
+                RawContent = _rawContent,
+                HtmlContent = _htmlContent,
+                SubmissionUsersName = _usersName,                
             });
         }
 
@@ -66,10 +73,10 @@ namespace DotNetFlow.Core.DomainModel
             _status = @event.Status;
         }
 
-        private void OnItemPublishedEvent(ItemPublishedEvent @event)
+        private void OnItemPublished(ItemPublishedEvent @event)
         {
             _status = @event.Status;
-            _approvedAt = @event.ApprovedAt;
+            _publishedAt = @event.PublishedAt;
             _approvedBy = @event.ApprovedBy;
         }
     }
