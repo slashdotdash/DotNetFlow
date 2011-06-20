@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Extensions;
 using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Areas.Admin.Controllers
@@ -23,7 +24,8 @@ namespace DotNetFlow.Areas.Admin.Controllers
 
             _commandService.Execute(command);
 
-            return RedirectToRoute("PendingApproval");
+            return RedirectToRoute("PendingApproval")
+                .Notice("Submission approved");
         }
     }
 }

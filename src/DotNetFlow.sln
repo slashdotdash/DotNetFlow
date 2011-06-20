@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{77
 	ProjectSection(SolutionItems) = preProject
 		..\features\register_account\anonymous_visitor_registers_an_account.feature = ..\features\register_account\anonymous_visitor_registers_an_account.feature
 		..\features\submit_items\anonymous_visitor_submits_item.feature = ..\features\submit_items\anonymous_visitor_submits_item.feature
-		..\features\approve_items\approver_aproves_submitted_item.feature = ..\features\approve_items\approver_aproves_submitted_item.feature
+		..\features\syndication\anonymous_visitor_syndicates_items.feature = ..\features\syndication\anonymous_visitor_syndicates_items.feature
+		..\features\view_published_items\anonymous_visitor_views_published_items.feature = ..\features\view_published_items\anonymous_visitor_views_published_items.feature
+		..\features\publish_item\approver_publishes_submitted_item.feature = ..\features\publish_item\approver_publishes_submitted_item.feature
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Migrations", "DotNetFlow.Migrations\DotNetFlow.Migrations.csproj", "{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}"

@@ -11,6 +11,7 @@ namespace DotNetFlow.Specifications.Builders
         private string _rawContent = "Scott Gu has [announced the release of ASP.NET MVC 3](http://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx\">announced)";
         private string _htmlContent = "Scott Gu has <a href=\"http://weblogs.asp.net/scottgu/archive/2011/01/13/announcing-release-of-asp-net-mvc-3-iis-express-sql-ce-4-web-farm-framework-orchard-webmatrix.aspx\">announced the release of ASP.NET MVC 3</a>";
         private string _approversName = "Approver";
+        private Guid _approvedById;
         private DateTime _publishedAt = DateTime.Now;
 
         public ItemPublishedBuilder ForItem(Guid id)
@@ -41,6 +42,7 @@ namespace DotNetFlow.Specifications.Builders
         public ItemPublishedBuilder ApprovedBy(string name)
         {
             _approversName = name;
+            _approvedById = Guid.NewGuid();
             return this;
         }
 
@@ -49,12 +51,12 @@ namespace DotNetFlow.Specifications.Builders
             return new ItemPublishedEvent
             {
                 ItemId = _itemId,
-                SubmissionUsersName = _submissionUsersName,
+                SubmittedByUser = _submissionUsersName,
                 Title = _title,
                 HtmlContent = _htmlContent,
                 RawContent = _rawContent,
-                ApproversName = _approversName,
-                ApprovedBy = Guid.NewGuid(),
+                ApprovedByUser = _approversName,
+                ApprovedBy = _approvedById,
                 PublishedAt = _publishedAt
             };
         }

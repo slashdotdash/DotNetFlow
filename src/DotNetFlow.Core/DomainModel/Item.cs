@@ -8,7 +8,7 @@ namespace DotNetFlow.Core.DomainModel
     public sealed class Item : AggregateRootMappedByConvention
     {
         private Guid _id;
-        private string _usersName;
+        private string _submittedByUserName;
         private DateTime _submittedAt;
         private DateTime _publishedAt;
         private string _title, _rawContent, _htmlContent;
@@ -29,7 +29,7 @@ namespace DotNetFlow.Core.DomainModel
             // Private ctor for NCQRS
         }
 
-        public Item(Guid id, string usersName, string title, string content) : base(id)
+        public Item(Guid id, string submittedByUser, string title, string content) : base(id)
         {
             var htmlContent = Markdown.Transform(content);
             
@@ -37,7 +37,7 @@ namespace DotNetFlow.Core.DomainModel
             {
                 ItemId = id,
                 SubmittedAt = DateTime.Now,
-                SubmissionUsersName = usersName,
+                SubmissionUsersName = submittedByUser,
                 Title = title,
                 RawContent = content,
                 HtmlContent = htmlContent,
@@ -52,13 +52,14 @@ namespace DotNetFlow.Core.DomainModel
 
             ApplyEvent(new ItemPublishedEvent
             {
-                PublishedAt = DateTime.Now,                
+                ItemId = _id,
+                PublishedAt = DateTime.Now,
                 ApprovedBy = approvedBy,
                 Status = ApprovalStatus.Approved,
                 Title = _title,
                 RawContent = _rawContent,
                 HtmlContent = _htmlContent,
-                SubmissionUsersName = _usersName,                
+                SubmittedByUser = _submittedByUserName,                
             });
         }
 
@@ -66,7 +67,7 @@ namespace DotNetFlow.Core.DomainModel
         {
             _id = @event.ItemId;
             _submittedAt = @event.SubmittedAt;
-            _usersName = @event.SubmissionUsersName;
+            _submittedByUserName = @event.SubmissionUsersName;
             _title = @event.Title;
             _rawContent = @event.RawContent;
             _htmlContent = @event.HtmlContent;

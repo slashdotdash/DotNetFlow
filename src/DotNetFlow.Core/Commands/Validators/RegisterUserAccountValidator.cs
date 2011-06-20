@@ -1,12 +1,12 @@
-﻿using DotNetFlow.Core.ReadModel.Repositories;
+﻿using System;
+using DotNetFlow.Core.ReadModel.Repositories;
 using FluentValidation;
-using StructureMap;
 
 namespace DotNetFlow.Core.Commands.Validators
 {
     public sealed class RegisterUserAccountValidator : AbstractValidator<RegisterUserAccountCommand>
     {
-        public RegisterUserAccountValidator()
+        public RegisterUserAccountValidator(Func<IRegisteredEmailRepository> emailRepository)
         {
             RuleFor(x => x.FullName).NotEmpty().Length(1, 200);
             RuleFor(x => x.Email).NotEmpty().EmailAddress().Length(1, 1000);
@@ -17,7 +17,7 @@ namespace DotNetFlow.Core.Commands.Validators
             RuleFor(x => x.Twitter).Length(0, 200);
 
             // Enforce unique email address when entered
-            RuleFor(x => x.Email).Must(BeUniqueEmailAddress)
+            RuleFor(x => x.Email).Must(email => BeUniqueEmailAddress(emailRepository(), email))
                 .Unless(x => string.IsNullOrWhiteSpace(x.Email))
                 .WithMessage("Email address has already been registered");
         }
@@ -25,10 +25,9 @@ namespace DotNetFlow.Core.Commands.Validators
         /// <summary>
         /// Prevent the same email address from being registered more than once (since this is also the login so must be unique)
         /// </summary>
-        private static bool BeUniqueEmailAddress(string email)
+        private static bool BeUniqueEmailAddress(IRegisteredEmailRepository repository, string email)
         {
-            var repository = ObjectFactory.GetInstance<IRegisteredEmailRepository>();
-            return ! repository.Exists(email);
+            return !repository.Exists(email);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DotNetFlow.Core.ReadModel.Repositories
         }
 
         /// <summary>
-        /// is the given email address already registered?
+        /// Is the given email address already registered?
         /// </summary>
         public bool Exists(string email)
         {
