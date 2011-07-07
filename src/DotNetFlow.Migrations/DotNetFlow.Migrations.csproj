@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateRegisteredUsernames.cs" />
     <Compile Include="CreateItems.cs" />
     <Compile Include="CreateRegisteredEmailAddresses.cs" />
     <Compile Include="CreateUsers.cs" />

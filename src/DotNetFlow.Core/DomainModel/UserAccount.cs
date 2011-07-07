@@ -7,16 +7,17 @@ namespace DotNetFlow.Core.DomainModel
     public sealed class UserAccount : AggregateRootMappedByConvention
     {
         private Guid _id;
-        private string _fullName, _hashedPassword, _email, _website, _twitter;
+        private string _fullName, _username, _hashedPassword, _email, _website, _twitter;
         private DateTime _registeredAt;        
 
-        public UserAccount(Guid id, string fullName, string email, string hashedPassword, string website, string twitter) : base(id)
+        public UserAccount(Guid id, string fullName, string username, string email, string hashedPassword, string website, string twitter) : base(id)
         {
             ApplyEvent(new UserAccountRegisteredEvent
             {
                 UserId = id,
                 RegisteredAt = DateTime.Now,
                 FullName = fullName,
+                Username = username,
                 Email = email,
                 HashedPassword = hashedPassword,                
                 Website = website,
@@ -29,6 +30,7 @@ namespace DotNetFlow.Core.DomainModel
             _id = @event.UserId;
             _registeredAt = @event.RegisteredAt;
             _fullName = @event.FullName;
+            _username = @event.Username;
             _email = @event.Email;
             _hashedPassword = @event.HashedPassword;
             _website = @event.Website;

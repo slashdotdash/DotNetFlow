@@ -8,7 +8,7 @@ namespace DotNetFlow.Core.Commands.Executors
     {
         protected override void ExecuteInContext(IUnitOfWorkContext context, RegisterUserAccountCommand command)
         {
-            new UserAccount(command.UserId, command.FullName, command.Email, command.Password, command.Website, command.Twitter);
+            new UserAccount(command.UserId, command.FullName, command.Username, command.Email, command.Password, command.Website, command.Twitter);
             context.Accept();
         }
     }

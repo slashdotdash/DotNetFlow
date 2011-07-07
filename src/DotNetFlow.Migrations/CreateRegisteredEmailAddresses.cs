@@ -4,7 +4,7 @@ using Migrator.Framework;
 namespace DotNetFlow.Migrations
 {
     /// <summary>
-    /// Table for recording unique, registered email addresses (ensure unique logins & prevent duplicate user registrations)
+    /// Table for recording unique, registered email addresses (prevent duplicate email registrations)
     /// </summary>
     [Migration(20110530140000)]
     public sealed class CreateRegisteredEmailAddresses : Migration

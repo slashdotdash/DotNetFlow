@@ -23,12 +23,19 @@
                     @Html.ValidationMessageFor(model => model.FullName)
                     <div class="information">Will be shown for each of your submissions and comments</div>
 	            </div>
+                
+                <div class="form_row clearfix">
+                    @Html.LabelFor(model => model.Username, "E-mail")
+	                @Html.EditorFor(model => model.Username)
+                    @Html.ValidationMessageFor(model => model.Username)
+                    <div class="information">This will be <strong>your login to the site</strong> and used for resetting your password</div>
+                </div>
 
                 <div class="form_row clearfix">
                     @Html.LabelFor(model => model.Email, "E-mail")
 	                @Html.EditorFor(model => model.Email)
                     @Html.ValidationMessageFor(model => model.Email)
-                    <div class="information">This will be <strong>your login to the site</strong> and used for resetting your password</div>
+                    <div class="information">Used for password reset emails, never shared or sent unsolicited email</div>
                 </div>
 	
                 <div class="form_row clearfix">

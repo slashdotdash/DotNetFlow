@@ -7,6 +7,7 @@ namespace DotNetFlow.Core.Events
     {        
         public Guid UserId { get; set; }
         public DateTime RegisteredAt;
+        public string Username { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
