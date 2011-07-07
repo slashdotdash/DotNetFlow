@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DotNetFlow.Core.Commands;
 
 namespace DotNetFlow.Specifications.Builders
@@ -9,7 +6,8 @@ namespace DotNetFlow.Specifications.Builders
     internal sealed class RegisterUserAccountBuilder
     {
         private Guid _id = Guid.NewGuid();
-        private string _fullName = "Ben Smith";
+        private string _fullName = Faker.Name.FullName();
+        private string _username = "dotnetflow";
         private string _email = "ben@dotnetflow.com";
         private string _password = "password1234";
         private string _website = "www.dotnetflow.com";
@@ -24,6 +22,12 @@ namespace DotNetFlow.Specifications.Builders
         public RegisterUserAccountBuilder Named(string name)
         {
             _fullName = name;
+            return this;
+        }
+
+        public RegisterUserAccountBuilder Username(string username)
+        {
+            _username = username;
             return this;
         }
 

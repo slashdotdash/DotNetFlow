@@ -82,6 +82,7 @@
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
     <Compile Include="PublishItems\SubmittedItemIsRemovedSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccountSpec.cs" />
+    <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountUsernameIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />
     <Compile Include="SubmittingNewItems\AnonymousUserSubmitsNewItemSpec.cs" />

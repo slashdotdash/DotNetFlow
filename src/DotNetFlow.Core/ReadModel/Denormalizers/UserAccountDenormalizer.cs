@@ -20,14 +20,23 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         public void Handle(UserAccountRegisteredEvent evnt)
         {
             CreateUser(evnt);
+            RegisterUsername(@evnt);
             RegisterEmailAddress(evnt);
         }
 
         private void CreateUser(UserAccountRegisteredEvent evnt)
         {
             _context.Connection.Execute(
-                "insert into Users (UserId, RegisteredAt, FullName, Email, HashedPassword, Website, Twitter) values (@UserId, @RegisteredAt, @FullName, @Email, @HashedPassword, @Website, @Twitter)",
-                new { evnt.UserId, evnt.RegisteredAt, evnt.FullName, evnt.Email, evnt.HashedPassword, evnt.Website, evnt.Twitter },
+                "insert into Users (UserId, RegisteredAt, FullName, Username, Email, HashedPassword, Website, Twitter) values (@UserId, @RegisteredAt, @FullName, @Username, @Email, @HashedPassword, @Website, @Twitter)",
+                new { evnt.UserId, evnt.RegisteredAt, evnt.FullName, evnt.Username, evnt.Email, evnt.HashedPassword, evnt.Website, evnt.Twitter },
+                _context.Transaction);
+        }
+
+        private void RegisterUsername(UserAccountRegisteredEvent evnt)
+        {
+            _context.Connection.Execute(
+                "insert into RegisteredUsernames (UserId, Username) values (@UserId, @Username)",
+                new { evnt.UserId, Username = evnt.Username.Trim().ToLower() }, // Username is stored in lowercase
                 _context.Transaction);
         }
 
@@ -35,7 +44,7 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         {
             _context.Connection.Execute(
                 "insert into RegisteredEmailAddresses (UserId, Email) values (@UserId, @Email)",
-                new { evnt.UserId, Email = evnt.Email.ToLower() }, // Email address is stored in lowercase
+                new { evnt.UserId, Email = evnt.Email.Trim().ToLower() }, // Email address is stored in lowercase
                 _context.Transaction);
         }
     }

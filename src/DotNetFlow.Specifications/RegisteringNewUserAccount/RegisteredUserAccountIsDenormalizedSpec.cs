@@ -36,5 +36,12 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
             var emailAddresses = UnitOfWork.Connection.Query<int>("select count(*) from RegisteredEmailAddresses", null, UnitOfWork.Transaction);
             Assert.AreEqual(1, emailAddresses.Single());
         }
+
+        [Then]
+        public void Should_Insert_RegisteredUsername()
+        {
+            var usernames = UnitOfWork.Connection.Query<int>("select count(*) from RegisteredUsernames", null, UnitOfWork.Transaction);
+            Assert.AreEqual(1, usernames.Single());
+        }
     }
 }

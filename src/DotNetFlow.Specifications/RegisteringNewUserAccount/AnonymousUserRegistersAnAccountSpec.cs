@@ -40,6 +40,7 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         {
             var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();
             Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
+            Assert.AreEqual(ExecutedCommand.Username, @event.Username);
             Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);
             Assert.AreEqual(ExecutedCommand.Email, @event.Email);
             Assert.AreEqual(ExecutedCommand.Password, @event.HashedPassword);
