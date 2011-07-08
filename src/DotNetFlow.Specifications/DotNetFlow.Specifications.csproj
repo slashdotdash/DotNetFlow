@@ -34,6 +34,7 @@
     <Reference Include="Faker">
       <HintPath>..\..\lib\Faker\Faker.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL" />
     <Reference Include="MarkdownSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Migrator">
       <HintPath>..\..\lib\Migrator.Net\Migrator.dll</HintPath>
@@ -82,6 +83,7 @@
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
     <Compile Include="PublishItems\SubmittedItemIsRemovedSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\AnonymousUserRegistersAnAccountSpec.cs" />
+    <Compile Include="RegisteringNewUserAccount\OnlyAlphanumericsAndUnderscoreAllowedInUsernameSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountUsernameIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec.cs" />
     <Compile Include="RegisteringNewUserAccount\RegisteredUserAccountIsDenormalizedSpec.cs" />

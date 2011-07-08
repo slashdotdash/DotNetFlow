@@ -81,7 +81,7 @@ namespace DotNetFlow.Core.Infrastructure
         private void ConfigureCommandValidators()
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
-            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>, c.GetInstance<IFindExistingEmailAddress>));
+            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>().Exists, c.GetInstance<IFindExistingEmailAddress>().Exists));
             For<IValidator<LoginUserCommand>>().Singleton().Use<LoginUserValidator>();
         }
 

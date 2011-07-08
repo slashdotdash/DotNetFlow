@@ -49,6 +49,7 @@ namespace DotNetFlow.Specifications.Builders
             {
                 UserId = _id,
                 FullName = _fullName,
+                Username = _username,
                 Email = _email,
                 Password = _password,
                 Website = _website,
