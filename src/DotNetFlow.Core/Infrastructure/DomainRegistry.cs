@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using DotNetFlow.Core.ReadModel.Models;
+using DotNetFlow.Core.ReadModel.Queries;
 using DotNetFlow.Core.ReadModel.Repositories;
 using DotNetFlow.Core.Services;
 using Ncqrs;
@@ -80,7 +81,7 @@ namespace DotNetFlow.Core.Infrastructure
         private void ConfigureCommandValidators()
         {
             For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
-            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IRegisteredUsernameRepository>, c.GetInstance<IRegisteredEmailRepository>));
+            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>, c.GetInstance<IFindExistingEmailAddress>));
             For<IValidator<LoginUserCommand>>().Singleton().Use<LoginUserValidator>();
         }
 
@@ -94,7 +95,8 @@ namespace DotNetFlow.Core.Infrastructure
         {
             For<IRepository<Submission>>().Use<SubmissionRepository>();
             For<IUserRepository>().Use<UserRepository>();
-            For<IRegisteredEmailRepository>().Use<RegisteredEmailRepository>();
+            For<IFindExistingUsername>().Use<FindExistingUsernameQuery>();
+            For<IFindExistingEmailAddress>().Use<FindExistingEmailAddressQuery>();
         }
     }
 }

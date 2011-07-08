@@ -2,13 +2,13 @@
 using Dapper;
 using DotNetFlow.Core.Infrastructure;
 
-namespace DotNetFlow.Core.ReadModel.Repositories
+namespace DotNetFlow.Core.ReadModel.Queries
 {
-    public class RegisteredEmailRepository : IRegisteredEmailRepository
+    public class FindExistingEmailAddressQuery : IFindExistingEmailAddress
     {
         private readonly IUnitOfWork _context;
 
-        public RegisteredEmailRepository(IUnitOfWork context)
+        public FindExistingEmailAddressQuery(IUnitOfWork context)
         {
             _context = context;
         }

@@ -94,11 +94,12 @@
     <Compile Include="ReadModel\Models\AuthenticationModel.cs" />
     <Compile Include="ReadModel\Models\Submission.cs" />
     <Compile Include="ReadModel\Models\UserAccountModel.cs" />
-    <Compile Include="ReadModel\Repositories\IRegisteredEmailRepository.cs" />
-    <Compile Include="ReadModel\Repositories\IRegisteredUsernameRepository.cs" />
+    <Compile Include="ReadModel\Queries\FindExistingUsernameQuery.cs" />
+    <Compile Include="ReadModel\Queries\IFindExistingEmailAddress.cs" />
+    <Compile Include="ReadModel\Queries\IFindExistingUsername.cs" />
     <Compile Include="ReadModel\Repositories\IRepository.cs" />
     <Compile Include="ReadModel\Repositories\IUserRepository.cs" />
-    <Compile Include="ReadModel\Repositories\RegisteredEmailRepository.cs" />
+    <Compile Include="ReadModel\Queries\FindExistingEmailAddressQuery.cs" />
     <Compile Include="ReadModel\Repositories\SubmissionRepository.cs" />
     <Compile Include="ReadModel\Repositories\UserRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />

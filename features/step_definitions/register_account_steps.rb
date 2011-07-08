@@ -10,7 +10,7 @@ When /^I complete the required fields for registration$/ do
 end
 
 Then /^I should be logged in$/ do
-  Then %{I should see "Welcome #{@name}."}  
+  Then %{I should see "Welcome #{@name}."}
 end
 
 Given /^an account has been registered with an email address$/ do

@@ -3,6 +3,7 @@ Feature: Anonymous visitor registers an account
   As a visitor to the site
   I want to register an account
 
+  @wip
   Scenario: Successful registration
     Given I am on the registration page
 	When I complete the required fields for registration
