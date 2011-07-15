@@ -24,7 +24,7 @@ namespace DotNetFlow.Core.Infrastructure
             ConfigureNcqrsInfrastructure();
             ConfigureUnitOfWorkPerHttpRequest();
             ConfigureCommandValidators();
-            ConfigureReadModelRepositories();
+            ConfigureReadModel();
             ConfigureServices();
         }
 
@@ -91,12 +91,13 @@ namespace DotNetFlow.Core.Infrastructure
             For<IAuthenticationService>().Use<AuthenticationService>();            
         }
 
-        private void ConfigureReadModelRepositories()
+        private void ConfigureReadModel()
         {
             For<IRepository<Submission>>().Use<SubmissionRepository>();
             For<IUserRepository>().Use<UserRepository>();
             For<IFindExistingUsername>().Use<FindExistingUsernameQuery>();
             For<IFindExistingEmailAddress>().Use<FindExistingEmailAddressQuery>();
+            For<IQueryModel<PublishedItem>>().Use<LatestPublishedItemsQuery>();
         }
     }
 }

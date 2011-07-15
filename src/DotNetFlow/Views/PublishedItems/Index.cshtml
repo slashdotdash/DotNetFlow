@@ -1,0 +1,20 @@
+﻿@model IEnumerable<IGrouping<DateTime, DotNetFlow.Core.ReadModel.Models.PublishedItem>>
+@{ ViewBag.Title = "Index"; }
+
+<h2>Items</h2>
+
+@foreach (var group in Model)
+{
+    <h3>@group.Key.ToShortDateString()</h3>
+    
+    foreach (var item in group)
+    {
+        @Html.Partial("_Item", item)
+    }
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#nav li.hometab').addClass('current_page_item');
+    });
+</script>

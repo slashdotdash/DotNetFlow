@@ -4,6 +4,6 @@ namespace DotNetFlow.Core.Services
 {
     public interface IAuthenticationService
     {
-        AuthenticationModel Authenticate(string email, string password);
+        AuthenticationModel Authenticate(string usernameOrEmail, string password);
     }
 }

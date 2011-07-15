@@ -40,7 +40,7 @@ namespace DotNetFlow.Controllers
         {
             if (ModelState.IsValid)
             {
-                var authorisation = _authentication.Authenticate(command.Email, command.Password);
+                var authorisation = _authentication.Authenticate(command.UsernameOrEmail, command.Password);
                 if (authorisation.IsAuthenticated)
                 {
                     LoginUser(authorisation.User);
@@ -55,7 +55,7 @@ namespace DotNetFlow.Controllers
 
         private static void LoginUser(UserAccountModel user)
         {
-            FormsAuthentication.SetAuthCookie(user.FullName, true);
+            FormsAuthentication.SetAuthCookie(user.Username, true);
         }
 
         //

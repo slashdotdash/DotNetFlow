@@ -14,9 +14,9 @@ namespace DotNetFlow.Core.Services
             _passwordHashing = passwordHashing;
         }
 
-        public AuthenticationModel Authenticate(string email, string password)
+        public AuthenticationModel Authenticate(string usernameOrEmail, string password)
         {
-            var user = _repository.FindByEmail(email);
+            var user = _repository.FindByUsernameOrEmail(usernameOrEmail);
             if (user != null)
             {
                 // Compare hash of submitted password with that stored for the user, using the same salt                

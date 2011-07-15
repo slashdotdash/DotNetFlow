@@ -22,13 +22,10 @@ namespace DotNetFlow
             routes.MapRoute("Logout", "logout", new { controller = "Session", action = "Delete" });
             routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
             routes.MapRoute("SubmitItem", "submit", new { controller = "Submissions", action = "Create" });
-            routes.MapRoute("Home", "", new { controller = "Items", action = "Index" });
-            
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            routes.MapRoute("Home", string.Empty, new { controller = "PublishedItems", action = "Index" });
+
+            // Map default root
+            routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
 
         protected void Application_Start()

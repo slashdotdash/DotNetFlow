@@ -92,11 +92,14 @@
     <Compile Include="ReadModel\Denormalizers\SubmittedItemDenormalizer.cs" />
     <Compile Include="ReadModel\Denormalizers\UserAccountDenormalizer.cs" />
     <Compile Include="ReadModel\Models\AuthenticationModel.cs" />
+    <Compile Include="ReadModel\Models\PublishedItem.cs" />
     <Compile Include="ReadModel\Models\Submission.cs" />
     <Compile Include="ReadModel\Models\UserAccountModel.cs" />
     <Compile Include="ReadModel\Queries\FindExistingUsernameQuery.cs" />
     <Compile Include="ReadModel\Queries\IFindExistingEmailAddress.cs" />
     <Compile Include="ReadModel\Queries\IFindExistingUsername.cs" />
+    <Compile Include="ReadModel\Queries\LatestPublishedItemsQuery.cs" />
+    <Compile Include="ReadModel\Queries\IQueryModel.cs" />
     <Compile Include="ReadModel\Repositories\IRepository.cs" />
     <Compile Include="ReadModel\Repositories\IUserRepository.cs" />
     <Compile Include="ReadModel\Queries\FindExistingEmailAddressQuery.cs" />

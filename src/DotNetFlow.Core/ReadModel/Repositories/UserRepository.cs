@@ -30,9 +30,10 @@ namespace DotNetFlow.Core.ReadModel.Repositories
         /// <summary>
         /// Find an existing user by their email address, returns null if no user found
         /// </summary>
-        public UserAccountModel FindByEmail(string email)
+        public UserAccountModel FindByUsernameOrEmail(string usernameOrEmail)
         {
-            return _context.Connection.Query<UserAccountModel>("select * from Users where Email = @Email", new { Email = email }, _context.Transaction)
+            return _context.Connection.Query<UserAccountModel>("select * from Users where Username = @UsernameOrEmail or Email = @UsernameOrEmail", 
+                new { UsernameOrEmail = usernameOrEmail }, _context.Transaction)
                 .SingleOrDefault();
         }
     }

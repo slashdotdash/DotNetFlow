@@ -71,9 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommandExecutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\PendingApprovalController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublishingController.cs" />
-    <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\PublishedItemsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SubmissionsController.cs" />
@@ -224,7 +225,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\PublishedItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetFlow.Core\DotNetFlow.Core.csproj">
@@ -259,6 +260,7 @@
     <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\Shared\LoginStatus.cshtml" />
     <Content Include="Views\Session\Delete.cshtml" />
+    <Content Include="Views\PublishedItems\_Item.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
