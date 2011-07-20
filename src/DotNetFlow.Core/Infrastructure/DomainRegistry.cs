@@ -80,9 +80,9 @@ namespace DotNetFlow.Core.Infrastructure
 
         private void ConfigureCommandValidators()
         {
-            For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
-            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>().Exists, c.GetInstance<IFindExistingEmailAddress>().Exists));
-            For<IValidator<LoginUserCommand>>().Singleton().Use<LoginUserValidator>();
+            For<IValidator<SubmitNewItemCommand>>().Use<SubmitNewItemValidator>();
+            For<IValidator<RegisterUserAccountCommand>>().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>().Exists, c.GetInstance<IFindExistingEmailAddress>().Exists));
+            For<IValidator<LoginUserCommand>>().Use<LoginUserValidator>();
         }
 
         private void ConfigureServices()

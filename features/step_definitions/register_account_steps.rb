@@ -9,10 +9,6 @@ When /^I complete the required fields for registration$/ do
   When %{I fill in "Password" with "password"}
 end
 
-Then /^I should be logged in$/ do
-  Then %{I should see "Welcome #{@username}."}
-end
-
 Given /^an account has been registered with an email address$/ do
   Given %{I am on the registration page}
   Given %{I complete the required fields for registration}

@@ -47,7 +47,7 @@ namespace DotNetFlow.Controllers
                     return RedirectToRoute("Home");   
                 }
 
-                ModelState.AddModelError("*", "Login failed, please check your e-mail address and password and try again.");
+                ModelState.AddModelError("*", "Login failed, please check your username or e-mail address and password and try again.");
             }
 
             return View();

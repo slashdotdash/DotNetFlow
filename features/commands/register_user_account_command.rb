@@ -43,7 +43,7 @@ class RegisterUserAccountCommand
     
     def post
     	options = { :body => self.to_json }
-    	pp options
-    	pp self.class.post("/admin/command/#{self.class.name}", options)
+    	#pp options
+    	self.class.post("/admin/command/#{self.class.name}", options)
 	end
 end
