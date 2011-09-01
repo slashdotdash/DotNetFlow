@@ -18,7 +18,7 @@ namespace DotNetFlow.Core.DomainModel
         private static readonly Markdown Markdown = new Markdown(new MarkdownOptions
         {
             AutoHyperlink = true,
-            AutoNewlines = true,
+            AutoNewLines = true,
             EncodeProblemUrlCharacters = true,
             StrictBoldItalic = true,
             LinkEmails = true
