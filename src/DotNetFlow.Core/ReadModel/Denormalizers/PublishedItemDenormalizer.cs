@@ -14,7 +14,12 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
             _context = unitOfWork;
         }
 
-        public void Handle(ItemPublishedEvent evnt)
+        public void Handle(IPublishedEvent<ItemPublishedEvent> evnt)
+        {
+            CreateItem(evnt.Payload);            
+        }
+
+        private void CreateItem(ItemPublishedEvent evnt)
         {
             _context.Connection.Execute(
                 "insert into Items (ItemId, PublishedAt, SubmittedByUser, Title, HtmlContent) values (@ItemId, @PublishedAt, @SubmittedByUser, @Title, @HtmlContent)",

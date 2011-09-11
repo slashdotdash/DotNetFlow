@@ -14,7 +14,12 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
             _context = unitOfWork;
         }
 
-        public void Handle(NewItemSubmittedEvent evnt)
+        public void Handle(IPublishedEvent<NewItemSubmittedEvent> evnt)
+        {
+            CreateSubmission(evnt.Payload);            
+        }
+
+        private void CreateSubmission(NewItemSubmittedEvent evnt)
         {
             _context.Connection.Execute(
                 "insert into Submissions (ItemId, SubmittedAt, UsersName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @SubmissionUsersName, @Title, @HtmlContent)",
@@ -25,9 +30,9 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         /// <summary>
         /// Delete the submission details on approve/publish
         /// </summary>
-        public void Handle(ItemPublishedEvent evnt)
+        public void Handle(IPublishedEvent<ItemPublishedEvent> evnt)
         {
-            _context.Connection.Execute("delete from Submissions where ItemId = @ItemId", new { evnt.ItemId }, _context.Transaction);
+            _context.Connection.Execute("delete from Submissions where ItemId = @ItemId", new { evnt.Payload.ItemId }, _context.Transaction);
         }
     }
 }

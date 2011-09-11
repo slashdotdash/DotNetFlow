@@ -64,11 +64,11 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\lib\Ncqrs\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\NUnit\nunit.framework.dll</HintPath>
+      <HintPath>..\..\lib\Ncqrs\Spec\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,6 @@
     <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
-    <Compile Include="Infrastructure\InternalEventStore.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
     <Compile Include="PublishItems\SubmittedItemIsRemovedSpec.cs" />

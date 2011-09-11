@@ -1,9 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
+using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Specifications.Builders;
+using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
+using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Spec;
 using NUnit.Framework;
 
@@ -12,13 +16,13 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
     [Specification]
     public sealed class AnonymousUserRegistersAnAccountSpec : CommandTestFixture<RegisterUserAccountCommand>
     {
-        protected override RegisterUserAccountCommand WhenExecutingCommand()
+        protected override RegisterUserAccountCommand WhenExecuting()
         {
             return new RegisterUserAccountBuilder().Build();
         }
-
-        protected override ICommandExecutor<RegisterUserAccountCommand> BuildCommandExecutor()
-        {
+        
+        protected override ICommandExecutor<ICommand> BuildCommandExecutor()
+        {            
             return new RegisterUserAccountExecutor();
         }
 
@@ -31,14 +35,14 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         [And]
         public void Should_Set_EventSourceId_As_UserId()
         {
-            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();
+            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single().Payload;
             Assert.AreEqual(ExecutedCommand.UserId, @event.EventSourceId);
         }
 
         [And]
         public void Should_Set_Event_Properties()
         {
-            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single();
+            var @event = (UserAccountRegisteredEvent)PublishedEvents.Single().Payload;
             Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
             Assert.AreEqual(ExecutedCommand.Username, @event.Username);
             Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);

@@ -1,4 +1,5 @@
 ﻿using System;
+using Ncqrs.Eventing;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Sourcing;
 using Ncqrs.Spec;
@@ -27,7 +28,9 @@ namespace DotNetFlow.Specifications.Infrastructure
 
                 var @event = WhenExecutingEvent();
 
-                handler.Handle(@event);
+                var published = new PublishedEvent<TEvent>(new CommittedEvent(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(), 1, DateTime.Now, @event, new Version(1, 0)));
+
+                handler.Handle(published);
 
                 ExecutedEvent = @event;
             }

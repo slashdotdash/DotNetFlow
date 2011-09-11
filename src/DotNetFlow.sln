@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Migrations", "DotNetFlow.Migrations\DotNetFlow.Migrations.csproj", "{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Features", "DotNetFlow.Features\DotNetFlow.Features.csproj", "{A192A276-E1E8-4210-B0AF-60ADB338B678}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D59BFCD4-D678-4FE6-8419-3817C902EB3C} = {D59BFCD4-D678-4FE6-8419-3817C902EB3C}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +36,10 @@ Global
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

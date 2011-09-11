@@ -6,6 +6,7 @@ using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Eventing;
+using Ncqrs.Spec;
 using NUnit.Framework;
 using Ncqrs.Eventing.Sourcing;
 using StructureMap;
@@ -19,23 +20,34 @@ namespace DotNetFlow.Specifications.Infrastructure
 
         protected TAggregateRoot Subject;
         protected Exception RaisedException;
-        protected IEnumerable<IEvent> Events;
+        protected IList<IEvent> Events;
 
         [SetUp]
         public void Setup()
         {
             ConfigureCommandExecution();
             CreateSubjectAndInitialiseFromGivenEvents();
+            Events = new List<IEvent>();
 
             try
             {
+                Subject.EventApplied += OnEventApplied;
+
                 ExecuteWhenCommand();
-                Events = Subject.GetUncommittedEvents();
             }
             catch (Exception ex)
             {
                 RaisedException = ex;
             }
+            finally
+            {
+                Subject.EventApplied -= OnEventApplied;                
+            }
+        }
+
+        private void OnEventApplied(object sender, EventAppliedEventArgs e)
+        {
+            Events.Add(e.Event);
         }
 
         private static void ConfigureCommandExecution()
@@ -43,11 +55,18 @@ namespace DotNetFlow.Specifications.Infrastructure
             Bootstrapper.Configure();
         }
 
+        /// <summary>
+        /// Create subject via parameterless private ctor and initialize from the Given events
+        /// </summary>
         private void CreateSubjectAndInitialiseFromGivenEvents()
         {
-            // Create subject via parameterless private ctor
             Subject = (TAggregateRoot)typeof(TAggregateRoot).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { }, null).Invoke(new object[] { });
-            Subject.InitializeFromHistory(Given());
+            Subject.InitializeFromHistory(PrepareEvents());
+        }
+
+        private CommittedEventStream PrepareEvents()
+        {
+            return new Prepare.PrepareTheseEvents(Given()).ForSource(Subject.EventSourceId);
         }
 
         private void ExecuteWhenCommand()
