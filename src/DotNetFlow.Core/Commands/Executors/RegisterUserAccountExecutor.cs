@@ -4,7 +4,7 @@ using Ncqrs.Domain;
 
 namespace DotNetFlow.Core.Commands.Executors
 {
-    public sealed class RegisterUserAccountExecutor : CommandExecutorBase<RegisterUserAccountCommand>
+    public class RegisterUserAccountExecutor : CommandExecutorBase<RegisterUserAccountCommand>
     {
         protected override void ExecuteInContext(IUnitOfWorkContext context, RegisterUserAccountCommand command)
         {

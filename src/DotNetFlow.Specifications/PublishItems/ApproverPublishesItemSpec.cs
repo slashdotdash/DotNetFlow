@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Specifications.Builders;
+using DotNetFlow.Specifications.Infrastructure;
 using Ncqrs.Spec;
 using NUnit.Framework;
 
@@ -15,7 +15,8 @@ namespace DotNetFlow.Specifications.PublishItems
     {
         public ApproverPublishesItemSpec()
         {
-            Bootstrapper.Configure();
+            new EventStoreCleaner().Execute();
+            Bootstrapper.Configure();            
         }
 
         protected override IEnumerable<object> GivenEvents()
@@ -35,22 +36,20 @@ namespace DotNetFlow.Specifications.PublishItems
         [Then]
         public void Should_Publish_ItemPublishedEvent_Event()
         {
-            Assert.IsInstanceOf(typeof(ItemPublishedEvent), PublishedEvents.Single());
+            Assert.IsInstanceOf(typeof(ItemPublishedEvent), TheEvent);
         }
 
         [And]
         public void Should_Set_Event_Properties()
         {
-            var @event = (ItemPublishedEvent)PublishedEvents.Single().Payload;
-            Assert.AreEqual(ExecutedCommand.ItemId, @event.EventSourceId);
-            Assert.AreEqual(ExecutedCommand.ApprovedBy, @event.ApprovedBy);
+            Assert.AreEqual(ExecutedCommand.ItemId, TheEvent.EventSourceId);
+            Assert.AreEqual(ExecutedCommand.ApprovedBy, TheEvent.ApprovedBy);
         }
 
         [And]
         public void Should_Mark_Item_As_Approved()
         {
-            var @event = (ItemPublishedEvent) PublishedEvents.Single().Payload;
-            Assert.AreEqual(ApprovalStatus.Approved, @event.Status);
+            Assert.AreEqual(ApprovalStatus.Approved, TheEvent.Status);
         }
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
-using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Specifications.Builders;
+using DotNetFlow.Specifications.Infrastructure;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
-using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Spec;
 using NUnit.Framework;
 
@@ -22,14 +20,14 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         }
         
         protected override ICommandExecutor<ICommand> BuildCommandExecutor()
-        {            
-            return new RegisterUserAccountExecutor();
+        {
+            return new GenericCommandExecutor<RegisterUserAccountCommand>(new RegisterUserAccountExecutor());
         }
 
         [Then]
         public void Should_Publish_NewItemSubmitted_Event()
         {
-            Assert.IsInstanceOf(typeof(UserAccountRegisteredEvent), PublishedEvents.Single());
+            Assert.IsInstanceOf(typeof(UserAccountRegisteredEvent), PublishedEvents.Single().Payload);
         }
 
         [And]

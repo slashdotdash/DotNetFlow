@@ -99,7 +99,9 @@
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
     <Compile Include="Infrastructure\DatabaseMigrator.cs" />
     <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
+    <Compile Include="Infrastructure\EventStoreCleaner.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
+    <Compile Include="Infrastructure\GenericCommandExecutor.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />

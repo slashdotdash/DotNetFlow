@@ -5,6 +5,7 @@ using DotNetFlow.Core.Commands.Executors;
 using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Specifications.Builders;
+using DotNetFlow.Specifications.Infrastructure;
 using MarkdownSharp;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
@@ -18,7 +19,7 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
     {
         protected override ICommandExecutor<ICommand> BuildCommandExecutor()
         {
-            return (ICommandExecutor<ICommand>)new SubmitNewItemExecutor();
+            return new GenericCommandExecutor<SubmitNewItemCommand>(new SubmitNewItemExecutor());
         }
 
         protected override SubmitNewItemCommand WhenExecuting()
