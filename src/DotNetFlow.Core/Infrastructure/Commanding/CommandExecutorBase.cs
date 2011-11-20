@@ -50,9 +50,10 @@ namespace DotNetFlow.Core.Infrastructure.Commanding
         public void Execute(TCommand command)
         {
             //using (var work = _context..CreateUnitOfWork(command.CommandIdentifier))
-            //{
-                ExecuteInContext(_context, command);
+            //{                
             //}
+
+            ExecuteInContext(_context, command);
         }
 
         /// <summary>

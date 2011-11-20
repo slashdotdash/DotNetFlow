@@ -2,9 +2,9 @@
 
 @if (Request.IsAuthenticated)
 {
-    <p>Welcome @Html.Encode(User.Identity.Name). <a href="@Url.Logout()">Sign out</a></p>
+    <p>Welcome <span class="logged-in-as">@Html.Encode(User.Identity.Name)</span>. <a href="@Url.Logout()">Sign out</a></p>
 }
 else
 {
-    <p>Welcome Guest. <a href="@Url.Login()">Sign in</a> or <a href="@Url.SignUp()">Signup</a></p>
+    <p>Welcome <span class="logged-in-as">Guest</span>. <a href="@Url.Login()">Sign in</a> or <a href="@Url.SignUp()">Signup</a></p>
 }

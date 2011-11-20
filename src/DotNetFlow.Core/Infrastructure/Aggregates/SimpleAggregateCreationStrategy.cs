@@ -13,5 +13,13 @@ namespace DotNetFlow.Core.Infrastructure.Aggregates
         {
             throw new NotImplementedException();
         }
+
+        //public IAggregate Build(Type type, Guid id, IMemento snapshot)
+        //{
+        //    if (type == typeof(IMyInterface))
+        //        return new MyAggregate();
+        //    else
+        //        return Activator.CreateInstance(type) as IAggregate;
+        //}
     }
 }

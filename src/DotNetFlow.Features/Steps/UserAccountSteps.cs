@@ -2,8 +2,8 @@
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Core.Infrastructure.Commanding;
-using DotNetFlow.Core.Infrastructure.Eventing;
 using DotNetFlow.Core.Services;
+using StructureMap;
 using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Features.Steps
@@ -32,7 +32,13 @@ namespace DotNetFlow.Features.Steps
                 Password = passwordHashing.HashPassword("password")
             };
 
-            commandService.Execute(registerUserCommand);
+            using (var uow = ObjectFactory.GetInstance<IUnitOfWork>())
+            {
+                commandService.Execute(registerUserCommand);
+                uow.Commit();
+            }
+
+            ScenarioContext.Current.Set(registerUserCommand);
         }
     }
 }

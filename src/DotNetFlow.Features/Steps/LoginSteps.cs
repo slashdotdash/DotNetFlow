@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using DotNetFlow.Core.Commands;
+using DotNetFlow.Features.Infrastructure;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Features.Steps
@@ -12,57 +12,73 @@ namespace DotNetFlow.Features.Steps
         [When(@"I enter my username and password")]
         public void WhenIEnterMyUsernameAndPassword()
         {
-            ScenarioContext.Current.Pending();
+            var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
+            LoginWith(command.Username, command.Password);
         }
 
         [When(@"I enter my email address and password")]
         public void WhenIEnterMyEmailAddressAndPassword()
         {
-            ScenarioContext.Current.Pending();
+            var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
+            LoginWith(command.Email, command.Password);            
         }
-
+        
         [When(@"I enter an incorrect username and password")]
         public void WhenIEnterAnIncorrectUsernameAndPassword()
-        {
-            ScenarioContext.Current.Pending();
+        {            
+            LoginWith("doesnotexist", "wrong password");
         }
 
         [When(@"I enter my email address and the wrong password")]
         public void WhenIEnterMyEmailAddressAndTheWrongPassword()
         {
-            ScenarioContext.Current.Pending();
+            var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
+            LoginWith(command.Email, "wrong password");
         }
-
-        [When(@"I press ""Sign In""")]
-        public void WhenIPressSignIn()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
+       
         [Then(@"I should see the login failed error message")]
         public void ThenIShouldSeeTheLoginFailedErrorMessage()
         {
-            ScenarioContext.Current.Pending();
+            var error = WebBrowser.Current.FindElement(By.CssSelector("field-validation-error"));
+            Assert.AreEqual("Login failed, please check your username or e-mail address and password and try again.", error.Text);
         }
 
         [Then(@"I should not be logged in")]
         public void ThenIShouldNotBeLoggedIn()
         {
-            ScenarioContext.Current.Pending();
+            AssertGuestUser();
         }
 
         [Then(@"I should be redirected to the home page")]
         public void ThenIShouldBeRedirectedToTheHomePage()
         {
-            ScenarioContext.Current.Pending();
+            Assert.AreEqual(ApplicationUrl.HomePage().ToString(), WebBrowser.Current.Url);
         }
 
         [Then(@"I should be logged in")]
         public void ThenIShouldBeLoggedIn()
         {
-            ScenarioContext.Current.Pending();
+            var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
+            AssertLoggedInAs(command.Username);
         }
 
+        private static void LoginWith(string usernameOrEmail, string password)
+        {
+            WebBrowser.Current.FindElement(By.Id("UsernameOrEmail")).SendKeys(usernameOrEmail);
+            WebBrowser.Current.FindElement(By.Id("Password")).SendKeys(password);
+        }
+
+        private static void AssertGuestUser()
+        {
+            AssertLoggedInAs("Guest");
+        }
+
+        private static void AssertLoggedInAs(string expectedUsername)
+        {
+            var loginStatus = WebBrowser.Current.FindElement(By.CssSelector("logged-in-as"));
+            Assert.IsNotNull(loginStatus, "Could not find login status element (searching for CSS class 'logged-in-as')");
+            Assert.AreEqual(expectedUsername, loginStatus.Text);
+        }
     }
 }
 

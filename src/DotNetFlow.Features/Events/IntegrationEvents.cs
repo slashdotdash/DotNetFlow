@@ -13,7 +13,7 @@ namespace DotNetFlow.Features.Events
         /// Configure the CQRS environment once before running any integration tests
         /// </summary>
         [BeforeTestRun]
-        public static void ConfigureNcqrsEnvironment()
+        public static void ConfigureCqrsEnvironment()
         {
             Bootstrapper.Configure();            
         }
