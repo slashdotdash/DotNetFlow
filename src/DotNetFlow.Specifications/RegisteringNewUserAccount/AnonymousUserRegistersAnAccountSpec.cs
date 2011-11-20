@@ -2,12 +2,11 @@
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
 using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Specifications.Builders;
 using DotNetFlow.Specifications.Infrastructure;
-using Ncqrs.Commanding;
-using Ncqrs.Commanding.CommandExecution;
-using Ncqrs.Spec;
 using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {

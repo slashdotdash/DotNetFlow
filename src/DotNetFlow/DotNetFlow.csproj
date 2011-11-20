@@ -34,6 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonDomain">
+      <HintPath>..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore">
+      <HintPath>..\packages\EventStore.3.0.11305.44\lib\net40\EventStore.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.Serialization.ServiceStack">
+      <HintPath>..\packages\EventStore.Serialization.ServiceStack.3.0.11305.44\lib\net40\EventStore.Serialization.ServiceStack.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation, Version=3.2.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.3.2.0.0\lib\Net40\FluentValidation.dll</HintPath>
@@ -78,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CommandExecutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\PendingApprovalController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublishingController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />

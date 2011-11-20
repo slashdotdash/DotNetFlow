@@ -1,9 +1,9 @@
 ﻿using System;
-using Ncqrs.Commanding;
+using DotNetFlow.Core.Infrastructure.Commanding;
 
 namespace DotNetFlow.Core.Commands
 {
-    public sealed class RegisterUserAccountCommand : CommandBase
+    public sealed class RegisterUserAccountCommand : ICommand
     {
         public Guid UserId { get; set; }
         public string FullName { get; set; }

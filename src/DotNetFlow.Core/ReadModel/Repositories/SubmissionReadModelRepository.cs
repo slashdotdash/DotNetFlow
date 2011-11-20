@@ -7,11 +7,11 @@ using DotNetFlow.Core.ReadModel.Models;
 
 namespace DotNetFlow.Core.ReadModel.Repositories
 {
-    public sealed class SubmissionRepository : IRepository<Submission>
+    public sealed class SubmissionReadModelRepository : IReadModelRepository<Submission>
     {
         private readonly IUnitOfWork _context;
 
-        public SubmissionRepository(IUnitOfWork context)
+        public SubmissionReadModelRepository(IUnitOfWork context)
         {
             _context = context;
         }

@@ -1,5 +1,4 @@
-﻿using Ncqrs.Commanding;
-using Ncqrs.Commanding.CommandExecution;
+﻿using DotNetFlow.Core.Infrastructure.Commanding;
 
 namespace DotNetFlow.Specifications.Infrastructure
 {

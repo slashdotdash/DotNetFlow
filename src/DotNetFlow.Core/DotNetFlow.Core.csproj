@@ -34,6 +34,15 @@
     <Reference Include="BCrypt.Net">
       <HintPath>..\..\lib\BCrypt.Net\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="CommonDomain">
+      <HintPath>..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore">
+      <HintPath>..\packages\EventStore.3.0.11305.44\lib\net40\EventStore.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.Serialization.ServiceStack">
+      <HintPath>..\packages\EventStore.Serialization.ServiceStack.3.0.11305.44\lib\net40\EventStore.Serialization.ServiceStack.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation, Version=3.2.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.3.2.0.0\lib\Net40\FluentValidation.dll</HintPath>
@@ -42,6 +51,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.MVC3.3.2.0.0\lib\Net40\FluentValidation.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
@@ -80,10 +90,23 @@
     <Compile Include="Events\UserAccountRegisteredEvent.cs" />
     <Compile Include="Extensions\RuleValidatorExtensions.cs" />
     <Compile Include="Extensions\UnitOfWorkExtensions.cs" />
+    <Compile Include="Infrastructure\Aggregates\SimpleAggregateCreationStrategy.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\Commanding\CommandContext.cs" />
+    <Compile Include="Infrastructure\Commanding\CommandExecutorBase.cs" />
+    <Compile Include="Infrastructure\Commanding\CommandService.cs" />
+    <Compile Include="Infrastructure\Commanding\ExecutorForCommandNotFoundException.cs" />
+    <Compile Include="Infrastructure\Commanding\ICommand.cs" />
+    <Compile Include="Infrastructure\Commanding\ICommandExecutor.cs" />
+    <Compile Include="Infrastructure\Commanding\ICommandService.cs" />
     <Compile Include="Infrastructure\DomainRegistry.cs" />
+    <Compile Include="Infrastructure\EventDispatcher.cs" />
+    <Compile Include="Infrastructure\Eventing\BasicGuidGenerator.cs" />
+    <Compile Include="Infrastructure\Eventing\GuidCombGenerator.cs" />
+    <Compile Include="Infrastructure\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\IEventHandler.cs" />
+    <Compile Include="Infrastructure\Eventing\UniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\StructureMapConfiguration.cs" />
     <Compile Include="Infrastructure\StructureMapValidatorFactory.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Infrastructure\UseUnitOfWork.cs" />
@@ -100,11 +123,11 @@
     <Compile Include="ReadModel\Queries\IFindExistingUsername.cs" />
     <Compile Include="ReadModel\Queries\LatestPublishedItemsQuery.cs" />
     <Compile Include="ReadModel\Queries\IQueryModel.cs" />
-    <Compile Include="ReadModel\Repositories\IRepository.cs" />
-    <Compile Include="ReadModel\Repositories\IUserRepository.cs" />
+    <Compile Include="ReadModel\Repositories\IReadModelRepository.cs" />
+    <Compile Include="ReadModel\Repositories\IUserReadModelRepository.cs" />
     <Compile Include="ReadModel\Queries\FindExistingEmailAddressQuery.cs" />
-    <Compile Include="ReadModel\Repositories\SubmissionRepository.cs" />
-    <Compile Include="ReadModel\Repositories\UserRepository.cs" />
+    <Compile Include="ReadModel\Repositories\SubmissionReadModelRepository.cs" />
+    <Compile Include="ReadModel\Repositories\UserReadModelRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BCryptPasswordHashing.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />

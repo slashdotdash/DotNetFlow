@@ -35,6 +35,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.0.0.3001\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CommonDomain">
+      <HintPath>..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore">
+      <HintPath>..\packages\EventStore.3.0.11305.44\lib\net40\EventStore.dll</HintPath>
+    </Reference>
     <Reference Include="Faker">
       <HintPath>..\..\lib\Faker\Faker.dll</HintPath>
     </Reference>
@@ -105,7 +111,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DotNetFlow.Core\DotNetFlow.Core.csproj">
       <Project>{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}</Project>

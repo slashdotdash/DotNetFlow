@@ -1,10 +1,10 @@
 ﻿using System;
 using DotNetFlow.Core.DomainModel;
-using Ncqrs.Eventing.Sourcing;
+using DotNetFlow.Core.Infrastructure;
 
 namespace DotNetFlow.Core.Events
 {
-    public sealed class ItemPublishedEvent : SourcedEvent
+    public sealed class ItemPublishedEvent : IDomainEvent
     {
         public Guid ItemId { get; set; }
         public DateTime PublishedAt;

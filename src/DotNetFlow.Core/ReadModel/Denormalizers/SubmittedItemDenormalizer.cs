@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 using DotNetFlow.Core.Events;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
@@ -14,13 +13,8 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
             _context = unitOfWork;
         }
 
-        public void Handle(IPublishedEvent<NewItemSubmittedEvent> evnt)
-        {
-            CreateSubmission(evnt.Payload);            
-        }
-
-        private void CreateSubmission(NewItemSubmittedEvent evnt)
-        {
+        public void Handle(NewItemSubmittedEvent evnt)
+        {           
             _context.Connection.Execute(
                 "insert into Submissions (ItemId, SubmittedAt, UsersName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @SubmissionUsersName, @Title, @HtmlContent)",
                 new { evnt.ItemId, evnt.SubmittedAt, evnt.SubmissionUsersName, evnt.Title, evnt.HtmlContent },
@@ -30,9 +24,9 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         /// <summary>
         /// Delete the submission details on approve/publish
         /// </summary>
-        public void Handle(IPublishedEvent<ItemPublishedEvent> evnt)
+        public void Handle(ItemPublishedEvent evnt)
         {
-            _context.Connection.Execute("delete from Submissions where ItemId = @ItemId", new { evnt.Payload.ItemId }, _context.Transaction);
+            _context.Connection.Execute("delete from Submissions where ItemId = @ItemId", new { evnt.ItemId }, _context.Transaction);
         }
     }
 }

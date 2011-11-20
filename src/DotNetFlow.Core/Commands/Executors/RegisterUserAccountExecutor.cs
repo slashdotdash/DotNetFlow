@@ -1,15 +1,16 @@
-﻿using DotNetFlow.Core.DomainModel;
-using Ncqrs.Commanding.CommandExecution;
-using Ncqrs.Domain;
+﻿using System;
+using CommonDomain.Persistence;
+using DotNetFlow.Core.DomainModel;
+using DotNetFlow.Core.Infrastructure.Commanding;
 
 namespace DotNetFlow.Core.Commands.Executors
 {
     public class RegisterUserAccountExecutor : CommandExecutorBase<RegisterUserAccountCommand>
     {
-        protected override void ExecuteInContext(IUnitOfWorkContext context, RegisterUserAccountCommand command)
+        protected override void ExecuteInContext(IRepository context, RegisterUserAccountCommand command)
         {
-            new UserAccount(command.UserId, command.FullName, command.Username, command.Email, command.Password, command.Website, command.Twitter);
-            context.Accept();
+            var user = new UserAccount(command.UserId, command.FullName, command.Username, command.Email, command.Password, command.Website, command.Twitter);
+            context.Save(user, Guid.NewGuid());
         }
     }
 }

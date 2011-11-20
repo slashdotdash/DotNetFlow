@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 using DotNetFlow.Core.Events;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
@@ -14,12 +13,7 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
             _context = unitOfWork;
         }
 
-        public void Handle(IPublishedEvent<ItemPublishedEvent> evnt)
-        {
-            CreateItem(evnt.Payload);            
-        }
-
-        private void CreateItem(ItemPublishedEvent evnt)
+        public void Handle(ItemPublishedEvent evnt)
         {
             _context.Connection.Execute(
                 "insert into Items (ItemId, PublishedAt, SubmittedByUser, Title, HtmlContent) values (@ItemId, @PublishedAt, @SubmittedByUser, @Title, @HtmlContent)",

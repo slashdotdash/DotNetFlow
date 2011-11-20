@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DotNetFlow.Core.ReadModel.Repositories
 {
-    public interface IRepository<out T> 
+    public interface IReadModelRepository<out T> 
     {
         T Get(Guid id);
         IEnumerable<T> All();

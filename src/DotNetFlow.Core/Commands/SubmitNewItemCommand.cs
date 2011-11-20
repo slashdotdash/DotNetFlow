@@ -1,9 +1,9 @@
 ﻿using System;
-using Ncqrs.Commanding;
+using DotNetFlow.Core.Infrastructure.Commanding;
 
 namespace DotNetFlow.Core.Commands
 {
-    public sealed class SubmitNewItemCommand : CommandBase
+    public sealed class SubmitNewItemCommand : ICommand
     {
         public Guid ItemId { get; set; }
         public string UsersName { get; set; }

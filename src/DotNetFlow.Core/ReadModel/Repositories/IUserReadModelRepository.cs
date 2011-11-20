@@ -2,7 +2,7 @@
 
 namespace DotNetFlow.Core.ReadModel.Repositories
 {
-    public interface IUserRepository : IRepository<UserAccountModel>
+    public interface IUserReadModelRepository : IReadModelRepository<UserAccountModel>
     {
         UserAccountModel FindByUsernameOrEmail(string email);
     }

@@ -7,11 +7,11 @@ namespace DotNetFlow.Areas.Admin.Controllers
 {
     public class PendingApprovalController : Controller
     {
-        private readonly IRepository<Submission> _repository;
+        private readonly IReadModelRepository<Submission> _readModelRepository;
 
-        public PendingApprovalController(IRepository<Submission> repository)
+        public PendingApprovalController(IReadModelRepository<Submission> readModelRepository)
         {            
-            _repository = repository;
+            _readModelRepository = readModelRepository;
         }
 
         //
@@ -19,7 +19,7 @@ namespace DotNetFlow.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var submissions = _repository.All().OrderBy(s => s.SubmittedAt);
+            var submissions = _readModelRepository.All().OrderBy(s => s.SubmittedAt);
             return View(submissions);
         }
 

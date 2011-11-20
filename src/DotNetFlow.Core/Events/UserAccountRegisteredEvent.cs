@@ -1,9 +1,9 @@
 ﻿using System;
-using Ncqrs.Eventing.Sourcing;
+using DotNetFlow.Core.Infrastructure;
 
 namespace DotNetFlow.Core.Events
 {
-    public sealed class UserAccountRegisteredEvent : SourcedEvent
+    public sealed class UserAccountRegisteredEvent : IDomainEvent
     {        
         public Guid UserId { get; set; }
         public DateTime RegisteredAt;

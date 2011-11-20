@@ -1,8 +1,6 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
 {
@@ -18,11 +16,11 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         /// <summary>
         /// Create user account
         /// </summary>
-        public void Handle(IPublishedEvent<UserAccountRegisteredEvent> evnt)
+        public void Handle(UserAccountRegisteredEvent evnt)
         {
-            CreateUser(evnt.Payload);
-            RegisterUsername(evnt.Payload);
-            RegisterEmailAddress(evnt.Payload);
+            CreateUser(evnt);
+            RegisterUsername(evnt);
+            RegisterEmailAddress(evnt);
         }
 
         private void CreateUser(UserAccountRegisteredEvent evnt)

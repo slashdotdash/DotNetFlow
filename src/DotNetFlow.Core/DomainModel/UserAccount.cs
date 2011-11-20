@@ -1,18 +1,22 @@
 ﻿using System;
+using CommonDomain.Core;
 using DotNetFlow.Core.Events;
-using Ncqrs.Domain;
 
 namespace DotNetFlow.Core.DomainModel
 {
-    public sealed class UserAccount : AggregateRootMappedByConvention
+    public sealed class UserAccount : AggregateBase
     {
-        private Guid _id;
         private string _fullName, _username, _hashedPassword, _email, _website, _twitter;
         private DateTime _registeredAt;        
 
-        public UserAccount(Guid id, string fullName, string username, string email, string hashedPassword, string website, string twitter) : base(id)
+        public UserAccount(Guid id)
         {
-            ApplyEvent(new UserAccountRegisteredEvent
+            Id = id;
+        }
+
+        public UserAccount(Guid id, string fullName, string username, string email, string hashedPassword, string website, string twitter) : this(id)
+        {
+            RaiseEvent(new UserAccountRegisteredEvent
             {
                 UserId = id,
                 RegisteredAt = DateTime.Now,
@@ -25,9 +29,8 @@ namespace DotNetFlow.Core.DomainModel
             });
         }
 
-        private void OnUserAccountRegistered(UserAccountRegisteredEvent @event)
+        private void Apply(UserAccountRegisteredEvent @event)
         {
-            _id = @event.UserId;
             _registeredAt = @event.RegisteredAt;
             _fullName = @event.FullName;
             _username = @event.Username;
