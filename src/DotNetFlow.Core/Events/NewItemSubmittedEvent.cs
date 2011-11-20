@@ -1,6 +1,7 @@
 ﻿using System;
 using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.Events
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNetFlow.Core.Infrastructure.Eventing
+namespace DotNetFlow.Core.Infrastructure
 {
     public interface IUniqueIdentifierGenerator
     {

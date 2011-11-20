@@ -3,16 +3,17 @@ using CommonDomain;
 using CommonDomain.Core;
 using CommonDomain.Persistence;
 using CommonDomain.Persistence.EventStore;
+using DotNetFlow.Core.Events;
 using DotNetFlow.Core.Infrastructure.Aggregates;
 using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Infrastructure.Eventing;
+using DotNetFlow.Core.ReadModel.Denormalizers;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Queries;
 using DotNetFlow.Core.ReadModel.Repositories;
 using DotNetFlow.Core.Services;
 using EventStore;
 using EventStore.Dispatcher;
-using StructureMap;
 using StructureMap.Configuration.DSL;
 using FluentValidation;
 using DotNetFlow.Core.Commands;
@@ -49,8 +50,20 @@ namespace DotNetFlow.Core.Infrastructure
                 .UsingSqlPersistence("EventStore")
                 .InitializeStorageEngine()
                 .UsingServiceStackJsonSerialization()
-                .UsingSynchronousDispatchScheduler().DispatchTo(new EventDispatcher())
+                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher())
                 .Build();
+        }
+
+        private static IDispatchCommits InitializeEventDispatcher()
+        {
+            var dispatcher = new EventDispatcher();
+
+            dispatcher.RegisterHandler(iow => new UserAccountDenormalizer(iow));
+            dispatcher.RegisterHandler<NewItemSubmittedEvent>(iow => new SubmittedItemDenormalizer(iow));
+            dispatcher.RegisterHandler<ItemPublishedEvent>(iow => new SubmittedItemDenormalizer(iow));
+            dispatcher.RegisterHandler(iow => new PublishedItemDenormalizer(iow));
+
+            return dispatcher;
         }
 
         /// <summary>

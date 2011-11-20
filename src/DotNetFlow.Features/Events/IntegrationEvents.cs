@@ -1,7 +1,6 @@
 ﻿using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Services;
-using Ncqrs;
-using Ncqrs.Commanding.ServiceModel;
 using StructureMap;
 using TechTalk.SpecFlow;
 
@@ -11,7 +10,7 @@ namespace DotNetFlow.Features.Events
     public class IntegrationEvents
     {
         /// <summary>
-        /// Configure the NCQRS environment once before running any integration tests
+        /// Configure the CQRS environment once before running any integration tests
         /// </summary>
         [BeforeTestRun]
         public static void ConfigureNcqrsEnvironment()
@@ -20,7 +19,7 @@ namespace DotNetFlow.Features.Events
         }
 
         [BeforeScenarioBlock]
-        public static void PopulateScenarioContextWithNcqrsEnvironment()
+        public static void PopulateScenarioContextWithCqrsEnvironment()
         {
             ScenarioContext.Current.Set(ObjectFactory.GetInstance<ICommandService>());
             ScenarioContext.Current.Set(ObjectFactory.GetInstance<IUniqueIdentifierGenerator>());

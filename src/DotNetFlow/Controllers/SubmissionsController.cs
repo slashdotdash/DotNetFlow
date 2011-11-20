@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Infrastructure.Eventing;
 using DotNetFlow.Core.ReadModel.Models;

@@ -100,12 +100,12 @@
     <Compile Include="Infrastructure\Commanding\ICommandExecutor.cs" />
     <Compile Include="Infrastructure\Commanding\ICommandService.cs" />
     <Compile Include="Infrastructure\DomainRegistry.cs" />
-    <Compile Include="Infrastructure\EventDispatcher.cs" />
+    <Compile Include="Infrastructure\Eventing\EventDispatcher.cs" />
     <Compile Include="Infrastructure\Eventing\BasicGuidGenerator.cs" />
     <Compile Include="Infrastructure\Eventing\GuidCombGenerator.cs" />
-    <Compile Include="Infrastructure\IDomainEvent.cs" />
-    <Compile Include="Infrastructure\IEventHandler.cs" />
-    <Compile Include="Infrastructure\Eventing\UniqueIdentifierGenerator.cs" />
+    <Compile Include="Infrastructure\Eventing\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\Eventing\IEventHandler.cs" />
+    <Compile Include="Infrastructure\UniqueIdentifierGenerator.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\StructureMapValidatorFactory.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />

@@ -1,4 +1,4 @@
-﻿namespace DotNetFlow.Core.Infrastructure
+﻿namespace DotNetFlow.Core.Infrastructure.Eventing
 {
     public interface IEventHandler<in TEvent> where TEvent : IDomainEvent
     {

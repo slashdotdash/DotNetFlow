@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
 {

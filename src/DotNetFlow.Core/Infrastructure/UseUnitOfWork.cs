@@ -4,6 +4,9 @@ using StructureMap;
 
 namespace DotNetFlow.Core.Infrastructure
 {
+    /// <summary>
+    /// Use a unit-of-work per web request, rolling back the transaction on any thrown exception
+    /// </summary>
     public sealed class UseUnitOfWork : ActionFilterAttribute
     {
         private IUnitOfWork _unitOfWork;
