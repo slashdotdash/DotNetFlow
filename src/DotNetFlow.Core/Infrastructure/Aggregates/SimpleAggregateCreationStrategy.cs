@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using CommonDomain;
 using CommonDomain.Persistence;
 
 namespace DotNetFlow.Core.Infrastructure.Aggregates
 {
-    class SimpleAggregateCreationStrategy : IConstructAggregates
+    public sealed class SimpleAggregateCreationStrategy : IConstructAggregates
     {
         public IAggregate Build(Type type, Guid id, IMemento snapshot)
         {
-            throw new NotImplementedException();
+            var ctor = type.GetConstructor(BindingFlags.NonPublic|BindingFlags.Instance, null, new [] { typeof (Guid) }, null);
+            return (IAggregate)ctor.Invoke(new object[] { id });
+            //return (IAggregate)Activator.CreateInstance(type);
         }
-
-        //public IAggregate Build(Type type, Guid id, IMemento snapshot)
-        //{
-        //    if (type == typeof(IMyInterface))
-        //        return new MyAggregate();
-        //    else
-        //        return Activator.CreateInstance(type) as IAggregate;
-        //}
     }
 }

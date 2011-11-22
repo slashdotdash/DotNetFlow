@@ -50,7 +50,7 @@ namespace DotNetFlow.Core.Infrastructure
             return Wireup.Init()
                 .UsingSqlPersistence("EventStore")
                 .InitializeStorageEngine()
-                .UsingServiceStackJsonSerialization()
+                .UsingJsonSerialization()
                 .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher(context))
                 .Build();
         }

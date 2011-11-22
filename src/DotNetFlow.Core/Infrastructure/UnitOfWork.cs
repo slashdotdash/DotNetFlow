@@ -35,11 +35,6 @@ namespace DotNetFlow.Core.Infrastructure
             if (_transaction != null)
                 _transaction.Rollback();
         }
-       
-        public void Reset()
-        {
-            _connection = null;
-        }
 
         public IDbConnection Connection
         {

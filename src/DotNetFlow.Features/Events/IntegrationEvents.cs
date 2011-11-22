@@ -3,6 +3,7 @@ using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Services;
 using DotNetFlow.Features.Infrastructure;
 using StructureMap;
+using StructureMap.Pipeline;
 using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Features.Events
@@ -34,10 +35,10 @@ namespace DotNetFlow.Features.Events
         }
 
         [AfterScenario]
-        public static void DisposeUnitOfWork()
+        public static void DisposeThreadLocalStorage()
         {
-            var uow = (UnitOfWork) ObjectFactory.GetInstance<IUnitOfWork>();
-            uow.Reset();
+            //new ThreadLocalStorageLifecycle().EjectAll();
+            new HybridLifecycle().FindCache().DisposeAndClear();
         }
     }
 }
