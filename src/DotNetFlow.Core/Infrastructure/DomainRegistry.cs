@@ -14,6 +14,7 @@ using DotNetFlow.Core.ReadModel.Repositories;
 using DotNetFlow.Core.Services;
 using EventStore;
 using EventStore.Dispatcher;
+using StructureMap;
 using StructureMap.Configuration.DSL;
 using FluentValidation;
 using DotNetFlow.Core.Commands;
@@ -44,24 +45,24 @@ namespace DotNetFlow.Core.Infrastructure
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
         }
 
-        private static IStoreEvents ConfigureEventStore()
+        private static IStoreEvents ConfigureEventStore(IContext context)
         {
             return Wireup.Init()
                 .UsingSqlPersistence("EventStore")
                 .InitializeStorageEngine()
                 .UsingServiceStackJsonSerialization()
-                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher())
+                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher(context))
                 .Build();
         }
 
-        private static IDispatchCommits InitializeEventDispatcher()
+        private static IDispatchCommits InitializeEventDispatcher(IContext context)
         {
             var dispatcher = new EventDispatcher();
 
-            dispatcher.RegisterHandler(iow => new UserAccountDenormalizer(iow));
-            dispatcher.RegisterHandler<NewItemSubmittedEvent>(iow => new SubmittedItemDenormalizer(iow));
-            dispatcher.RegisterHandler<ItemPublishedEvent>(iow => new SubmittedItemDenormalizer(iow));
-            dispatcher.RegisterHandler(iow => new PublishedItemDenormalizer(iow));
+            dispatcher.RegisterHandler<UserAccountRegisteredEvent>(evnt => new UserAccountDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            dispatcher.RegisterHandler<NewItemSubmittedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            //dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new PublishedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
 
             return dispatcher;
         }
@@ -89,18 +90,6 @@ namespace DotNetFlow.Core.Infrastructure
 
             return service;
         }
-
-        //private static IEventBus InitializeEventBus()
-        //{
-        //    var bus = new InProcessEventBus();
-        //    bus.RegisterAllHandlersInAssembly(typeof(DomainRegistry).Assembly, ObjectFactory.GetInstance);
-        //    return bus;
-        //}
-
-        //private static IEventStore InitializeEventStore()
-        //{
-        //    return new MsSqlServerEventStore(ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString);
-        //}
 
         /// <summary>
         /// The comb algorithm is designed to make the use of GUIDs as Primary Keys, Foreign Keys, and Indexes nearly as efficient as ints.

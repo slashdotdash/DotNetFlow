@@ -13,14 +13,14 @@ namespace DotNetFlow.Features.Steps
         public void WhenIEnterMyUsernameAndPassword()
         {
             var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
-            LoginWith(command.Username, command.Password);
+            LoginWith(command.Username, "password");
         }
 
         [When(@"I enter my email address and password")]
         public void WhenIEnterMyEmailAddressAndPassword()
         {
             var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
-            LoginWith(command.Email, command.Password);            
+            LoginWith(command.Email, "password");            
         }
         
         [When(@"I enter an incorrect username and password")]
@@ -39,7 +39,7 @@ namespace DotNetFlow.Features.Steps
         [Then(@"I should see the login failed error message")]
         public void ThenIShouldSeeTheLoginFailedErrorMessage()
         {
-            var error = WebBrowser.Current.FindElement(By.CssSelector("field-validation-error"));
+            var error = WebBrowser.Current.FindElement(By.CssSelector(".field-validation-error"));
             Assert.AreEqual("Login failed, please check your username or e-mail address and password and try again.", error.Text);
         }
 
@@ -75,52 +75,9 @@ namespace DotNetFlow.Features.Steps
 
         private static void AssertLoggedInAs(string expectedUsername)
         {
-            var loginStatus = WebBrowser.Current.FindElement(By.CssSelector("logged-in-as"));
+            var loginStatus = WebBrowser.Current.FindElement(By.CssSelector(".logged-in-as"));
             Assert.IsNotNull(loginStatus, "Could not find login status element (searching for CSS class 'logged-in-as')");
             Assert.AreEqual(expectedUsername, loginStatus.Text);
         }
     }
 }
-
-/*When /^I enter my username and password$/ do
-  @username = @command.username
-  @password = @command.password
-  
-  When %{I fill in "Username or E-mail" with "#{@username}"}
-  When %{I fill in "Password" with "#{@password}"}
-end
-
-When /^I enter my email address and password$/ do
-  @email = @command.email
-  @password = @command.password
-  
-  When %{I fill in "Username or E-mail" with "#{@email}"}
-  When %{I fill in "Password" with "#{@password}"}
-end
-
-When /^I enter my email address and the wrong password$/ do
-  @email = @command.email
-  
-  When %{I fill in "Username or E-mail" with "#{@email}"}
-  When %{I fill in "Password" with "incorrect"}
-end
-
-When /^I enter an incorrect username and password$/ do
-  @username = @command.username
-  @password = @command.password
-  
-  When %{I fill in "Username or E-mail" with "x#{@username}x"}
-  When %{I fill in "Password" with "#{@password}"}
-end
-
-Then /^I should be logged in$/ do
-  Then %{I should see "Welcome #{@username}."}
-end
-
-Then /^I should not be logged in$/ do
-  Then %{I should see "Welcome Guest."}
-end
-
-Then /^I should see the login failed error message$/ do
-  Then %{I should see "Login failed, please check your username or e-mail address and password and try again."}
-end*/

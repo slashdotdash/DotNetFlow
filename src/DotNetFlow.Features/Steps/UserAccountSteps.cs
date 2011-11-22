@@ -1,9 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
-using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Services;
-using StructureMap;
+using DotNetFlow.Features.Infrastructure;
 using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Features.Steps
@@ -14,14 +13,11 @@ namespace DotNetFlow.Features.Steps
         [Given(@"a user account has been registered")]
         public void GivenAUserAccountHasBeenRegistered()
         {
-            var commandService = ScenarioContext.Current.Get<ICommandService>();
             var idGenerator = ScenarioContext.Current.Get<IUniqueIdentifierGenerator>();
             var passwordHashing = ScenarioContext.Current.Get<IHashPasswords>();
 
             var fullName = Faker.Name.FullName(Faker.NameFormats.Standard);
             var userName = Regex.Replace(fullName, @"[^A-Za-z0-9]|\s", string.Empty);
-
-            ScenarioContext.Current.Set("Username", userName);
 
             var registerUserCommand = new RegisterUserAccountCommand
             {
@@ -32,11 +28,7 @@ namespace DotNetFlow.Features.Steps
                 Password = passwordHashing.HashPassword("password")
             };
 
-            using (var uow = ObjectFactory.GetInstance<IUnitOfWork>())
-            {
-                commandService.Execute(registerUserCommand);
-                uow.Commit();
-            }
+            new CommandExecutor().Execute(registerUserCommand);
 
             ScenarioContext.Current.Set(registerUserCommand);
         }

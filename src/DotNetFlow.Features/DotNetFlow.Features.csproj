@@ -47,10 +47,6 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Ncqrs\Ncqrs.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -62,6 +58,7 @@
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -82,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\BrowserEvents.cs" />
-    <Compile Include="Events\EventDefinition1.cs" />
     <Compile Include="Events\IntegrationEvents.cs" />
     <Compile Include="Extensions\AssemblyExtensions.cs" />
     <Compile Include="Extensions\ScenarioContextExtensions.cs" />
@@ -92,6 +88,8 @@
       <DependentUpon>AnonymousVisitorLogsIn.feature</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ApplicationUrl.cs" />
+    <Compile Include="Infrastructure\CommandExecutor.cs" />
+    <Compile Include="Infrastructure\EventStoreCleaner.cs" />
     <Compile Include="Infrastructure\WebBrowser.cs" />
     <Compile Include="Infrastructure\WebDriverExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

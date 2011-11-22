@@ -3,6 +3,7 @@ using System.Web.Routing;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Infrastructure;
 using FluentValidation.Mvc;
+using StructureMap;
 
 namespace DotNetFlow
 {
@@ -11,7 +12,7 @@ namespace DotNetFlow
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new UseUnitOfWork());
+            filters.Add(new UseUnitOfWork(ObjectFactory.GetInstance<IUnitOfWork>));
         }
 
         public static void RegisterRoutes(RouteCollection routes)
@@ -43,7 +44,7 @@ namespace DotNetFlow
         
         protected void Application_EndRequest()
         {            
-            //ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
+            ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
 
         private static void EnableFluentValidation()
