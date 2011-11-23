@@ -1,26 +1,26 @@
-﻿using System;
-using System.Linq;
-using DotNetFlow.Core.Commands;
+﻿using System.Linq;
 using DotNetFlow.Core.Commands.Validators;
 using DotNetFlow.Specifications.Builders;
+using DotNetFlow.Specifications.Infrastructure;
 using FluentValidation.Results;
-using Ncqrs.Spec;
 using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
-    public class OnlyAlphanumericsAndUnderscoreAllowedInUsernameSpec : BaseTestFixture<RegisterUserAccountValidator>
+    [Specification]
+    public class OnlyAlphanumericsAndUnderscoreAllowedInUsernameSpec : SpecificationBase
     {
         private ValidationResult _validationOutcome;
+        private RegisterUserAccountValidator _subjectUnderTest;
 
-        protected override void Given()
+        public override void Given()
         {
-            SubjectUnderTest = new RegisterUserAccountValidator(username => false, email => false);
+            _subjectUnderTest = new RegisterUserAccountValidator(username => false, email => false);
         }
 
-        protected override void When()
+        public override void When()
         {
-            _validationOutcome = SubjectUnderTest.Validate(
+            _validationOutcome = _subjectUnderTest.Validate(
                 new RegisterUserAccountBuilder().Username("Inv@l!d").Build());
         }
 

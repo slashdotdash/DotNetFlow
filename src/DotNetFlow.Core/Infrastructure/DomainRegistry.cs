@@ -30,8 +30,9 @@ namespace DotNetFlow.Core.Infrastructure
             ConfigureCqrsInfrastructure();            
             ConfigureUnitOfWorkPerHttpRequest();
             ConfigureCommandValidators();
+            ConfigureEventHandlers();
             ConfigureReadModel();
-            ConfigureServices();            
+            ConfigureServices();
         }
 
         private void ConfigureCqrsInfrastructure()
@@ -62,10 +63,9 @@ namespace DotNetFlow.Core.Infrastructure
             dispatcher.RegisterHandler<UserAccountRegisteredEvent>(evnt => new UserAccountDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
             dispatcher.RegisterHandler<NewItemSubmittedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
             dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
-            //dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new PublishedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
-
+            
             return dispatcher;
-        }
+        }        
 
         /// <summary>
         /// Share the same unit-of-work instance within a single HTTP request
@@ -89,6 +89,13 @@ namespace DotNetFlow.Core.Infrastructure
             service.RegisterExecutor(new PublishItemExecutor());
 
             return service;
+        }
+
+        public void ConfigureEventHandlers()
+        {
+            For<UserAccountDenormalizer>().Use<UserAccountDenormalizer>();
+            For<SubmittedItemDenormalizer>().Use<SubmittedItemDenormalizer>();
+            For<PublishedItemDenormalizer>().Use<PublishedItemDenormalizer>();
         }
 
         /// <summary>

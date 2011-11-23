@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Features", "DotN
 		{D59BFCD4-D678-4FE6-8419-3817C902EB3C} = {D59BFCD4-D678-4FE6-8419-3817C902EB3C}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications", "DotNetFlow.Specifications\DotNetFlow.Specifications.csproj", "{74B5ECB4-CC0A-412D-B967-CA4826326114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

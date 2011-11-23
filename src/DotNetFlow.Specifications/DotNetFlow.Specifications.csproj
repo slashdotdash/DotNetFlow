@@ -35,7 +35,10 @@
       <HintPath>..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
     </Reference>
     <Reference Include="EventStore">
-      <HintPath>..\packages\EventStore.3.0.11305.44\lib\net40\EventStore.dll</HintPath>
+      <HintPath>..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.Serialization.Json">
+      <HintPath>..\packages\EventStore.Serialization.Json.3.0.11326.44\lib\net40\EventStore.Serialization.Json.dll</HintPath>
     </Reference>
     <Reference Include="Faker">
       <HintPath>..\..\lib\Faker\Faker.dll</HintPath>
@@ -94,12 +97,15 @@
     <Compile Include="Builders\UserAccountRegisteredBuilder.cs" />
     <Compile Include="Builders\NewItemSubmittedBuilder.cs" />
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
+    <Compile Include="Infrastructure\CommandTestFixture.cs" />
     <Compile Include="Infrastructure\DatabaseMigrator.cs" />
+    <Compile Include="Infrastructure\DomainTestFixture.cs" />
     <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
     <Compile Include="Infrastructure\EventStoreCleaner.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
     <Compile Include="Infrastructure\GenericCommandExecutor.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
+    <Compile Include="Infrastructure\SpecificationBase.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
     <Compile Include="PublishItems\SubmittedItemIsRemovedSpec.cs" />
