@@ -1,10 +1,11 @@
 ﻿using System;
 using DotNetFlow.Core.DomainModel;
-using Ncqrs.Eventing.Sourcing;
+using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.Events
 {
-    public sealed class NewItemSubmittedEvent : SourcedEvent
+    public sealed class NewItemSubmittedEvent : IDomainEvent
     {
         public Guid ItemId { get; set; }
         public DateTime SubmittedAt;

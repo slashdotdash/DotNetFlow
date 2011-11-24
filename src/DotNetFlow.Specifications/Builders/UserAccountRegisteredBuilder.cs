@@ -8,6 +8,7 @@ namespace DotNetFlow.Specifications.Builders
         private Guid _id = Guid.NewGuid();
         private DateTime _registeredAt = DateTime.Now;
         private string _fullName = "Ben Smith";
+        private string _username = "dotnetflow";
         private string _email = "ben@dotnetflow.com";
         private string _hashedPassword = "password1234";        
         private string _website = "www.dotnetflow.com";
@@ -22,6 +23,12 @@ namespace DotNetFlow.Specifications.Builders
         public UserAccountRegisteredBuilder Named(string name)
         {
             _fullName = name;
+            return this;
+        }
+
+        public UserAccountRegisteredBuilder Username(string username)
+        {
+            _username = username;
             return this;
         }
 
@@ -44,6 +51,7 @@ namespace DotNetFlow.Specifications.Builders
                 UserId = _id,
                 RegisteredAt = _registeredAt,
                 FullName = _fullName,
+                Username = _username,
                 Email = _email,
                 HashedPassword = _hashedPassword,
                 Website = _website,

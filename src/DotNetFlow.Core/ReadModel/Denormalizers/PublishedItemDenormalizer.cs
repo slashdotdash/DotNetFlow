@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
 {

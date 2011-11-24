@@ -1,9 +1,10 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.Infrastructure.Commanding;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using DotNetFlow.Core.Services;
-using Ncqrs;
-using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Controllers
 {
@@ -41,7 +42,7 @@ namespace DotNetFlow.Controllers
 
                 _commandService.Execute(command);
 
-                LoginUser(command.FullName);
+                LoginUser(command.Username);
 
                 return RedirectToRoute("Home");
             }
@@ -49,9 +50,9 @@ namespace DotNetFlow.Controllers
             return View();
         }
 
-        private static void LoginUser(string email)
+        private static void LoginUser(string username)
         {
-            FormsAuthentication.SetAuthCookie(email.Trim(), true);
+            FormsAuthentication.SetAuthCookie(username.Trim(), true);
         }
     }
 }

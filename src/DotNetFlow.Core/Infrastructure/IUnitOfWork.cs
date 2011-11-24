@@ -5,7 +5,7 @@ namespace DotNetFlow.Core.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {
-        void Initialize();
+        void Begin();
         void Commit();
         void Rollback();
 

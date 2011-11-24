@@ -1,12 +1,11 @@
 ﻿using System.Linq;
-using Ncqrs.Spec;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using NUnit.Framework;
 using Dapper;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Core.ReadModel.Denormalizers;
 using DotNetFlow.Specifications.Builders;
 using DotNetFlow.Specifications.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
@@ -35,6 +34,13 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         {
             var emailAddresses = UnitOfWork.Connection.Query<int>("select count(*) from RegisteredEmailAddresses", null, UnitOfWork.Transaction);
             Assert.AreEqual(1, emailAddresses.Single());
+        }
+
+        [Then]
+        public void Should_Insert_RegisteredUsername()
+        {
+            var usernames = UnitOfWork.Connection.Query<int>("select count(*) from RegisteredUsernames", null, UnitOfWork.Transaction);
+            Assert.AreEqual(1, usernames.Single());
         }
     }
 }

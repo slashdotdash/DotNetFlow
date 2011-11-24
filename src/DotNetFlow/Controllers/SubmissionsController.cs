@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
+using DotNetFlow.Core.Infrastructure.Commanding;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
-using Ncqrs;
-using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Controllers
 {
@@ -16,13 +13,13 @@ namespace DotNetFlow.Controllers
     {
         private readonly ICommandService _commandService;
         private readonly IUniqueIdentifierGenerator _idGenerator;
-        private readonly IRepository<Submission> _repository;
+        private readonly IReadModelRepository<Submission> _readModelRepository;
 
-        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IRepository<Submission> repository)
+        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IReadModelRepository<Submission> readModelRepository)
         {
             _commandService = commandService;
             _idGenerator = idGenerator;
-            _repository = repository;
+            _readModelRepository = readModelRepository;
         }
 
         //
@@ -38,7 +35,7 @@ namespace DotNetFlow.Controllers
 
         public ActionResult Details(Guid id)
         {
-            var submission = _repository.Get(id);
+            var submission = _readModelRepository.Get(id);
             return View(submission);
         }
 
@@ -48,7 +45,7 @@ namespace DotNetFlow.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Submissions/Create
@@ -63,60 +60,8 @@ namespace DotNetFlow.Controllers
 
                 return RedirectToAction("Details", new { id = command.ItemId });
             }
-            
-            return View();            
-        }
-        
-        //
-        // GET: /Submissions/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
+
             return View();
-        }
-
-        //
-        // POST: /Submissions/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Submissions/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Submissions/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

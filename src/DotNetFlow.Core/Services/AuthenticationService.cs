@@ -5,18 +5,18 @@ namespace DotNetFlow.Core.Services
 {
     public sealed class AuthenticationService : IAuthenticationService
     {
-        private readonly IUserRepository _repository;
+        private readonly IUserReadModelRepository _readModelRepository;
         private readonly IHashPasswords _passwordHashing;
 
-        public AuthenticationService(IUserRepository repository, IHashPasswords passwordHashing)
+        public AuthenticationService(IUserReadModelRepository readModelRepository, IHashPasswords passwordHashing)
         {
-            _repository = repository;
+            _readModelRepository = readModelRepository;
             _passwordHashing = passwordHashing;
         }
 
-        public AuthenticationModel Authenticate(string email, string password)
+        public AuthenticationModel Authenticate(string usernameOrEmail, string password)
         {
-            var user = _repository.FindByEmail(email);
+            var user = _readModelRepository.FindByUsernameOrEmail(usernameOrEmail);
             if (user != null)
             {
                 // Compare hash of submitted password with that stored for the user, using the same salt                

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
+using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Extensions;
-using Ncqrs.Commanding.ServiceModel;
 
 namespace DotNetFlow.Areas.Admin.Controllers
 {

@@ -1,43 +1,49 @@
 ﻿using System;
 using System.Web.Mvc;
-using StructureMap;
 
 namespace DotNetFlow.Core.Infrastructure
 {
+    /// <summary>
+    /// Use a unit-of-work per web request, rolling back the transaction on any thrown exception
+    /// </summary>
     public sealed class UseUnitOfWork : ActionFilterAttribute
     {
-        private IUnitOfWork _unitOfWork;
+        // Use a Func as in ASP.NET MVC 3 filters are cached
+        private readonly Func<IUnitOfWork> _unitOfWorkFactory;
+
+        public UseUnitOfWork(Func<IUnitOfWork> unitOfWork)
+        {
+            _unitOfWorkFactory = unitOfWork;
+        }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            _unitOfWork = ObjectFactory.GetInstance<IUnitOfWork>();            
+            _unitOfWorkFactory().Begin();
         }
         
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            if (filterContext.Exception == null)
+            var unitOfWork = _unitOfWorkFactory();
+
+            try
             {
-                try
+                if (filterContext.Exception == null || filterContext.ExceptionHandled)
                 {
-                    _unitOfWork.Commit();
+                    unitOfWork.Commit();
                 }
-                catch (Exception)
+                else
                 {
-                    _unitOfWork.Rollback();
-                    throw;
-                }
-                finally
-                {
-                    _unitOfWork.Dispose();
+                    unitOfWork.Rollback();
                 }
             }
-            else
+            catch
             {
-                if (_unitOfWork != null)
-                {
-                    _unitOfWork.Rollback();
-                    _unitOfWork.Dispose();
-                }
+                unitOfWork.Rollback();
+                throw;
+            }
+            finally
+            {
+                unitOfWork.Dispose();
             }
         }        
     }

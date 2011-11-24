@@ -1,12 +1,11 @@
 ﻿using System;
-using Ncqrs.Eventing.ServiceModel.Bus;
-using Ncqrs.Eventing.Sourcing;
-using Ncqrs.Spec;
+using DotNetFlow.Core.Infrastructure.Eventing;
+using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.Infrastructure
 {
     [Specification]
-    public abstract class EventTestFixture<TEvent> where TEvent : ISourcedEvent
+    public abstract class EventTestFixture<TEvent> where TEvent : IDomainEvent
     {
         protected Exception CaughtException { get; private set; }
 
@@ -17,19 +16,18 @@ namespace DotNetFlow.Specifications.Infrastructure
         protected virtual void SetupDependencies() { }
         protected virtual void Finally() { }
 
-        [Given]
+        [TestFixtureSetUp]        
         public void Setup()
-        {            
+        {
             SetupDependencies();
             try
             {
                 var handler = BuildEventHandler();
+                var evnt = WhenExecutingEvent();
 
-                var @event = WhenExecutingEvent();
+                handler.Handle(evnt);
 
-                handler.Handle(@event);
-
-                ExecutedEvent = @event;
+                ExecutedEvent = evnt;
             }
             catch (Exception exception)
             {

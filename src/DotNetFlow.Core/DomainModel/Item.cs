@@ -1,11 +1,11 @@
 ﻿using System;
+using CommonDomain.Core;
 using DotNetFlow.Core.Events;
 using MarkdownSharp;
-using Ncqrs.Domain;
 
 namespace DotNetFlow.Core.DomainModel
 {
-    public sealed class Item : AggregateRootMappedByConvention
+    public sealed class Item : AggregateBase
     {
         private Guid _id;
         private string _submittedByUserName;
@@ -18,22 +18,22 @@ namespace DotNetFlow.Core.DomainModel
         private static readonly Markdown Markdown = new Markdown(new MarkdownOptions
         {
             AutoHyperlink = true,
-            AutoNewlines = true,
+            AutoNewLines = true,
             EncodeProblemUrlCharacters = true,
             StrictBoldItalic = true,
             LinkEmails = true
         });
 
-        private Item()
-        {
-            // Private ctor for NCQRS
+        private Item(Guid id)
+        {            
+            Id = id;
         }
 
-        public Item(Guid id, string submittedByUser, string title, string content) : base(id)
+        public Item(Guid id, string submittedByUser, string title, string content) : this(id)
         {
             var htmlContent = Markdown.Transform(content);
-            
-            ApplyEvent(new NewItemSubmittedEvent
+
+            RaiseEvent(new NewItemSubmittedEvent
             {
                 ItemId = id,
                 SubmittedAt = DateTime.Now,
@@ -50,7 +50,7 @@ namespace DotNetFlow.Core.DomainModel
             if (_status == ApprovalStatus.Approved)
                 throw new InvalidOperationException("Item has already been approved");
 
-            ApplyEvent(new ItemPublishedEvent
+            RaiseEvent(new ItemPublishedEvent
             {
                 ItemId = _id,
                 PublishedAt = DateTime.Now,
@@ -63,7 +63,7 @@ namespace DotNetFlow.Core.DomainModel
             });
         }
 
-        private void OnNewItemSubmitted(NewItemSubmittedEvent @event)
+        private void Apply(NewItemSubmittedEvent @event)
         {
             _id = @event.ItemId;
             _submittedAt = @event.SubmittedAt;
@@ -74,7 +74,7 @@ namespace DotNetFlow.Core.DomainModel
             _status = @event.Status;
         }
 
-        private void OnItemPublished(ItemPublishedEvent @event)
+        private void Apply(ItemPublishedEvent @event)
         {
             _status = @event.Status;
             _publishedAt = @event.PublishedAt;

@@ -1,22 +1,22 @@
 ﻿using DotNetFlow.Core.Services;
-using Ncqrs.Spec;
+using DotNetFlow.Specifications.Infrastructure;
 using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.Authentication
 {
     [Specification]
-    public sealed class HashedPasswordVerification : BaseTestFixture
+    public sealed class HashedPasswordVerification : SpecificationBase
     {
         private IHashPasswords _passwordHashing;
         private const string Plaintext = "Plain Text Password";
         private string _hashedPassword;
 
-        protected override void Given()
+        public override void Given()
         {
             _passwordHashing = new BCryptPasswordHashing();
         }
 
-        protected override void When()
+        public override void When()
         {
             _hashedPassword = _passwordHashing.HashPassword(Plaintext);
         }

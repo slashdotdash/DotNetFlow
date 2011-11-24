@@ -6,7 +6,7 @@ namespace DotNetFlow.Core.Commands.Validators
     {
         public LoginUserValidator()
         {
-            RuleFor(x => x.Email).NotEmpty().EmailAddress().Length(1, 1000);
+            RuleFor(x => x.UsernameOrEmail).NotEmpty().Length(1, 1000);
             RuleFor(x => x.Password).NotEmpty().Length(6, 1000);
         }
     }

@@ -40,14 +40,14 @@ namespace DotNetFlow.Controllers
         {
             if (ModelState.IsValid)
             {
-                var authorisation = _authentication.Authenticate(command.Email, command.Password);
+                var authorisation = _authentication.Authenticate(command.UsernameOrEmail, command.Password);
                 if (authorisation.IsAuthenticated)
                 {
                     LoginUser(authorisation.User);
                     return RedirectToRoute("Home");   
                 }
 
-                ModelState.AddModelError("*", "Login failed, please check your e-mail address and password and try again.");
+                ModelState.AddModelError("*", "Login failed, please check your username or e-mail address and password and try again.");
             }
 
             return View();
@@ -55,7 +55,7 @@ namespace DotNetFlow.Controllers
 
         private static void LoginUser(UserAccountModel user)
         {
-            FormsAuthentication.SetAuthCookie(user.FullName, true);
+            FormsAuthentication.SetAuthCookie(user.Username, true);
         }
 
         //

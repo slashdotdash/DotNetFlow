@@ -1,10 +1,10 @@
-﻿using Ncqrs.Commanding;
+﻿using DotNetFlow.Core.Infrastructure.Commanding;
 
 namespace DotNetFlow.Core.Commands
 {
-    public sealed class LoginUserCommand : CommandBase
+    public sealed class LoginUserCommand : ICommand
     {
-        public string Email { get; set; }
+        public string UsernameOrEmail { get; set; }
         public string Password { get; set; }
         public bool RememberMe { get; set; }
     }

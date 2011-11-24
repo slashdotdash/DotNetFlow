@@ -1,12 +1,13 @@
 ﻿using System;
-using Ncqrs.Eventing.Sourcing;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.Events
 {
-    public sealed class UserAccountRegisteredEvent : SourcedEvent
+    public sealed class UserAccountRegisteredEvent : IDomainEvent
     {        
         public Guid UserId { get; set; }
         public DateTime RegisteredAt;
+        public string Username { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }

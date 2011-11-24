@@ -1,27 +1,27 @@
 ﻿using System.Configuration;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.Sourcing;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.Infrastructure
 {
-    public abstract class EventDenormalizerTestFixture<TEvent> : EventTestFixture<TEvent> where TEvent : ISourcedEvent
+    public abstract class EventDenormalizerTestFixture<TEvent> : EventTestFixture<TEvent> where TEvent : IDomainEvent
     {
-        protected IUnitOfWork UnitOfWork;        
+        protected IUnitOfWork UnitOfWork;
 
         protected override void SetupDependencies()
         {
             UnitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
-            UnitOfWork.Initialize();
-        }        
+            UnitOfWork.Begin();
+        }
 
         [TestFixtureSetUp]
         public void SetUp()
         {
-            new DatabaseMigrator().MigrateToLastVersion();            
+            new DatabaseMigrator().MigrateToLastVersion();
         }
 
-        [TearDown]
+        [TestFixtureTearDown]
         public void Dispose()
         {
             if (UnitOfWork == null) return;

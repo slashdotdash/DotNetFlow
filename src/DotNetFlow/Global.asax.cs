@@ -3,6 +3,7 @@ using System.Web.Routing;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Infrastructure;
 using FluentValidation.Mvc;
+using StructureMap;
 
 namespace DotNetFlow
 {
@@ -11,7 +12,7 @@ namespace DotNetFlow
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new UseUnitOfWork());
+            filters.Add(new UseUnitOfWork(ObjectFactory.GetInstance<IUnitOfWork>));
         }
 
         public static void RegisterRoutes(RouteCollection routes)
@@ -22,13 +23,10 @@ namespace DotNetFlow
             routes.MapRoute("Logout", "logout", new { controller = "Session", action = "Delete" });
             routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
             routes.MapRoute("SubmitItem", "submit", new { controller = "Submissions", action = "Create" });
-            routes.MapRoute("Home", "", new { controller = "Items", action = "Index" });
-            
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            routes.MapRoute("Home", string.Empty, new { controller = "PublishedItems", action = "Index" });
+
+            // Map default root
+            routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
 
         protected void Application_Start()
@@ -46,7 +44,7 @@ namespace DotNetFlow
         
         protected void Application_EndRequest()
         {            
-            //ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
+            ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
 
         private static void EnableFluentValidation()

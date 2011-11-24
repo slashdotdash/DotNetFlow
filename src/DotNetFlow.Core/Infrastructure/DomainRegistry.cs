@@ -1,12 +1,19 @@
 ﻿using System.Configuration;
+using CommonDomain;
+using CommonDomain.Core;
+using CommonDomain.Persistence;
+using CommonDomain.Persistence.EventStore;
+using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Aggregates;
+using DotNetFlow.Core.Infrastructure.Commanding;
+using DotNetFlow.Core.Infrastructure.Eventing;
+using DotNetFlow.Core.ReadModel.Denormalizers;
 using DotNetFlow.Core.ReadModel.Models;
+using DotNetFlow.Core.ReadModel.Queries;
 using DotNetFlow.Core.ReadModel.Repositories;
 using DotNetFlow.Core.Services;
-using Ncqrs;
-using Ncqrs.Commanding.ServiceModel;
-using Ncqrs.Eventing.ServiceModel.Bus;
-using Ncqrs.Eventing.Storage;
-using Ncqrs.Eventing.Storage.SQL;
+using EventStore;
+using EventStore.Dispatcher;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using FluentValidation;
@@ -19,21 +26,46 @@ namespace DotNetFlow.Core.Infrastructure
     public class DomainRegistry : Registry
     {
         public DomainRegistry()
-        {
-            ConfigureNcqrsInfrastructure();
+        {            
+            ConfigureCqrsInfrastructure();            
             ConfigureUnitOfWorkPerHttpRequest();
             ConfigureCommandValidators();
-            ConfigureReadModelRepositories();
+            ConfigureEventHandlers();
+            ConfigureReadModel();
             ConfigureServices();
         }
 
-        private void ConfigureNcqrsInfrastructure()
+        private void ConfigureCqrsInfrastructure()
         {
-            For<IEventStore>().Use(InitializeEventStore);
-            For<IEventBus>().Use(InitializeEventBus);
+            For<IStoreEvents>().Use(ConfigureEventStore);
+            For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
             For<ICommandService>().Use(InitializeCommandService);
+            For<IConstructAggregates>().Use<SimpleAggregateCreationStrategy>();
+            For<IDetectConflicts>().Use<ConflictDetector>();
+            For<IRepository>().Use<EventStoreRepository>();            
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
         }
+
+        private static IStoreEvents ConfigureEventStore(IContext context)
+        {
+            return Wireup.Init()
+                .UsingSqlPersistence("EventStore")
+                .InitializeStorageEngine()
+                .UsingJsonSerialization()
+                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher(context))
+                .Build();
+        }
+
+        private static IDispatchCommits InitializeEventDispatcher(IContext context)
+        {
+            var dispatcher = new EventDispatcher();
+
+            dispatcher.RegisterHandler<UserAccountRegisteredEvent>(evnt => new UserAccountDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            dispatcher.RegisterHandler<NewItemSubmittedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
+            
+            return dispatcher;
+        }        
 
         /// <summary>
         /// Share the same unit-of-work instance within a single HTTP request
@@ -51,22 +83,19 @@ namespace DotNetFlow.Core.Infrastructure
         private static ICommandService InitializeCommandService()
         {
             var service = new CommandService();
+
             service.RegisterExecutor(new SubmitNewItemExecutor());
             service.RegisterExecutor(new RegisterUserAccountExecutor());
             service.RegisterExecutor(new PublishItemExecutor());
+
             return service;
         }
 
-        private static IEventBus InitializeEventBus()
+        public void ConfigureEventHandlers()
         {
-            var bus = new InProcessEventBus();
-            bus.RegisterAllHandlersInAssembly(typeof(DomainRegistry).Assembly, ObjectFactory.GetInstance);
-            return bus;
-        }
-
-        private static IEventStore InitializeEventStore()
-        {
-            return new MsSqlServerEventStore(ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString);
+            For<UserAccountDenormalizer>().Use<UserAccountDenormalizer>();
+            For<SubmittedItemDenormalizer>().Use<SubmittedItemDenormalizer>();
+            For<PublishedItemDenormalizer>().Use<PublishedItemDenormalizer>();
         }
 
         /// <summary>
@@ -79,9 +108,9 @@ namespace DotNetFlow.Core.Infrastructure
 
         private void ConfigureCommandValidators()
         {
-            For<IValidator<SubmitNewItemCommand>>().Singleton().Use<SubmitNewItemValidator>();
-            For<IValidator<RegisterUserAccountCommand>>().Singleton().Use(c => new RegisterUserAccountValidator(c.GetInstance<IRegisteredEmailRepository>));
-            For<IValidator<LoginUserCommand>>().Singleton().Use<LoginUserValidator>();
+            For<IValidator<SubmitNewItemCommand>>().Use<SubmitNewItemValidator>();
+            For<IValidator<RegisterUserAccountCommand>>().Use(c => new RegisterUserAccountValidator(c.GetInstance<IFindExistingUsername>().Exists, c.GetInstance<IFindExistingEmailAddress>().Exists));
+            For<IValidator<LoginUserCommand>>().Use<LoginUserValidator>();
         }
 
         private void ConfigureServices()
@@ -90,11 +119,13 @@ namespace DotNetFlow.Core.Infrastructure
             For<IAuthenticationService>().Use<AuthenticationService>();            
         }
 
-        private void ConfigureReadModelRepositories()
+        private void ConfigureReadModel()
         {
-            For<IRepository<Submission>>().Use<SubmissionRepository>();
-            For<IUserRepository>().Use<UserRepository>();
-            For<IRegisteredEmailRepository>().Use<RegisteredEmailRepository>();
+            For<IReadModelRepository<Submission>>().Use<SubmissionReadModelRepository>();
+            For<IUserReadModelRepository>().Use<UserReadModelRepository>();
+            For<IFindExistingUsername>().Use<FindExistingUsernameQuery>();
+            For<IFindExistingEmailAddress>().Use<FindExistingEmailAddressQuery>();
+            For<IQueryModel<PublishedItem>>().Use<LatestPublishedItemsQuery>();
         }
     }
 }

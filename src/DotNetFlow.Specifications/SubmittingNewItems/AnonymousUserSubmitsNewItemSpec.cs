@@ -3,10 +3,10 @@ using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Commands.Executors;
 using DotNetFlow.Core.DomainModel;
 using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Specifications.Builders;
+using DotNetFlow.Specifications.Infrastructure;
 using MarkdownSharp;
-using Ncqrs.Commanding.CommandExecution;
-using Ncqrs.Spec;
 using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.SubmittingNewItems
@@ -19,7 +19,7 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
             return new SubmitNewItemExecutor();
         }
 
-        protected override SubmitNewItemCommand WhenExecutingCommand()
+        protected override SubmitNewItemCommand WhenExecuting()
         {
             return new SubmitNewItemBuilder().Build();
         }
@@ -27,27 +27,27 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
         [Then]
         public void Should_Publish_NewItemSubmitted_Event()
         {
-            Assert.IsInstanceOf(typeof(NewItemSubmittedEvent), PublishedEvents.Single());
+            Assert.IsInstanceOf(typeof(NewItemSubmittedEvent), CommittedEvents.Single().Body);
         }
 
         [And]
         public void Should_Mark_New_Item_As_Pending_Approval()
         {
-            var @event = (NewItemSubmittedEvent)PublishedEvents.Single();
+            var @event = (NewItemSubmittedEvent)CommittedEvents.Single().Body;
             Assert.AreEqual(ApprovalStatus.Pending, @event.Status);
         }
 
         [And]
         public void Should_Set_EventSourceId_As_ItemId()
         {
-            var @event = (NewItemSubmittedEvent)PublishedEvents.Single();
-            Assert.AreEqual(ExecutedCommand.ItemId, @event.EventSourceId);
+            var @event = (NewItemSubmittedEvent)CommittedEvents.Single().Body;
+            Assert.AreEqual(ExecutedCommand.ItemId, @event.ItemId);
         }
 
         [And]
         public void Should_Set_Event_Properties()
         {
-            var @event = (NewItemSubmittedEvent)PublishedEvents.Single();
+            var @event = (NewItemSubmittedEvent)CommittedEvents.Single().Body;
             Assert.AreEqual(ExecutedCommand.ItemId, @event.ItemId);
             Assert.AreEqual(ExecutedCommand.UsersName, @event.SubmissionUsersName);
         }
@@ -55,7 +55,7 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
         [And]
         public void Should_Convert_Raw_Content_To_Html()
         {
-            var @event = (NewItemSubmittedEvent)PublishedEvents.Single();
+            var @event = (NewItemSubmittedEvent)CommittedEvents.Single().Body;
             Assert.AreEqual(ExecutedCommand.Content, @event.RawContent);
 
             var parsedHtml = new Markdown().Transform(ExecutedCommand.Content);

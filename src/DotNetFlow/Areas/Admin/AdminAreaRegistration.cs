@@ -16,6 +16,7 @@ namespace DotNetFlow.Areas.Admin
         {
             context.MapRoute("PendingApproval", "admin/pending", new { controller = "PendingApproval", action = "Index" });
             context.MapRoute("Publish", "admin/publish", new { controller = "Publishing", action = "Create" });
+            context.MapRoute("Commanding", "admin/command/{commandType}", new { controller = "CommandExecutor", action = "Execute" });
 
             context.MapRoute(
                 "Admin_default",

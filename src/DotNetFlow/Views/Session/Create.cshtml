@@ -14,9 +14,9 @@
         @Html.ValidationSummary(true)
 
         <div class="form_row clearfix">
-            @Html.LabelFor(model => model.Email, "E-mail")
-	        @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
+            @Html.LabelFor(model => model.UsernameOrEmail, "Username or E-mail")
+	        @Html.EditorFor(model => model.UsernameOrEmail)
+            @Html.ValidationMessageFor(model => model.UsernameOrEmail)
         </div>
 
         <div class="form_row clearfix">

@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using DotNetFlow.Core.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 using DotNetFlow.Core.Events;
+using DotNetFlow.Core.Infrastructure.Eventing;
 
 namespace DotNetFlow.Core.ReadModel.Denormalizers
 {
@@ -15,7 +15,7 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         }
 
         public void Handle(NewItemSubmittedEvent evnt)
-        {
+        {           
             _context.Connection.Execute(
                 "insert into Submissions (ItemId, SubmittedAt, UsersName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @SubmissionUsersName, @Title, @HtmlContent)",
                 new { evnt.ItemId, evnt.SubmittedAt, evnt.SubmissionUsersName, evnt.Title, evnt.HtmlContent },

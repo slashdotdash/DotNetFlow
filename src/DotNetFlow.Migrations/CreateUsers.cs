@@ -12,13 +12,15 @@ namespace DotNetFlow.Migrations
                               new Column("UserId", DbType.Guid, ColumnProperty.PrimaryKey),
                               new Column("RegisteredAt", DbType.DateTime),
                               new Column("FullName", DbType.String, 200),
+                              new Column("Username", DbType.String, 20),
                               new Column("Email", DbType.String, 1000),
                               new Column("HashedPassword", DbType.StringFixedLength, 60),
                               new Column("Website", DbType.String, 1000),
-                              new Column("Twitter", DbType.String, 200)
+                              new Column("Twitter", DbType.String, 20)
                 );
 
             Database.AddIndex("Users", "Email");
+            Database.AddUniqueConstraint("IX_Users_Unique_Username", "Users", "Username");
             Database.AddUniqueConstraint("IX_Users_Unique_Email", "Users", "Email");
         }
 

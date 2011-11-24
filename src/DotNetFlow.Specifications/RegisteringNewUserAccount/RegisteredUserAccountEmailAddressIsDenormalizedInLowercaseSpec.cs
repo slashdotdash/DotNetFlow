@@ -1,12 +1,11 @@
 ﻿using System.Linq;
-using Ncqrs.Spec;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using NUnit.Framework;
 using Dapper;
 using DotNetFlow.Core.Events;
 using DotNetFlow.Core.ReadModel.Denormalizers;
 using DotNetFlow.Specifications.Builders;
 using DotNetFlow.Specifications.Infrastructure;
-using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
@@ -24,7 +23,7 @@ namespace DotNetFlow.Specifications.RegisteringNewUserAccount
         protected override IEventHandler<UserAccountRegisteredEvent> BuildEventHandler()
         {
             return new UserAccountDenormalizer(UnitOfWork);
-        }       
+        }
 
         [Then]
         public void Should_Insert_Email_Address_In_Lowercase()

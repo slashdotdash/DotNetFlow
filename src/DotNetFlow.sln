@@ -5,18 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow", "DotNetFlow\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Core", "DotNetFlow.Core\DotNetFlow.Core.csproj", "{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications", "DotNetFlow.Specifications\DotNetFlow.Specifications.csproj", "{74B5ECB4-CC0A-412D-B967-CA4826326114}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Migrations", "DotNetFlow.Migrations\DotNetFlow.Migrations.csproj", "{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{77380DB8-0DFB-4F2A-80A5-7A6D416F077D}"
-	ProjectSection(SolutionItems) = preProject
-		..\features\register_account\anonymous_visitor_registers_an_account.feature = ..\features\register_account\anonymous_visitor_registers_an_account.feature
-		..\features\submit_items\anonymous_visitor_submits_item.feature = ..\features\submit_items\anonymous_visitor_submits_item.feature
-		..\features\syndication\anonymous_visitor_syndicates_items.feature = ..\features\syndication\anonymous_visitor_syndicates_items.feature
-		..\features\view_published_items\anonymous_visitor_views_published_items.feature = ..\features\view_published_items\anonymous_visitor_views_published_items.feature
-		..\features\publish_item\approver_publishes_submitted_item.feature = ..\features\publish_item\approver_publishes_submitted_item.feature
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Features", "DotNetFlow.Features\DotNetFlow.Features.csproj", "{A192A276-E1E8-4210-B0AF-60ADB338B678}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D59BFCD4-D678-4FE6-8419-3817C902EB3C} = {D59BFCD4-D678-4FE6-8419-3817C902EB3C}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Migrations", "DotNetFlow.Migrations\DotNetFlow.Migrations.csproj", "{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFlow.Specifications", "DotNetFlow.Specifications\DotNetFlow.Specifications.csproj", "{74B5ECB4-CC0A-412D-B967-CA4826326114}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,14 +28,18 @@ Global
 		{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCD0D1E2-66DC-4FA4-B09A-4FD389CB3316}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AFF0FD-0DFE-4E6C-A9A8-B2F1F4C68A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A192A276-E1E8-4210-B0AF-60ADB338B678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B5ECB4-CC0A-412D-B967-CA4826326114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
