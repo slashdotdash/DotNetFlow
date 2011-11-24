@@ -6,45 +6,44 @@ using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Specifications.Builders;
 using DotNetFlow.Specifications.Infrastructure;
 using NUnit.Framework;
-using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
-    //[Specification]
-    //public sealed class AnonymousUserRegistersAnAccountSpec : CommandTestFixture<RegisterUserAccountCommand>
-    //{
-    //    protected override RegisterUserAccountCommand WhenExecuting()
-    //    {
-    //        return new RegisterUserAccountBuilder().Build();
-    //    }
-        
-    //    protected override ICommandExecutor<ICommand> BuildCommandExecutor()
-    //    {
-    //        return new GenericCommandExecutor<RegisterUserAccountCommand>(new RegisterUserAccountExecutor());
-    //    }
+    [Specification]
+    public sealed class AnonymousUserRegistersAnAccountSpec : CommandTestFixture<RegisterUserAccountCommand>
+    {
+        protected override RegisterUserAccountCommand WhenExecuting()
+        {
+            return new RegisterUserAccountBuilder().Build();
+        }
 
-    //    [Then]
-    //    public void Should_Publish_NewItemSubmitted_Event()
-    //    {
-    //        Assert.IsInstanceOf(typeof(UserAccountRegisteredEvent), PublishedEvents.Single().Payload);
-    //    }
+        protected override ICommandExecutor<RegisterUserAccountCommand> BuildCommandExecutor()
+        {
+            return new RegisterUserAccountExecutor();
+        }
 
-    //    [And]
-    //    public void Should_Set_EventSourceId_As_UserId()
-    //    {
-    //        var @event = (UserAccountRegisteredEvent)PublishedEvents.Single().Payload;
-    //        Assert.AreEqual(ExecutedCommand.UserId, @event.EventSourceId);
-    //    }
+        [Then]
+        public void Should_Publish_NewItemSubmitted_Event()
+        {
+            Assert.IsInstanceOf(typeof(UserAccountRegisteredEvent), CommittedEvents.Single().Body);
+        }
 
-    //    [And]
-    //    public void Should_Set_Event_Properties()
-    //    {
-    //        var @event = (UserAccountRegisteredEvent)PublishedEvents.Single().Payload;
-    //        Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
-    //        Assert.AreEqual(ExecutedCommand.Username, @event.Username);
-    //        Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);
-    //        Assert.AreEqual(ExecutedCommand.Email, @event.Email);
-    //        Assert.AreEqual(ExecutedCommand.Password, @event.HashedPassword);
-    //    }
-    //}
+        [And]
+        public void Should_Set_EventSourceId_As_UserId()
+        {
+            var @event = (UserAccountRegisteredEvent)CommittedEvents.Single().Body;
+            Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
+        }
+
+        [And]
+        public void Should_Set_Event_Properties()
+        {
+            var @event = (UserAccountRegisteredEvent)CommittedEvents.Single().Body;
+            Assert.AreEqual(ExecutedCommand.UserId, @event.UserId);
+            Assert.AreEqual(ExecutedCommand.Username, @event.Username);
+            Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);
+            Assert.AreEqual(ExecutedCommand.Email, @event.Email);
+            Assert.AreEqual(ExecutedCommand.Password, @event.HashedPassword);
+        }
+    }
 }

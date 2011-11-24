@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using DotNetFlow.Core.Infrastructure.Eventing;
 using NUnit.Framework;
 using Dapper;
 using DotNetFlow.Core.Events;
@@ -8,27 +9,27 @@ using DotNetFlow.Specifications.Infrastructure;
 
 namespace DotNetFlow.Specifications.RegisteringNewUserAccount
 {
-    ///// <summary>
-    ///// To ensure optimum index performance when checking for existing email address (case insensitive) it should be stored in lowercase
-    ///// </summary>
-    //[Specification, Integration]
-    //public sealed class RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec : EventDenormalizerTestFixture<UserAccountRegisteredEvent>
-    //{
-    //    protected override UserAccountRegisteredEvent WhenExecutingEvent()
-    //    {
-    //        return new UserAccountRegisteredBuilder().Email("Email@WithUpperAndLowerCase.com").Build();
-    //    }
+    /// <summary>
+    /// To ensure optimum index performance when checking for existing email address (case insensitive) it should be stored in lowercase
+    /// </summary>
+    [Specification, Integration]
+    public sealed class RegisteredUserAccountEmailAddressIsDenormalizedInLowercaseSpec : EventDenormalizerTestFixture<UserAccountRegisteredEvent>
+    {
+        protected override UserAccountRegisteredEvent WhenExecutingEvent()
+        {
+            return new UserAccountRegisteredBuilder().Email("Email@WithUpperAndLowerCase.com").Build();
+        }
 
-    //    protected override IEventHandler<UserAccountRegisteredEvent> BuildEventHandler()
-    //    {
-    //        return new UserAccountDenormalizer(UnitOfWork);
-    //    }       
+        protected override IEventHandler<UserAccountRegisteredEvent> BuildEventHandler()
+        {
+            return new UserAccountDenormalizer(UnitOfWork);
+        }
 
-    //    [Then]
-    //    public void Should_Insert_Email_Address_In_Lowercase()
-    //    {
-    //        var emailAddresses = UnitOfWork.Connection.Query<string>("select Email from RegisteredEmailAddresses", null, UnitOfWork.Transaction);
-    //        Assert.AreEqual(ExecutedEvent.Email.ToLower(), emailAddresses.Single());
-    //    }
-    //}
+        [Then]
+        public void Should_Insert_Email_Address_In_Lowercase()
+        {
+            var emailAddresses = UnitOfWork.Connection.Query<string>("select Email from RegisteredEmailAddresses", null, UnitOfWork.Transaction);
+            Assert.AreEqual(ExecutedEvent.Email.ToLower(), emailAddresses.Single());
+        }
+    }
 }

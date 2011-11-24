@@ -38,6 +38,4 @@ namespace DotNetFlow.Specifications.Infrastructure
     public class SpecificationAttribute : TestFixtureAttribute { }
     public class ThenAttribute : TestAttribute { }
     public class AndAttribute : TestAttribute { }
-
-
 }

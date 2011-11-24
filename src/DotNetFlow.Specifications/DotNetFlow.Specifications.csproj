@@ -97,12 +97,15 @@
     <Compile Include="Builders\UserAccountRegisteredBuilder.cs" />
     <Compile Include="Builders\NewItemSubmittedBuilder.cs" />
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
+    <Compile Include="Infrastructure\BigBangTestFixture.cs" />
     <Compile Include="Infrastructure\CommandTestFixture.cs" />
     <Compile Include="Infrastructure\DatabaseMigrator.cs" />
     <Compile Include="Infrastructure\DomainTestFixture.cs" />
     <Compile Include="Infrastructure\EventDenormalizerTestFixture.cs" />
+    <Compile Include="Infrastructure\EventStoreCleaner.cs" />
     <Compile Include="Infrastructure\EventTestFixture.cs" />
     <Compile Include="Infrastructure\IntegrationAttribute.cs" />
+    <Compile Include="Infrastructure\OneEventTestFixture.cs" />
     <Compile Include="Infrastructure\SpecificationBase.cs" />
     <Compile Include="PublishItems\ApproverPublishesItemSpec.cs" />
     <Compile Include="PublishItems\ApprovedItemIsDenormalizedSpec.cs" />
