@@ -9,9 +9,9 @@ namespace DotNetFlow.Extensions
     /// <see cref="http://github.com/bcalloway/jquery-flash-message"/>
     internal static class FlashMessageExtensions
     {
-        public static ActionResult Notice(this ActionResult result, string message)
+        public static ActionResult Error(this ActionResult result, string message)
         {
-            CreateCookieWithFlashMessage(Notification.Notice, message);
+            CreateCookieWithFlashMessage(Notification.Error, message);
             return result;
         }
 
@@ -21,9 +21,15 @@ namespace DotNetFlow.Extensions
             return result;
         }
 
-        public static ActionResult Message(this ActionResult result, string message)
+        public static ActionResult Success(this ActionResult result, string message)
         {
-            CreateCookieWithFlashMessage(Notification.Message, message);
+            CreateCookieWithFlashMessage(Notification.Success, message);
+            return result;
+        }
+
+        public static ActionResult Information(this ActionResult result, string message)
+        {
+            CreateCookieWithFlashMessage(Notification.Info, message);
             return result;
         }
 
@@ -34,9 +40,10 @@ namespace DotNetFlow.Extensions
 
         private enum Notification
         {
-            Notice,
+            Error,
             Warning,
-            Message
+            Success,
+            Info
         }
     }
 }

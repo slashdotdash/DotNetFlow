@@ -1,16 +1,21 @@
 ﻿$.fn.flashMessage = function (options) {
     var target = this;
-    options = $.extend({}, options, { timeout: 3000 });
+    options = $.extend({}, options, { timeout: 3000, alert: 'info' });
+
     if (!options.message) {
-        options.message = getFlashMessageFromCookie();
-        deleteFlashMessageCookie();
+        setFlashMessageFromCookie(options);
     }
+
     if (options.message) {
+        $(target).addClass(options.alert.toString().toLowerCase());
+
         if (typeof options.message === "string") {
-            target.html("<span>" + options.message + "</span>");
+            $('p', target).html("<span>" + options.message + "</span>");
         } else {
             target.empty().append(options.message);
         }
+    } else {
+        return;
     }
 
     if (target.children().length === 0) return;
@@ -25,13 +30,23 @@
 
     return this;
 
-    function getFlashMessageFromCookie() {
-        return $.cookie("Flash.Notice");
+    // Get the first alert message read from the cookie
+    function setFlashMessageFromCookie() {
+        $.each(new Array('Success', 'Error', 'Warning', 'Info'), function (i, alert) {
+            var cookie = $.cookie("Flash." + alert);
+
+            if (cookie) {
+                options.message = cookie;
+                options.alert = alert;
+
+                deleteFlashMessageCookie(alert);
+                return;
+            }
+        });
     }
 
-    function deleteFlashMessageCookie() {
-        $.cookie("Flash.Notice", null, { path: '/' });
-        $.cookie("Flash.Warning", null, { path: '/' });
-        $.cookie("Flash.Message", null, { path: '/' });
+    // Delete the named flash cookie
+    function deleteFlashMessageCookie(alert) {
+        $.cookie("Flash." + alert, null, { path: '/' });
     }
 };

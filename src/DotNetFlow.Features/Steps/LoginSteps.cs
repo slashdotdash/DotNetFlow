@@ -7,8 +7,16 @@ using TechTalk.SpecFlow;
 namespace DotNetFlow.Features.Steps
 {
     [Binding]
-    public class LoginSteps
+    public class LoginSteps : TechTalk.SpecFlow.Steps
     {
+        [Given(@"I am logged in as an approver")]
+        public void GivenIAmLoggedInAsAnApprover()
+        {
+            Given("I am on the login page");
+            LoginWith("approver", "password");
+            When("I press \"Sign In\"");
+        }
+
         [When(@"I enter my username and password")]
         public void WhenIEnterMyUsernameAndPassword()
         {

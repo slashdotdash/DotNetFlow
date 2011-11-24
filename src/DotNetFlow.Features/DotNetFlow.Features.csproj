@@ -87,14 +87,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnonymousVisitorLogsIn.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\ApproverPublishesSubmittedItem.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApproverPublishesSubmittedItem.feature</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\ApplicationUrl.cs" />
     <Compile Include="Infrastructure\CommandExecutor.cs" />
+    <Compile Include="Infrastructure\ReadModelCleaner.cs" />
     <Compile Include="Infrastructure\EventStoreCleaner.cs" />
     <Compile Include="Infrastructure\WebBrowser.cs" />
     <Compile Include="Infrastructure\WebDriverExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\BrowserSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
+    <Compile Include="Steps\PublishingSteps.cs" />
     <Compile Include="Steps\UserAccountSteps.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +111,10 @@
     <None Include="Features\AnonymousVisitorLogsIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AnonymousVisitorLogsIn.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\ApproverPublishesSubmittedItem.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ApproverPublishesSubmittedItem.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -115,6 +126,7 @@
       <Name>DotNetFlow.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

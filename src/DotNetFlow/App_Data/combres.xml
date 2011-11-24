@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  This file contains basic settings needed for most web apps.
+  For full Combres settings (with explanation), refer to the sample definition file: combres_full_with_annotation.xml
+  Also, refer to Combres' documentation: http://combres.codeplex.com/documentation	
+-->
+<combres xmlns='urn:combres'>
+  <filters>
+    <filter type="Combres.Filters.FixUrlsInCssFilter, Combres" />
+  </filters>
+
+  <cssMinifiers>
+    <minifier name="yui" type="Combres.Minifiers.YuiCssMinifier, Combres">
+      <param name="CssCompressionType" type="string" value="StockYuiCompressor" />
+      <param name="ColumnWidth" type="int" value="-1" />
+    </minifier>
+  </cssMinifiers>
+
+  <jsMinifiers>
+    <minifier name="yui" type="Combres.Minifiers.YuiJSMinifier, Combres">
+      <param name="IsVerboseLogging" type="bool" value="false" />
+      <param name="IsObfuscateJavascript" type="bool" value="true" />
+      <param name="PreserveAllSemicolons" type="bool" value="false" />
+      <param name="DisableOptimizations" type="bool" value="false" />
+      <param name="LineBreakPosition" type="int" value="-1" />
+    </minifier>
+    
+    <minifier name="msajax" type="Combres.Minifiers.MSAjaxJSMinifier, Combres" binderType="Combres.Binders.SimpleObjectBinder, Combres">
+      <param name="CollapseToLiteral" type="bool" value="true" />
+      <param name="EvalsAreSafe" type="bool" value="true" />
+      <param name="MacSafariQuirks" type="bool" value="true" />
+      <param name="CatchAsLocal" type="bool" value="true" />
+      <param name="LocalRenaming" type="string" value="CrunchAll" />
+      <param name="OutputMode" type="string" value="SingleLine" />
+      <param name="RemoveUnneededCode" type="bool" value="true" />
+      <param name="StripDebugStatements" type="bool" value="true" />
+    </minifier>
+  </jsMinifiers>
+
+  <resourceSets url="~/combres.axd"
+                defaultDuration="30"
+                defaultVersion="auto"
+                defaultDebugEnabled="false"
+                defaultIgnorePipelineWhenDebug="true"
+                localChangeMonitorInterval="30"
+                remoteChangeMonitorInterval="60"
+                defaultCssMinifierRef="yui" 
+                defaultJSMinifierRef="msajax"
+                >
+    
+    <resourceSet name="siteCss" type="css">
+      <resource path="~/Content/reset.css" />
+      <resource path="~/Content/default.css" />
+      <resource path="~/Content/style.css" />
+      <resource path="~/Content/superfish.css" />
+      <resource path="~/Content/dropdownmenu.css" />
+    </resourceSet>
+    
+    <resourceSet name="siteJs" type="js" minifierRef="msajax">
+      <resource path="~/scripts/jquery-1.7.min.js" minifierRef="off" />
+      <resource path="~/scripts/modernizr-1.7.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery.validate.unobtrusive.min.js" minifierRef="off" />
+    </resourceSet>
+
+    <resourceSet name="ie6Js" type="js" minifierRef="msajax">
+      <resource path="~/scripts/pngfix.js" />
+      <resource path="~/scripts/jquery.helper.js" />
+      <resource path="~/scripts/jquery-1.7.min.js" minifierRef="off" />
+    </resourceSet>
+
+    <resourceSet name="ie6Css" type="css">
+      <resource path="~/Content/basic_ie.css" />      
+    </resourceSet>
+    
+    <resourceSet name="adminCss" type="css">
+      <resource path="~/Areas/Admin/Content/bootstrap.min.css" minifierRef="off"  />
+    </resourceSet>
+    
+    <resourceSet name="adminJs" type="js" minifierRef="msajax">
+      <resource path="~/Scripts/jquery-1.7.min.js" minifierRef="off" />
+      <resource path="~/Scripts/jquery.cookie.js" />
+      <resource path="~/Scripts/flashmessage.js" />
+    </resourceSet>
+  </resourceSets>
+</combres>

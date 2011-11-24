@@ -15,6 +15,7 @@ namespace DotNetFlow.Features.Events
         public static void ClearEventStore()
         {
             new EventStoreCleaner().Execute();
+            new ReadModelCleaner().Execute();
         } 
 
         /// <summary>
@@ -34,10 +35,9 @@ namespace DotNetFlow.Features.Events
             ScenarioContext.Current.Set(ObjectFactory.GetInstance<IHashPasswords>());
         }
 
-        [AfterScenario]
+        [AfterStep]
         public static void DisposeThreadLocalStorage()
         {
-            //new ThreadLocalStorageLifecycle().EjectAll();
             new HybridLifecycle().FindCache().DisposeAndClear();
         }
     }
