@@ -22,7 +22,7 @@ namespace DotNetFlow.Areas.Admin.Controllers
         {
             //command.ApprovedBy = TODO
 
-            //_commandService.Execute(command);
+            _commandService.Execute(command);
 
             return RedirectToRoute("PendingApproval")
                 .Success("Submission approved");

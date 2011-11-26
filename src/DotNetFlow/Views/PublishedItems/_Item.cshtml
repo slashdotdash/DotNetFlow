@@ -1,5 +1,11 @@
 ﻿@model DotNetFlow.Core.ReadModel.Models.PublishedItem
 
-<p>@Model.Title</p>
+<article>
+    <header>
+        <h3>@Model.Title</h3>
+        <p> Published on @Html.DisplayFor(model => Model.PublishedAt, "PubDate")</p>
+    </header>
+    
 
-@Html.Raw(Model.HtmlContent)
+    @Html.Raw(Model.HtmlContent)
+</article>

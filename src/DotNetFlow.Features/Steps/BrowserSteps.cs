@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DotNetFlow.Features.Infrastructure;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -34,16 +31,38 @@ namespace DotNetFlow.Features.Steps
             button.Click();
         }
 
-        [When(@"I have filled out the form as follows")]
-        public void WhenIHaveFilledOutTheFormAsFollows(Table table)
+        //[When(@"I have filled out the form as follows")]
+        //public void WhenIHaveFilledOutTheFormAsFollows(Table table)
+        //{
+        //    foreach (var row in table.Rows)
+        //    {
+        //        var label = row["Label"];
+        //        var value = row["Value"];
+
+        //        var input = WebBrowser.Current.FindElement(By.CssSelector(string.Format("label:contains('{0}') + :input", label)));
+        //        input.SendKeys(value);
+        //    }
+        //}
+
+        [Given(@"I have filled out the form as follows:")]
+        [When(@"I have filled out the form as follows:")]
+        public void GivenIHaveFilledOutTheFormAsFollows(Table table)
         {
             foreach (var row in table.Rows)
             {
-                var labelText = row["Label"];
+                var name = row["Field"];
                 var value = row["Value"];
 
-                //WebBrowser.Current.FindElement(Find.ByLabelText(labelText)).TypeText(value);
+                var input = WebBrowser.Current.FindElement(By.Name(name));
+                input.SendKeys(value);                
             }
+        }
+
+        [When(@"I fill in ""(.*)"" with ""(.*)""")]
+        public void WhenIFillIn(string name, string value)
+        {            
+            var input = WebBrowser.Current.FindElement(By.Name(name));
+            input.SendKeys(value);
         }
 
         [Then(@"I see the flash message ""(.*)""")]

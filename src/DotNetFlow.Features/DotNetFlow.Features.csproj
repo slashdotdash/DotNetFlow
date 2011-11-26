@@ -87,6 +87,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnonymousVisitorLogsIn.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\AnonymousVisitorRegistersAnAccount.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnonymousVisitorRegistersAnAccount.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\AnonymousVisitorSubmitsAnItem.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnonymousVisitorSubmitsAnItem.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\AnonymousVisitorSyndicatesPublishedItems.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnonymousVisitorSyndicatesPublishedItems.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\AnonymousVisitorViewsPublishedItems.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnonymousVisitorViewsPublishedItems.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\ApproverPublishesSubmittedItem.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,9 +120,11 @@
     <Compile Include="Infrastructure\WebDriverExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\BrowserSteps.cs" />
+    <Compile Include="Steps\NavigationSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="Steps\PublishingSteps.cs" />
-    <Compile Include="Steps\UserAccountSteps.cs" />
+    <Compile Include="Steps\AccountRegistrationSteps.cs" />
+    <Compile Include="Steps\SubmitItemSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -111,6 +133,22 @@
     <None Include="Features\AnonymousVisitorLogsIn.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AnonymousVisitorLogsIn.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AnonymousVisitorRegistersAnAccount.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AnonymousVisitorRegistersAnAccount.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AnonymousVisitorSubmitsAnItem.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AnonymousVisitorSubmitsAnItem.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AnonymousVisitorSyndicatesPublishedItems.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AnonymousVisitorSyndicatesPublishedItems.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\AnonymousVisitorViewsPublishedItems.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AnonymousVisitorViewsPublishedItems.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\ApproverPublishesSubmittedItem.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

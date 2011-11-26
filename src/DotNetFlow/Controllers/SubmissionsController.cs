@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Core.Infrastructure.Commanding;
-using DotNetFlow.Core.Infrastructure.Eventing;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
 
@@ -21,19 +20,11 @@ namespace DotNetFlow.Controllers
             _idGenerator = idGenerator;
             _readModelRepository = readModelRepository;
         }
-
+        
         //
-        // GET: /Submissions/
+        // GET: /your-submission
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        //
-        // GET: /Submissions/Details/5
-
-        public ActionResult Details(Guid id)
+        public ActionResult Show(Guid id)
         {
             var submission = _readModelRepository.Get(id);
             return View(submission);
@@ -56,9 +47,10 @@ namespace DotNetFlow.Controllers
             if (ModelState.IsValid)
             {
                 command.ItemId = _idGenerator.GenerateNewId();
+
                 _commandService.Execute(command);
 
-                return RedirectToAction("Details", new { id = command.ItemId });
+                return RedirectToRoute("YourSubmission", new { id = command.ItemId });
             }
 
             return View();

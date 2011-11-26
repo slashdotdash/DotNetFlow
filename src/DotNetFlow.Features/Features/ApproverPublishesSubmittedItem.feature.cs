@@ -96,8 +96,6 @@ namespace DotNetFlow.Features.Features
  testRunner.And("the submitted item should be removed from the pending approval list");
 #line 16
  testRunner.And("the approved item should appear on the home page");
-#line 17
- testRunner.And("the published date should be set as today");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,0 +1,303 @@
+2011-11-24 23:06:26,838 [13] DEBUG Combres.Configuration - Reload Combres settings
+2011-11-24 23:06:26,838 [12] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2011-11-24 23:06:26,873 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2011-11-24 23:06:26,876 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:06:26,877 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/superfish.css' (Mode: Static)
+2011-11-24 23:06:26,877 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/dropdownmenu.css' (Mode: Static)
+2011-11-24 23:06:26,879 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -234545796
+2011-11-24 23:06:26,879 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2011-11-24 23:06:26,879 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:06:26,880 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:06:26,880 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:06:26,881 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:06:26,881 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1330382392
+2011-11-24 23:06:26,881 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Js.  Current hash: 
+2011-11-24 23:06:26,881 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/pngfix.js' (Mode: Static)
+2011-11-24 23:06:26,886 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.helper.js' (Mode: Static)
+2011-11-24 23:06:26,886 [13] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:06:26,887 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -2083007533
+2011-11-24 23:06:26,887 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Css.  Current hash: 
+2011-11-24 23:06:26,887 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/basic_ie.css' (Mode: Static)
+2011-11-24 23:06:26,888 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 695721123
+2011-11-24 23:06:26,888 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminCss.  Current hash: 
+2011-11-24 23:06:26,888 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)
+2011-11-24 23:06:26,888 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1135793036
+2011-11-24 23:06:26,888 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminJs.  Current hash: 
+2011-11-24 23:06:26,888 [13] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:06:26,888 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery.cookie.js' (Mode: Static)
+2011-11-24 23:06:26,888 [13] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/flashmessage.js' (Mode: Static)
+2011-11-24 23:06:26,889 [13] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1119470992
+2011-11-24 23:06:26,889 [13] DEBUG Combres.ChangeMonitor - Watch new settings
+2011-11-24 23:06:26,898 [13] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 51 ms
+2011-11-24 23:06:27,016 [14] DEBUG Combres.RequestProcessor - ***** Processing request for resource set adminCss
+2011-11-24 23:06:27,016 [15] DEBUG Combres.RequestProcessor - ***** Processing request for resource set adminJs
+2011-11-24 23:06:27,020 [14] DEBUG Combres.RequestProcessor - Reading content of ~/Areas/Admin/Content/bootstrap.min.css...
+2011-11-24 23:06:27,020 [15] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.min.js...
+2011-11-24 23:06:27,021 [14] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)
+2011-11-24 23:06:27,021 [15] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:06:27,022 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering adminJs': 2 ms
+2011-11-24 23:06:27,022 [14] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)...
+2011-11-24 23:06:27,024 [15] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:06:27,024 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering adminJs': 0 ms
+2011-11-24 23:06:27,025 [15] DEBUG Combres.RequestProcessor - Minifying combined content using minifier off and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:06:27,026 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering adminJs': 0 ms
+2011-11-24 23:06:27,026 [15] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery.cookie.js...
+2011-11-24 23:06:27,026 [15] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery.cookie.js' (Mode: Static)
+2011-11-24 23:06:27,026 [15] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/flashmessage.js...
+2011-11-24 23:06:27,026 [15] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/flashmessage.js' (Mode: Static)
+2011-11-24 23:06:27,026 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering adminJs': 0 ms
+2011-11-24 23:06:27,026 [15] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:06:27,027 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering adminJs': 0 ms
+2011-11-24 23:06:27,027 [15] DEBUG Combres.RequestProcessor - Minifying combined content using minifier msajax and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:06:27,029 [14] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering adminCss': 8 ms
+2011-11-24 23:06:27,029 [14] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:06:27,029 [14] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering adminCss': 0 ms
+2011-11-24 23:06:27,029 [14] DEBUG Combres.RequestProcessor - Minifying combined content using minifier off and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:06:27,029 [14] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering adminCss': 0 ms
+2011-11-24 23:06:27,030 [14] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:06:27,034 [14] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering adminCss': 3 ms
+2011-11-24 23:06:27,036 [14] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:06:27,036 [14] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing adminCss': 18 ms
+2011-11-24 23:06:27,321 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering adminJs': 294 ms
+2011-11-24 23:06:27,321 [15] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:06:27,331 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering adminJs': 9 ms
+2011-11-24 23:06:27,331 [15] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:06:27,331 [15] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing adminJs': 313 ms
+2011-11-24 23:13:00,942 [20] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2011-11-24 23:13:00,942 [17] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteCss
+2011-11-24 23:13:00,942 [17] DEBUG Combres.RequestProcessor - Reading content of ~/Content/style.css...
+2011-11-24 23:13:00,942 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery-1.7.min.js...
+2011-11-24 23:13:00,942 [17] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:13:00,942 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:13:00,943 [17] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/style.css' (Mode: Static)...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/modernizr-1.7.min.js...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery.validate.min.js...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery.validate.unobtrusive.min.js...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Minifying combined content using minifier off and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 0 ms
+2011-11-24 23:13:00,943 [20] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Reading content of ~/Content/superfish.css...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/superfish.css' (Mode: Static)
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/superfish.css' (Mode: Static)...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Reading content of ~/Content/dropdownmenu.css...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/dropdownmenu.css' (Mode: Static)
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/dropdownmenu.css' (Mode: Static)...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteCss': 3 ms
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteCss': 0 ms
+2011-11-24 23:13:00,946 [17] DEBUG Combres.RequestProcessor - Minifying combined content using minifier yui and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:13:00,952 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteJs': 8 ms
+2011-11-24 23:13:00,952 [20] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:13:00,952 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 9 ms
+2011-11-24 23:13:01,063 [17] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteCss': 116 ms
+2011-11-24 23:13:01,063 [17] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:13:01,065 [17] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteCss': 1 ms
+2011-11-24 23:13:01,065 [17] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:13:01,065 [17] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteCss': 122 ms
+2011-11-24 23:13:49,115 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:13:49,118 [9] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2011-11-24 23:13:49,118 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:14:09,490 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:09,490 [9] DEBUG Combres.Configuration - Change posted. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:09,494 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:09,494 [9] DEBUG Combres.Configuration - Change merged. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:17,994 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:17,994 [9] DEBUG Combres.Configuration - Change merged. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:17,998 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:17,999 [9] DEBUG Combres.Configuration - Change merged. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:20,618 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:20,618 [9] DEBUG Combres.Configuration - Change merged. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:20,622 [9] DEBUG Combres.ChangeMonitor - Static resources change count: 1
+2011-11-24 23:14:20,623 [9] DEBUG Combres.Configuration - Change merged. Change Type: Resource - Affected resource list: 
+ - ~/Content/style.css
+
+2011-11-24 23:14:24,310 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:14:24,312 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:14:27,262 [21] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2011-11-24 23:14:27,263 [22] DEBUG Combres.Configuration - Reload Combres settings
+2011-11-24 23:14:27,299 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2011-11-24 23:14:27,301 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/reset.css' (Mode: Static)
+2011-11-24 23:14:27,302 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/default.css' (Mode: Static)
+2011-11-24 23:14:27,302 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:14:27,303 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/superfish.css' (Mode: Static)
+2011-11-24 23:14:27,312 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/dropdownmenu.css' (Mode: Static)
+2011-11-24 23:14:27,314 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 769890749
+2011-11-24 23:14:27,315 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2011-11-24 23:14:27,315 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,316 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,316 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:14:27,316 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:14:27,317 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1330382392
+2011-11-24 23:14:27,317 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Js.  Current hash: 
+2011-11-24 23:14:27,317 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/pngfix.js' (Mode: Static)
+2011-11-24 23:14:27,317 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.helper.js' (Mode: Static)
+2011-11-24 23:14:27,318 [22] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -2083007533
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Css.  Current hash: 
+2011-11-24 23:14:27,318 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/basic_ie.css' (Mode: Static)
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 695721123
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminCss.  Current hash: 
+2011-11-24 23:14:27,318 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1135793036
+2011-11-24 23:14:27,318 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminJs.  Current hash: 
+2011-11-24 23:14:27,318 [22] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,319 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery.cookie.js' (Mode: Static)
+2011-11-24 23:14:27,319 [22] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/flashmessage.js' (Mode: Static)
+2011-11-24 23:14:27,319 [22] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1119470992
+2011-11-24 23:14:27,319 [22] DEBUG Combres.ChangeMonitor - Watch new settings
+2011-11-24 23:14:27,327 [22] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 55 ms
+2011-11-24 23:14:27,409 [23] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteCss
+2011-11-24 23:14:27,416 [23] DEBUG Combres.RequestProcessor - Reading content of ~/Content/reset.css...
+2011-11-24 23:14:27,416 [23] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/reset.css' (Mode: Static)
+2011-11-24 23:14:27,419 [23] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/reset.css' (Mode: Static)...
+2011-11-24 23:14:27,422 [20] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2011-11-24 23:14:27,423 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery-1.7.min.js...
+2011-11-24 23:14:27,423 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,423 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/modernizr-1.7.min.js...
+2011-11-24 23:14:27,423 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:14:27,423 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery.validate.min.js...
+2011-11-24 23:14:27,423 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:14:27,423 [20] DEBUG Combres.RequestProcessor - Reading content of ~/scripts/jquery.validate.unobtrusive.min.js...
+2011-11-24 23:14:27,423 [20] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:14:27,423 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2011-11-24 23:14:27,424 [20] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:14:27,424 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2011-11-24 23:14:27,425 [23] DEBUG Combres.RequestProcessor - Reading content of ~/Content/default.css...
+2011-11-24 23:14:27,425 [23] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/default.css' (Mode: Static)
+2011-11-24 23:14:27,425 [23] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/default.css' (Mode: Static)...
+2011-11-24 23:14:27,425 [20] DEBUG Combres.RequestProcessor - Minifying combined content using minifier off and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:14:27,425 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 0 ms
+2011-11-24 23:14:27,426 [20] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:14:27,443 [23] DEBUG Combres.RequestProcessor - Reading content of ~/Content/style.css...
+2011-11-24 23:14:27,443 [23] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:14:27,443 [23] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/style.css' (Mode: Static)...
+2011-11-24 23:14:27,444 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteJs': 17 ms
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Reading content of ~/Content/superfish.css...
+2011-11-24 23:14:27,445 [23] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/superfish.css' (Mode: Static)
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/superfish.css' (Mode: Static)...
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Reading content of ~/Content/dropdownmenu.css...
+2011-11-24 23:14:27,445 [23] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/dropdownmenu.css' (Mode: Static)
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/dropdownmenu.css' (Mode: Static)...
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteCss': 29 ms
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteCss': 0 ms
+2011-11-24 23:14:27,445 [23] DEBUG Combres.RequestProcessor - Minifying combined content using minifier yui and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:14:27,446 [20] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:14:27,446 [20] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 23 ms
+2011-11-24 23:14:27,685 [23] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteCss': 239 ms
+2011-11-24 23:14:27,685 [23] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:14:27,687 [23] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteCss': 1 ms
+2011-11-24 23:14:27,687 [23] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:14:27,687 [23] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteCss': 273 ms
+2011-11-24 23:15:25,760 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:15:25,764 [9] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2011-11-24 23:15:25,764 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:15:27,165 [19] DEBUG Combres.Configuration - Apply changes
+2011-11-24 23:15:27,165 [19] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2011-11-24 23:15:27,165 [19] DEBUG Combres.Configuration - Reload Combres settings
+2011-11-24 23:15:27,168 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2011-11-24 23:15:27,168 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/reset.css' (Mode: Static)
+2011-11-24 23:15:27,169 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/default.css' (Mode: Static)
+2011-11-24 23:15:27,169 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:15:27,170 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1890131843
+2011-11-24 23:15:27,170 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2011-11-24 23:15:27,170 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:27,171 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:27,171 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:15:27,172 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:15:27,172 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1330382392
+2011-11-24 23:15:27,172 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Js.  Current hash: 
+2011-11-24 23:15:27,172 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/pngfix.js' (Mode: Static)
+2011-11-24 23:15:27,173 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.helper.js' (Mode: Static)
+2011-11-24 23:15:27,173 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:27,173 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -2083007533
+2011-11-24 23:15:27,173 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Css.  Current hash: 
+2011-11-24 23:15:27,173 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/basic_ie.css' (Mode: Static)
+2011-11-24 23:15:27,174 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 695721123
+2011-11-24 23:15:27,174 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminCss.  Current hash: 
+2011-11-24 23:15:27,174 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)
+2011-11-24 23:15:27,174 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1135793036
+2011-11-24 23:15:27,174 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminJs.  Current hash: 
+2011-11-24 23:15:27,174 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:27,174 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery.cookie.js' (Mode: Static)
+2011-11-24 23:15:27,174 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/flashmessage.js' (Mode: Static)
+2011-11-24 23:15:27,175 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1119470992
+2011-11-24 23:15:27,175 [19] DEBUG Combres.ChangeMonitor - Watch new settings
+2011-11-24 23:15:27,176 [19] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 11 ms
+2011-11-24 23:15:27,200 [19] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteCss
+2011-11-24 23:15:27,200 [19] DEBUG Combres.RequestProcessor - Reading content of ~/Content/reset.css...
+2011-11-24 23:15:27,200 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/reset.css' (Mode: Static)
+2011-11-24 23:15:27,200 [19] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/reset.css' (Mode: Static)...
+2011-11-24 23:15:27,201 [19] DEBUG Combres.RequestProcessor - Reading content of ~/Content/default.css...
+2011-11-24 23:15:27,201 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/default.css' (Mode: Static)
+2011-11-24 23:15:27,201 [19] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/default.css' (Mode: Static)...
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Reading content of ~/Content/style.css...
+2011-11-24 23:15:27,202 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Performing filtering with Combres.Filters.FixUrlsInCssFilter for Resource '~/Content/style.css' (Mode: Static)...
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteCss': 2 ms
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteCss': 0 ms
+2011-11-24 23:15:27,202 [19] DEBUG Combres.RequestProcessor - Minifying combined content using minifier yui and binder Combres.Binders.SimpleObjectBinder...
+2011-11-24 23:15:27,370 [19] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteCss': 167 ms
+2011-11-24 23:15:27,370 [19] DEBUG Combres.RequestProcessor - Compressing combined content...
+2011-11-24 23:15:27,372 [19] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteCss': 1 ms
+2011-11-24 23:15:27,372 [19] DEBUG Combres.RequestProcessor - Writing content to browser...
+2011-11-24 23:15:27,372 [19] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteCss': 171 ms
+2011-11-24 23:15:30,622 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:15:30,622 [9] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2011-11-24 23:15:30,623 [9] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2011-11-24 23:15:31,912 [19] DEBUG Combres.Configuration - Apply changes
+2011-11-24 23:15:31,912 [19] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2011-11-24 23:15:31,912 [19] DEBUG Combres.Configuration - Reload Combres settings
+2011-11-24 23:15:31,915 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2011-11-24 23:15:31,915 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/reset.css' (Mode: Static)
+2011-11-24 23:15:31,916 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/default.css' (Mode: Static)
+2011-11-24 23:15:31,917 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/style.css' (Mode: Static)
+2011-11-24 23:15:31,917 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/superfish.css' (Mode: Static)
+2011-11-24 23:15:31,917 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/dropdownmenu.css' (Mode: Static)
+2011-11-24 23:15:31,918 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 769890749
+2011-11-24 23:15:31,918 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2011-11-24 23:15:31,918 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:31,919 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/modernizr-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:31,919 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.min.js' (Mode: Static)
+2011-11-24 23:15:31,920 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.validate.unobtrusive.min.js' (Mode: Static)
+2011-11-24 23:15:31,920 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1330382392
+2011-11-24 23:15:31,920 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Js.  Current hash: 
+2011-11-24 23:15:31,920 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/pngfix.js' (Mode: Static)
+2011-11-24 23:15:31,921 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/scripts/jquery.helper.js' (Mode: Static)
+2011-11-24 23:15:31,921 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:31,921 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -2083007533
+2011-11-24 23:15:31,921 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set ie6Css.  Current hash: 
+2011-11-24 23:15:31,921 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Content/basic_ie.css' (Mode: Static)
+2011-11-24 23:15:31,921 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 695721123
+2011-11-24 23:15:31,921 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminCss.  Current hash: 
+2011-11-24 23:15:31,921 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Areas/Admin/Content/bootstrap.min.css' (Mode: Static)
+2011-11-24 23:15:31,922 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1135793036
+2011-11-24 23:15:31,922 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set adminJs.  Current hash: 
+2011-11-24 23:15:31,922 [19] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.min.js' (Mode: Static)
+2011-11-24 23:15:31,922 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery.cookie.js' (Mode: Static)
+2011-11-24 23:15:31,922 [19] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/flashmessage.js' (Mode: Static)
+2011-11-24 23:15:31,922 [19] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1119470992
+2011-11-24 23:15:31,922 [19] DEBUG Combres.ChangeMonitor - Watch new settings
+2011-11-24 23:15:31,923 [19] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 10 ms

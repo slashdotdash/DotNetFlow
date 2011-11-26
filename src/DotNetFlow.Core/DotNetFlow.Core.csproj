@@ -54,9 +54,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentValidation.MVC3.3.2.0.0\lib\Net40\FluentValidation.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="FubuCore">
+      <HintPath>..\packages\FubuCore.0.9.3.101\lib\FubuCore.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -105,6 +111,7 @@
     <Compile Include="Infrastructure\DomainRegistry.cs" />
     <Compile Include="Infrastructure\Eventing\EventDispatcher.cs" />
     <Compile Include="Infrastructure\Eventing\BasicGuidGenerator.cs" />
+    <Compile Include="Infrastructure\Eventing\RegisterEventHandlersInAssembly.cs" />
     <Compile Include="Infrastructure\Eventing\GuidCombGenerator.cs" />
     <Compile Include="Infrastructure\Eventing\IDomainEvent.cs" />
     <Compile Include="Infrastructure\Eventing\IEventHandler.cs" />

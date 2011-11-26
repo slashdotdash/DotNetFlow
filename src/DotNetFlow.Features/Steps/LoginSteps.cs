@@ -66,8 +66,8 @@ namespace DotNetFlow.Features.Steps
         [Then(@"I should be logged in")]
         public void ThenIShouldBeLoggedIn()
         {
-            var command = ScenarioContext.Current.Get<RegisterUserAccountCommand>();
-            AssertLoggedInAs(command.Username);
+            var username = ScenarioContext.Current.Get<string>("Username");
+            AssertLoggedInAs(username);
         }
 
         private static void LoginWith(string usernameOrEmail, string password)

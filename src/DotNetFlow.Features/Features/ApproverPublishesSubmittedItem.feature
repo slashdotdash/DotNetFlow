@@ -14,7 +14,7 @@
 	Then I should see the message "Submission approved"
 	And the submitted item should be removed from the pending approval list
 	And the approved item should appear on the home page
-	And the published date should be set as today
+	#And the published date should be set as today
 
   Scenario: Reject submission
   Scenario: Edit and approve submission

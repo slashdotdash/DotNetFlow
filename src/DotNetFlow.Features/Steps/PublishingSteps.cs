@@ -5,6 +5,8 @@ using System.Text;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Features.Infrastructure;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace DotNetFlow.Features.Steps
@@ -45,19 +47,27 @@ namespace DotNetFlow.Features.Steps
         [Then(@"I should see the message ""Submission approved""")]
         public void ThenIShouldSeeTheMessageSubmissionApproved()
         {
-            ScenarioContext.Current.Pending();
+            AssertFlashMessage("Submission approved");
         }
 
         [Then(@"the submitted item should be removed from the pending approval list")]
         public void ThenTheSubmittedItemShouldBeRemovedFromThePendingApprovalList()
         {
-            ScenarioContext.Current.Pending();
+            var pending = WebBrowser.Current.FindElements(By.CssSelector("table#pending-approval tbody tr"));
+            Assert.AreEqual(0, pending.Count);
+        }
+
+        private static void AssertFlashMessage(string message)
+        {
+            var flash = WebBrowser.Current.WaitForElement(By.CssSelector("#flash-messages p"));
+            Assert.AreEqual(message, flash.Text);
         }
 
         [Then(@"the approved item should appear on the home page")]
         public void ThenTheApprovedItemShouldAppearOnTheHomePage()
         {
-            ScenarioContext.Current.Pending();
+            When("I navigate to /");
+
         }
 
         [Then(@"the published date should be set as today")]

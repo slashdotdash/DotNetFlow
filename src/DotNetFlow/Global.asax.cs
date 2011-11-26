@@ -23,6 +23,7 @@ namespace DotNetFlow
             routes.MapRoute("Logout", "logout", new { controller = "Session", action = "Delete" });
             routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
             routes.MapRoute("SubmitItem", "submit", new { controller = "Submissions", action = "Create" });
+            routes.MapRoute("YourSubmission", "your-submission/{id}", new { controller = "Submissions", action = "Show" });
             routes.MapRoute("Home", string.Empty, new { controller = "PublishedItems", action = "Index" });
 
             // Map default root
