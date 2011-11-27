@@ -79,7 +79,7 @@ namespace DotNetFlow.Features.Features
                         "Field",
                         "Value"});
             table1.AddRow(new string[] {
-                        "UsersName",
+                        "FullName",
                         "Ben Smith"});
             table1.AddRow(new string[] {
                         "Title",

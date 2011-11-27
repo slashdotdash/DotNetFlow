@@ -1,8 +1,14 @@
-﻿@using DotNetFlow.Extensions;
+﻿@using DotNetFlow.Extensions
+@using DotNetFlow.Helpers
+
+@helper NavigationTab(string text, string url, string css)
+{
+    <li class="@css @Html.CurrentUrlCss(url, "current_page_item")"><a href="@url">@text</a></li>    
+}
 
 <div id="top_strip">
     <div id="top_strip_in">
-        <ul class="dropdown dropdown-horizontal" >
+        @*<ul class="dropdown dropdown-horizontal" >
 			<li class="page_item page-item-28"><a href="http://localhost/dotnetflow/?page_id=28" title="About">About</a>
                 <ul class='children'>
 	                <li class="page_item page-item-29"><a href="http://localhost/dotnetflow/?page_id=29" title="Sub Page 1">Sub Page 1</a></li>
@@ -12,7 +18,7 @@
             <li class="page_item page-item-31"><a href="http://localhost/dotnetflow/?page_id=31" title="Sub Page in 1">Sub Page in 1</a></li>
             <li class="page_item page-item-32"><a href="http://localhost/dotnetflow/?page_id=32" title="Sub Page in 2">Sub Page in 2</a></li>
             <li class="page_item page-item-33"><a href="http://localhost/dotnetflow/?page_id=33" title="Site Map">Site Map</a></li>
-		</ul>
+		</ul>*@
             
         @Html.Partial("LoginStatus")
     </div>
@@ -28,9 +34,9 @@
 <div id="nav">
     <div id="nav_in">				 	
 		<ul>
-            <li class="hometab current_page_item"><a href="@Url.Home()">Home</a></li>
-            <li class="submit-item"><a href="@Url.SubmitItem()">Post an Item</a></li>
-            <li class="page_item page-item-28"><a href="http://localhost/dotnetflow/?page_id=28" title="About">About</a>
+            @NavigationTab("Home", @Url.Home(), "hometab")
+            @NavigationTab("Post an Item", @Url.SubmitItem(), "submit-item")
+           @* <li class="page_item page-item-28"><a href="http://localhost/dotnetflow/?page_id=28" title="About">About</a>
                 <ul class='children'>
 	                <li class="page_item page-item-29"><a href="http://localhost/dotnetflow/?page_id=29" title="Sub Page 1">Sub Page 1</a></li>
 	                <li class="page_item page-item-30"><a href="http://localhost/dotnetflow/?page_id=30" title="Sub Page 2">Sub Page 2</a></li>
@@ -38,12 +44,12 @@
             </li>
             <li class="page_item page-item-33"><a href="http://localhost/dotnetflow/?page_id=33" title="Site Map">Site Map</a></li>
             <li class=""><a href=" http://localhost/dotnetflow/?ptype=users">Users</a></li>
-            <li ><a href="http://localhost/dotnetflow/?cat=3" title="Blog">Blog</a></li>                                     
+            <li ><a href="http://localhost/dotnetflow/?cat=3" title="Blog">Blog</a></li>    *@                                 
   		</ul>
 
         <div class="search">
             <form method="get" id="searchform" action="http://localhost/dotnetflow">
-                <input type="text" value="Find a Question" name="s" id="s" class="textfield" onfocus="if (this.value == 'Find a Question') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Find a Question';}" />
+                <input type="text" name="s" id="s" class="textfield" placeholder="Search" />
                 <input type="image" class="b_search" src="@Url.Content("~/Content/images/b_search.png")" alt="Submit button" />
             </form>
         </div>

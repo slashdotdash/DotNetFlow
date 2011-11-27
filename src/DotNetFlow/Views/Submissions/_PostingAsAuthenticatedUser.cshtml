@@ -1,0 +1,9 @@
+﻿@model DotNetFlow.Core.Commands.SubmitNewItemCommand
+
+<div class="form_row clearfix" >
+    @Html.LabelFor(model => model.FullName, "Posting as")
+	<p>
+	    @Html.DisplayFor(model => model.FullName)
+        (@User.Identity.Name)</p>
+	@Html.HiddenFor(model => model.FullName)
+</div>

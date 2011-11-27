@@ -49,7 +49,7 @@ namespace DotNetFlow.Specifications.SubmittingNewItems
         {
             var @event = (NewItemSubmittedEvent)CommittedEvents.Single().Body;
             Assert.AreEqual(ExecutedCommand.ItemId, @event.ItemId);
-            Assert.AreEqual(ExecutedCommand.UsersName, @event.SubmissionUsersName);
+            Assert.AreEqual(ExecutedCommand.FullName, @event.FullName);
         }
 
         [And]

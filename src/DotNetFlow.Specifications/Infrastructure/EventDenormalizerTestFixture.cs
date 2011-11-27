@@ -29,5 +29,11 @@ namespace DotNetFlow.Specifications.Infrastructure
             UnitOfWork.Rollback();
             UnitOfWork.Dispose();
         }
+
+        [Then]
+        public void Should_Not_Raise_An_Exception()
+        {
+            Assert.IsNull(CaughtException);
+        }
     }
 }

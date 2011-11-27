@@ -17,8 +17,8 @@ namespace DotNetFlow.Core.ReadModel.Denormalizers
         public void Handle(NewItemSubmittedEvent evnt)
         {           
             _context.Connection.Execute(
-                "insert into Submissions (ItemId, SubmittedAt, UsersName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @SubmissionUsersName, @Title, @HtmlContent)",
-                new { evnt.ItemId, evnt.SubmittedAt, evnt.SubmissionUsersName, evnt.Title, evnt.HtmlContent },
+                "insert into Submissions (ItemId, SubmittedAt, UserId, Username, FullName, Title, HtmlContent) values (@ItemId, @SubmittedAt, @UserId, @Username, @FullName, @Title, @HtmlContent)",
+                new { evnt.ItemId, evnt.SubmittedAt, evnt.UserId, evnt.Username, evnt.FullName, evnt.Title, evnt.HtmlContent },
                 _context.Transaction);
         }
 

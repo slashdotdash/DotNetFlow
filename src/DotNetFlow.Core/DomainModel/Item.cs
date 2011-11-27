@@ -8,7 +8,9 @@ namespace DotNetFlow.Core.DomainModel
     public sealed class Item : AggregateBase
     {
         private Guid _id;
-        private string _submittedByUserName;
+        private Guid? _submittedByUserId;
+        private string _submittedByUsername;
+        private string _submittedByUserNamed;
         private DateTime _submittedAt;
         private DateTime _publishedAt;
         private string _title, _rawContent, _htmlContent;
@@ -29,7 +31,7 @@ namespace DotNetFlow.Core.DomainModel
             Id = id;
         }
 
-        public Item(Guid id, string submittedByUser, string title, string content) : this(id)
+        public Item(Guid id, Guid? userId, string username, string fullName, string title, string content) : this(id)
         {
             var htmlContent = Markdown.Transform(content);
 
@@ -37,7 +39,9 @@ namespace DotNetFlow.Core.DomainModel
             {
                 ItemId = id,
                 SubmittedAt = DateTime.Now,
-                SubmissionUsersName = submittedByUser,
+                UserId = userId,
+                Username = username,
+                FullName = fullName,
                 Title = title,
                 RawContent = content,
                 HtmlContent = htmlContent,
@@ -47,19 +51,20 @@ namespace DotNetFlow.Core.DomainModel
 
         public void Approve(Guid approvedBy)
         {
-            if (_status == ApprovalStatus.Approved)
-                throw new InvalidOperationException("Item has already been approved");
+            Guard.Against<InvalidOperationException>(_status == ApprovalStatus.Approved, "Item has already been approved");
 
             RaiseEvent(new ItemPublishedEvent
             {
                 ItemId = _id,
                 PublishedAt = DateTime.Now,
-                ApprovedBy = approvedBy,
+                ApprovedByUserId = approvedBy,
                 Status = ApprovalStatus.Approved,
                 Title = _title,
                 RawContent = _rawContent,
                 HtmlContent = _htmlContent,
-                SubmittedByUser = _submittedByUserName,                
+                SubmittedByUserId = _submittedByUserId,
+                SubmittedByUsername = _submittedByUsername,
+                SubmittedByFullName = _submittedByUserNamed,                
             });
         }
 
@@ -67,7 +72,9 @@ namespace DotNetFlow.Core.DomainModel
         {
             _id = @event.ItemId;
             _submittedAt = @event.SubmittedAt;
-            _submittedByUserName = @event.SubmissionUsersName;
+            _submittedByUserId = @event.UserId;
+            _submittedByUsername = @event.Username;
+            _submittedByUserNamed = @event.FullName;
             _title = @event.Title;
             _rawContent = @event.RawContent;
             _htmlContent = @event.HtmlContent;
@@ -78,7 +85,7 @@ namespace DotNetFlow.Core.DomainModel
         {
             _status = @event.Status;
             _publishedAt = @event.PublishedAt;
-            _approvedBy = @event.ApprovedBy;
-        }
+            _approvedBy = @event.ApprovedByUserId;
+        }       
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DotNetFlow.Core.Commands;
+﻿using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Features.Infrastructure;
 using NUnit.Framework;
@@ -23,7 +19,7 @@ namespace DotNetFlow.Features.Steps
             {
                 ItemId = idGenerator.GenerateNewId(),
                 Title = Faker.Lorem.Sentence(),
-                UsersName = Faker.Name.FullName(),
+                FullName = Faker.Name.FullName(),
                 Content = Faker.Lorem.Paragraph(),
             };
 

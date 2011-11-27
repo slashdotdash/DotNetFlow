@@ -14,12 +14,7 @@
             @using (Html.BeginForm()) {
                 @Html.ValidationSummary(true)
 
-                <div class="form_row clearfix" >
-                    @Html.LabelFor(model => model.UsersName, "Your Name")
-	                @Html.EditorFor(model => model.UsersName)
-                    @Html.ValidationMessageFor(model => model.UsersName)
-                    <div class="information">Will be shown with your submission</div>
-	            </div>
+                @Html.Partial((User.Identity.IsAuthenticated ? "_PostingAsAuthenticatedUser" : "_PostingAsAnonymousUser"))
                 
                 <div class="form_row clearfix" >
                     @Html.LabelFor(model => model.Title, "Title")

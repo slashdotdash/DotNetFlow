@@ -9,7 +9,7 @@ namespace DotNetFlow.Core.Commands.Executors
     {
         protected override void ExecuteInContext(IRepository context, SubmitNewItemCommand command)
         {
-            var item = new Item(command.ItemId, command.UsersName, command.Title, command.Content);
+            var item = new Item(command.ItemId, command.UserId, command.Username, command.FullName, command.Title, command.Content);
             context.Save(item, Guid.NewGuid());
         }
     }

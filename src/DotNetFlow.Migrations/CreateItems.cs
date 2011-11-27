@@ -11,10 +11,16 @@ namespace DotNetFlow.Migrations
             Database.AddTable("Items",
                               new Column("ItemId", DbType.Guid, ColumnProperty.PrimaryKey),
                               new Column("PublishedAt", DbType.DateTime),
-                              new Column("SubmittedByUser", DbType.String, 1000),
+                              new Column("SubmittedByUserId", DbType.Guid),
+                              new Column("SubmittedByUsername", DbType.String, 20),
+                              new Column("SubmittedByFullName", DbType.String, 200),
                               new Column("Title", DbType.String, 140),
                               new Column("HtmlContent", DbType.String, 2000)
                 );
+
+            Database.AddIndex("Items", "PublishedAt");
+            Database.AddIndex("Items", "SubmittedByUserId", "PublishedAt");
+            Database.AddIndex("Items", "Title");
         }
 
         public override void Down()

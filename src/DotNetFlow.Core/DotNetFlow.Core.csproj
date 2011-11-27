@@ -99,6 +99,7 @@
     <Compile Include="Events\UserAccountRegisteredEvent.cs" />
     <Compile Include="Extensions\RuleValidatorExtensions.cs" />
     <Compile Include="Extensions\UnitOfWorkExtensions.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="Infrastructure\Aggregates\SimpleAggregateCreationStrategy.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Commanding\CommandContext.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="ReadModel\Repositories\IUserReadModelRepository.cs" />
     <Compile Include="ReadModel\Queries\FindExistingEmailAddressQuery.cs" />
     <Compile Include="ReadModel\Repositories\SubmissionReadModelRepository.cs" />
+    <Compile Include="ReadModel\Repositories\UserNotFoundException.cs" />
     <Compile Include="ReadModel\Repositories\UserReadModelRepository.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Services\BCryptPasswordHashing.cs" />

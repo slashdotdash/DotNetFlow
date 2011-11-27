@@ -223,7 +223,7 @@ a.b_askquestions { margin-top:4px; width:220px; height:46px; text-indent:-9009px
 
 /* form ------ */
 .form_row { margin:8px 0 12px 0;  } 
-.form_row label { width:180px; float:left; font:14px Arial, Helvetica, sans-serif; padding:9px 15px 9px 0; text-align:right;    }
+.form_row label { width:180px; float:left; font:14px Arial, Helvetica, sans-serif; padding:2px 15px 9px 0; text-align:right;    }
 .form_row .textfield { float:left; width:300px; font:13px Arial, Helvetica, sans-serif;padding:7px 8px;  }
 .form_row .select  { float:left; width:318px; }
 .form_row .textarea { float:left; width:380px; height:200px; font:13px Arial, Helvetica, sans-serif;  float:left; padding:7px 8px; }

@@ -10,7 +10,7 @@ using DotNetFlow.Specifications.Infrastructure;
 namespace DotNetFlow.Specifications.SubmittingNewItems
 {
     [Specification, Integration]
-    public sealed class SubmittedItemIsDenormalizedSpec : EventDenormalizerTestFixture<NewItemSubmittedEvent>
+    public sealed class SubmittedItemAsAnonymousUserIsDenormalizedSpec : EventDenormalizerTestFixture<NewItemSubmittedEvent>
     {
         protected override NewItemSubmittedEvent WhenExecutingEvent()
         {

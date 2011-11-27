@@ -12,13 +12,15 @@ namespace DotNetFlow.Controllers
     {
         private readonly ICommandService _commandService;
         private readonly IUniqueIdentifierGenerator _idGenerator;
-        private readonly IReadModelRepository<Submission> _readModelRepository;
+        private readonly IReadModelRepository<Submission> _submissionReadModelRepository;
+        private readonly IUserReadModelRepository _userReadModelRepository;
 
-        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IReadModelRepository<Submission> readModelRepository)
+        public SubmissionsController(ICommandService commandService, IUniqueIdentifierGenerator idGenerator, IReadModelRepository<Submission> submissionReadModelRepository, IUserReadModelRepository userReadModelRepository)
         {
             _commandService = commandService;
             _idGenerator = idGenerator;
-            _readModelRepository = readModelRepository;
+            _submissionReadModelRepository = submissionReadModelRepository;
+            _userReadModelRepository = userReadModelRepository;
         }
         
         //
@@ -26,7 +28,7 @@ namespace DotNetFlow.Controllers
 
         public ActionResult Show(Guid id)
         {
-            var submission = _readModelRepository.Get(id);
+            var submission = _submissionReadModelRepository.Get(id);
             return View(submission);
         }
 
@@ -35,7 +37,10 @@ namespace DotNetFlow.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var command = new SubmitNewItemCommand();
+            IncludeAuthenticatedUserDetails(command);
+
+            return View(command);
         }
 
         //
@@ -44,9 +49,11 @@ namespace DotNetFlow.Controllers
         [HttpPost]
         public ActionResult Create(SubmitNewItemCommand command)
         {
+            IncludeAuthenticatedUserDetails(command);
+
             if (ModelState.IsValid)
             {
-                command.ItemId = _idGenerator.GenerateNewId();
+                GenerateSubmissionId(command);
 
                 _commandService.Execute(command);
 
@@ -54,6 +61,23 @@ namespace DotNetFlow.Controllers
             }
 
             return View();
+        }
+
+        private void GenerateSubmissionId(SubmitNewItemCommand command)
+        {
+            command.ItemId = _idGenerator.GenerateNewId();            
+        }
+
+        private void IncludeAuthenticatedUserDetails(SubmitNewItemCommand command)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = _userReadModelRepository.GetByUsername(User.Identity.Name);
+                
+                command.UserId = user.UserId;
+                command.FullName = user.FullName;
+                command.Username = user.Username;
+            }
         }
     }
 }

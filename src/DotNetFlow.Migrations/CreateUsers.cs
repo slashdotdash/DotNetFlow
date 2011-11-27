@@ -19,7 +19,10 @@ namespace DotNetFlow.Migrations
                               new Column("Twitter", DbType.String, 20)
                 );
 
+            Database.AddIndex("Users", "Username", "Email");  // Used to authenticate users during login
+            Database.AddIndex("Users", "Username");
             Database.AddIndex("Users", "Email");
+
             Database.AddUniqueConstraint("IX_Users_Unique_Username", "Users", "Username");
             Database.AddUniqueConstraint("IX_Users_Unique_Email", "Users", "Email");
         }

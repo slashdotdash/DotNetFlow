@@ -36,7 +36,7 @@ namespace DotNetFlow.Specifications.PublishItems
         public void Should_Set_Event_Properties()
         {
             Assert.AreEqual(ExecutedCommand.ItemId, TheEvent.ItemId);
-            Assert.AreEqual(ExecutedCommand.ApprovedBy, TheEvent.ApprovedBy);
+            Assert.AreEqual(ExecutedCommand.ApprovedBy, TheEvent.ApprovedByUserId);
         }
 
         [And]

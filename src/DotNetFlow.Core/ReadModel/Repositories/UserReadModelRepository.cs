@@ -36,5 +36,23 @@ namespace DotNetFlow.Core.ReadModel.Repositories
                 new { UsernameOrEmail = usernameOrEmail }, _context.Transaction)
                 .SingleOrDefault();
         }
+
+        /// <summary>
+        /// Get a single user account by the given username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public UserAccountModel GetByUsername(string username)
+        {
+            Guard.Against<ArgumentNullException>(string.IsNullOrWhiteSpace(username), "Username cannot be empty");
+
+            var user = _context.Connection.Query<UserAccountModel>("select * from Users where Username = @Username", 
+                new { Username = username }, _context.Transaction)
+                .SingleOrDefault();
+
+            Guard.Against<UserNotFoundException>(user == null, "User with username '{0}' was not found", username);
+
+            return user;
+        }
     }
 }

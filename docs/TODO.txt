@@ -1,0 +1,2 @@
+- Use Stateless library for item state 
+http://code.google.com/p/stateless/

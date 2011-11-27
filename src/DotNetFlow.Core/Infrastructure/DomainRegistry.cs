@@ -64,10 +64,6 @@ namespace DotNetFlow.Core.Infrastructure
             registration.IncludeAssembly(typeof(IEventHandler<>).Assembly);
             registration.RegisterHandlers();
 
-            //dispatcher.RegisterHandler<UserAccountRegisteredEvent>(evnt => new UserAccountDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
-            //dispatcher.RegisterHandler<NewItemSubmittedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
-            //dispatcher.RegisterHandler<ItemPublishedEvent>(evnt => new SubmittedItemDenormalizer(context.GetInstance<IUnitOfWork>()).Handle(evnt));
-            
             return dispatcher;
         }        
 

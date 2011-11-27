@@ -5,5 +5,6 @@ namespace DotNetFlow.Core.ReadModel.Repositories
     public interface IUserReadModelRepository : IReadModelRepository<UserAccountModel>
     {
         UserAccountModel FindByUsernameOrEmail(string email);
+        UserAccountModel GetByUsername(string username);
     }
 }

@@ -1,5 +1,7 @@
-﻿<div id="sidebar" class="">
-    <a href="http://localhost/dotnetflow?ptype=ask-a-question" class="b_askquestions" >Ask a Question</a>     
+﻿@using DotNetFlow.Extensions
+
+<div id="sidebar" class="">
+    <a href="@Url.SubmitItem()" class="b_askquestions" >Submit an Item</a>     
 		    
     <div class="widget">
         <h3>Categories</h3>		
@@ -13,11 +15,11 @@
         <div class="latestnewshome">
             <h3>Latest Questions</h3> 
             <ul>
-			    <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=8">Where do i go to if i need to talk to ebay about a delivery</a></li>
+			    @*<li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=8">Where do i go to if i need to talk to ebay about a delivery</a></li>
  		        <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=9">How do i tell my mother im bi and dating a female                </a></li>
  		        <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=10">Why is my friend depressed                </a></li>
  		        <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=11">What are some wicked cool or good tattoo ideas                </a></li>
- 		        <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=12">What are some good christian scremo bands                </a></li>
+ 		        <li class="clearfix"><a class="widget-title" href="http://localhost/dotnetflow/?p=12">What are some good christian scremo bands                </a></li>*@
  		    </ul>
         </div>
     </div>

@@ -1,7 +1,20 @@
-﻿@model IEnumerable<DotNetFlow.Core.ReadModel.Models.Submission>
+﻿@using DotNetFlow.Core.ReadModel.Models
+@model IEnumerable<Submission>
 
 @{ ViewBag.Title = "Submissions pending approval"; }
 @{ Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+@helper SubmittedBy(Submission item)
+{
+    if (item.SubmittedByAnonymousUser)
+    {
+        @: @Html.DisplayFor(modelItem => item.FullName)
+    }
+    else
+    {
+        @: @Html.DisplayFor(modelItem => item.FullName) (@Html.DisplayFor(modelItem => item.Username))
+    }
+}
 
 <h2>Submissions Pending Approval</h2>
 
@@ -16,10 +29,11 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.SubmittedAt)</td>
-            <td>@Html.DisplayFor(modelItem => item.UsersName)</td>
+            <td>@SubmittedBy(item)</td>
             <td>@Html.DisplayFor(modelItem => item.Title)</td>
             <td>@Html.Raw(item.HtmlContent)</td>
             <td>        

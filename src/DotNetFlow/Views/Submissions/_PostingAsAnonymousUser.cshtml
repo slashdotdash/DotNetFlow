@@ -1,0 +1,8 @@
+﻿@model DotNetFlow.Core.Commands.SubmitNewItemCommand
+
+<div class="form_row clearfix" >
+    @Html.LabelFor(model => model.FullName, "Your Name")
+	@Html.EditorFor(model => model.FullName)
+    @Html.ValidationMessageFor(model => model.FullName)
+    <div class="information">Will be shown with your submission</div>
+</div>

@@ -20,7 +20,7 @@ namespace DotNetFlow.Controllers
         public ActionResult Index()
         {
             var itemsByDate = _latestPublishedItems.Execute()
-                .OrderBy(item => item.PublishedAt)
+                .OrderByDescending(item => item.PublishedAt)
                 // Group items by day published
                 .GroupBy(item => item.PublishedAt.Date);
 

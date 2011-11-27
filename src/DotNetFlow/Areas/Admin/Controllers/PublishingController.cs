@@ -20,7 +20,7 @@ namespace DotNetFlow.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(PublishItemCommand command)
         {
-            //command.ApprovedBy = TODO
+            //command.ApprovedByUserId = TODO
 
             _commandService.Execute(command);
 
