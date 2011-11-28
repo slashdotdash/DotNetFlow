@@ -19,6 +19,9 @@ namespace DotNetFlow
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Ignore favicon.ico
+            routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
+
             routes.MapRoute("Login", "login", new { controller = "Session", action = "Create" });
             routes.MapRoute("Logout", "logout", new { controller = "Session", action = "Delete" });
             routes.MapRoute("Register", "register", new { controller = "Registration", action = "Create" });
