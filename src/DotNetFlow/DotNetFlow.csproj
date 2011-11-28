@@ -333,7 +333,6 @@
     <Content Include="Areas\Admin\Views\PendingApproval\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Flash.cshtml" />
-    <None Include="combres.readme" />
     <None Include="Content\images\Thumbs.db" />
     <Content Include="Views\Session\Create.cshtml" />
     <Content Include="Views\Shared\LoginStatus.cshtml" />

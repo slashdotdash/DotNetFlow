@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using log4net;
+//using log4net;
 
 namespace DotNetFlow.Core.Infrastructure.Commanding
 {
     public class CommandService : ICommandService
     {
-        protected readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        //protected readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly Dictionary<Type, Action<ICommand>> _executors = new Dictionary<Type, Action<ICommand>>();
         //private readonly List<ICommandServiceInterceptor> _interceptors = new List<ICommandServiceInterceptor>(0);
