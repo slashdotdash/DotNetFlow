@@ -125,7 +125,6 @@
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SubmissionsController.cs" />
-    <Compile Include="Dapper\SqlMapper.cs" />
     <Compile Include="Extensions\FlashMessageExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,6 +138,15 @@
     <Content Include="App_Data\combres.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-alerts.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-buttons.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-dropdown.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-modal.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-popover.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-scrollspy.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-tabs.js" />
+    <Content Include="Areas\Admin\Scripts\bootstrap-twipsy.js" />
     <Content Include="Content\1-default\best_ansers.png" />
     <Content Include="Content\1-default\best_answer.png" />
     <Content Include="Content\1-default\blockquote.png" />
