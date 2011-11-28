@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using DotNetFlow.Core.Authorization;
 using DotNetFlow.Core.ReadModel.Models;
 using DotNetFlow.Core.ReadModel.Repositories;
 
 namespace DotNetFlow.Areas.Admin.Controllers
 {
+    [RequiresPermission(Users = "ben,approver")]
     public class PendingApprovalController : Controller
     {
         private readonly IReadModelRepository<Submission> _readModelRepository;

@@ -1,10 +1,12 @@
 ﻿using System.Web.Mvc;
+using DotNetFlow.Core.Authorization;
 using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Extensions;
 
 namespace DotNetFlow.Areas.Admin.Controllers
 {
+    [RequiresPermission(Users = "ben,approver")]
     public class PublishingController : Controller
     {
         private readonly ICommandService _commandService;
