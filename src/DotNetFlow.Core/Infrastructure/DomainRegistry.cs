@@ -3,7 +3,6 @@ using CommonDomain;
 using CommonDomain.Core;
 using CommonDomain.Persistence;
 using CommonDomain.Persistence.EventStore;
-using DotNetFlow.Core.Events;
 using DotNetFlow.Core.Infrastructure.Aggregates;
 using DotNetFlow.Core.Infrastructure.Commanding;
 using DotNetFlow.Core.Infrastructure.Eventing;
@@ -46,17 +45,17 @@ namespace DotNetFlow.Core.Infrastructure
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
         }
 
-        private static IStoreEvents ConfigureEventStore(IContext context)
+        private static IStoreEvents ConfigureEventStore()
         {
             return Wireup.Init()
-                .UsingSqlPersistence("EventStore")
+                .UsingSqlPersistence("DotNetFlow")
                 .InitializeStorageEngine()
                 .UsingJsonSerialization()
-                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher(context))
+                .UsingSynchronousDispatchScheduler().DispatchTo(InitializeEventDispatcher())
                 .Build();
         }
 
-        private static IDispatchCommits InitializeEventDispatcher(IContext context)
+        private static IDispatchCommits InitializeEventDispatcher()
         {
             var dispatcher = new EventDispatcher();
 
@@ -77,7 +76,7 @@ namespace DotNetFlow.Core.Infrastructure
 
         private static IUnitOfWork InitializeUnitOfWork()
         {
-            return new UnitOfWork(ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString);
+            return new UnitOfWork(ConfigurationManager.ConnectionStrings["DotNetFlow"].ConnectionString);
         }
 
         private static ICommandService InitializeCommandService()
