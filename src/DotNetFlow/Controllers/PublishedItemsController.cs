@@ -15,7 +15,7 @@ namespace DotNetFlow.Controllers
         }
 
         //
-        // GET: /Items/
+        // GET: /
 
         public ActionResult Index()
         {
@@ -28,10 +28,11 @@ namespace DotNetFlow.Controllers
         }
 
         //
-        // GET: /Items/Details/5
+        // GET: /items/title-of-published-item
 
-        public ActionResult Details(int id)
+        public ActionResult Show(string slug)
         {
+            //var item = _latestPublishedItems.GetItemBySlug(slug);
             return View();
         }
     }

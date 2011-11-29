@@ -2,10 +2,9 @@
 
 <article>
     <header>
+        <p style="float: right">Published at <time datetime="@Model.PublishedAt.ToString("s")" pubdate="pubdate">@String.Format("{0:t}", Model.PublishedAt)</time>
         <h3>@Model.Title</h3>
-        <p> Published on @Html.DisplayFor(model => Model.PublishedAt, "PubDate")</p>
     </header>
-    
 
     @Html.Raw(Model.HtmlContent)
 </article>

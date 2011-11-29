@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<IGrouping<DateTime, DotNetFlow.Core.ReadModel.Models.PublishedItem>>
-@{ ViewBag.Title = "Index"; }
 
-<h2>Items</h2>
+@{ ViewBag.Title = "DotNetFlow | For .NET Development News"; }
 
-@foreach (var group in Model)
-{
-    <h3>@group.Key.ToShortDateString()</h3>
-    
-    foreach (var item in group)
+<div class="published-items">
+    @foreach (var group in Model)
     {
-        @Html.Partial("_Item", item)
+        <div class="date">@String.Format("{0:dddd, MMMM d, yyyy}", group.Key)</div>
+    
+        foreach (var item in group)
+        {
+            @Html.Partial("_Item", item)
+        }
     }
-}
+</div>

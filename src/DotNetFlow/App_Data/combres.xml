@@ -54,6 +54,7 @@
       <resource path="~/Content/style.css" />
       <resource path="~/Content/superfish.css" />
       <resource path="~/Content/dropdownmenu.css" />
+      <resource path="~/Content/Site.css" />
     </resourceSet>
     
     <resourceSet name="siteJs" type="js" minifierRef="msajax">

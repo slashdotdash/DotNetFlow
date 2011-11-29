@@ -90,6 +90,7 @@
     <Compile Include="Builders\UserAccountRegisteredBuilder.cs" />
     <Compile Include="Builders\NewItemSubmittedBuilder.cs" />
     <Compile Include="Builders\RegisterUserAccountBuilder.cs" />
+    <Compile Include="Core\Web\SlugifyFixtures.cs" />
     <Compile Include="Infrastructure\BigBangTestFixture.cs" />
     <Compile Include="Infrastructure\CommandTestFixture.cs" />
     <Compile Include="Infrastructure\DatabaseMigrator.cs" />

@@ -1,0 +1,35 @@
+﻿@model DotNetFlow.Core.ReadModel.Models.PublishedItem
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<fieldset>
+    <legend>PublishedItem</legend>
+
+    <div class="display-label">ItemId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ItemId)
+    </div>
+
+    <div class="display-label">SubmittedByUser</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubmittedByUser)
+    </div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">HtmlContent</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HtmlContent)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

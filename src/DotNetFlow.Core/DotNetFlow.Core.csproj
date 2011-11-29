@@ -144,6 +144,7 @@
     <Compile Include="Services\BCryptPasswordHashing.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\IHashPasswords.cs" />
+    <Compile Include="Web\Slugify.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

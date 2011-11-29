@@ -1,20 +1,6 @@
-body
-{
-    font-size: .85em;
-    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
-}
-
-header,
-footer,
-nav,
-section {
-    display: block;
-}
 
 /* Styles for basic forms
------------------------------------------------------------*/
+-----------------------------------------------------------
 
 fieldset 
 {
@@ -44,6 +30,7 @@ textarea
     margin:0.5em 0 0 0;
 }
 
+*/
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
@@ -72,4 +59,30 @@ textarea
 .validation-summary-valid
 {
     display: none;
+}
+
+/* DotNetFlow styles */
+.published-items .date  
+{
+    background-color: #e8f5fd;    
+    color: #6f96b4;
+    text-align: right;
+    padding: 5px 25px;
+    border-bottom: 2px solid #c0d2dd;
+    border-top: 2px solid #c0d2dd;
+    font-size: 1.4em;
+    font-weight: 500;
+    margin-bottom: 4px;
+    margin-top: 24px;    
+}
+.published-items .date:first-child
+{
+    margin-top: 0;
+}
+
+.rounded-corners {
+     -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 2px;
+    border-radius: 3px;
 }
