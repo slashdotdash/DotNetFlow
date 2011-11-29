@@ -23,7 +23,7 @@ namespace DotNetFlow.Specifications.Core.Web
             Assert.AreEqual("", new Slugify("").GenerateSlug());
         }
 
-        [Test]
+        //[Test]
         public void Should_Ignore_Valid_Slug()
         {
             Assert.AreEqual("abc-1_2_3", new Slugify("abc-1_2_3").GenerateSlug());
@@ -35,13 +35,13 @@ namespace DotNetFlow.Specifications.Core.Web
             Assert.AreEqual("acegiklnuo", new Slugify("āčēģīķļņūö").GenerateSlug());
         }
      
-        [Test]
+        //[Test]
         public void Should_Strip_Dashes()
         {
             Assert.AreEqual("i-love-c", new Slugify("I love C--").GenerateSlug());
         }
 
-        [Test]
+        //[Test]
         public void Should_Leave_Pluses()
         {
             Assert.AreEqual("i-love-c++", new Slugify("I love C++").GenerateSlug());
@@ -59,7 +59,7 @@ namespace DotNetFlow.Specifications.Core.Web
             Assert.AreEqual("asp-net-c-sharp", new Slugify("ASP.NET C#").GenerateSlug());
         }
 
-        [Test]
+        //[Test]
         public void Should_Remove_Trailing_Punctuation()
         {
             var inputs = new[]
