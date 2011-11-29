@@ -350,6 +350,7 @@
     <Content Include="Views\Submissions\_PostingAsAnonymousUser.cshtml" />
     <Content Include="Views\Submissions\_PostingAsAuthenticatedUser.cshtml" />
     <Content Include="Views\PublishedItems\Show.cshtml" />
+    <Content Include="Views\Shared\Analytics.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
