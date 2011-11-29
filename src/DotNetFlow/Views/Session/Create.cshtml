@@ -40,9 +40,11 @@
     }
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $('#content form :input').addClass('textfield');
-        $('#content form .input-validation-error:first, #content form :input:first').focus();
-    });
-</script>
+@section JavaScript {
+    <script type="text/javascript">
+        $(function () {
+            $('#content form :input').addClass('textfield');
+            $('#content form .input-validation-error:visible:first, #content form :input:visible:first').focus();
+        });
+    </script>
+}

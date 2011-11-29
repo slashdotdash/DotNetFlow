@@ -1,2 +1,24 @@
+== TODO ==
+
+- Style homepage list of published items
+	- URL slugs for published items (new table)
+- View single item page & styling
+- Your submission page styling
+- Pagination of homepage list - add before/after date links (instead of page number)
+- About page
+- Reset password via email
+- Add support for commenting on published items
+	- Threaded comments
+- Record successful/failed login attemps (using raised events, async denormalizers)
+- JavaScript preview of submission content while composing
+
+=== Admin ===
+- Reject submission - include rejection message
+- Edit submission before approval
+- Edit published item
+
+=== DevOps ===
+- MSBuild task to clear all read model tables and rebuild by replaying events
+
 - Use Stateless library for item state 
 http://code.google.com/p/stateless/
