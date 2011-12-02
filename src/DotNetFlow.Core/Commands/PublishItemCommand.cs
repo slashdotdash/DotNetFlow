@@ -7,5 +7,6 @@ namespace DotNetFlow.Core.Commands
     {
         public Guid ItemId { get; set; }
         public Guid ApprovedBy { get; set; }
+        public DateTime PublishedAt { get; set; }
     }
 }

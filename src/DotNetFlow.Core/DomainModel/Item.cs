@@ -49,14 +49,15 @@ namespace DotNetFlow.Core.DomainModel
             });
         }
 
-        public void Approve(Guid approvedBy)
+        public void Approve(Guid approvedBy, DateTime publishedAt)
         {
             Guard.Against<InvalidOperationException>(_status == ApprovalStatus.Approved, "Item has already been approved");
+            Guard.Against<ArgumentOutOfRangeException>(publishedAt > DateTime.UtcNow, "Publish date cannot be in the future");
 
             RaiseEvent(new ItemPublishedEvent
             {
                 ItemId = _id,
-                PublishedAt = DateTime.Now,
+                PublishedAt = publishedAt,
                 ApprovedByUserId = approvedBy,
                 Status = ApprovalStatus.Approved,
                 Title = _title,

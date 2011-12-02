@@ -1,0 +1,8 @@
+{
+  "ItemId": "fd4f0b20-c8d8-444a-b9c5-9fad0177a9eb",
+  "UserId": "aacde67e-0ec4-47dc-94dd-9fad016ccbfa",
+  "Username": "ben",
+  "FullName": "Ben Smith",
+  "Title": "Effective Aggregate Design Part II by Vaughn Vernon",
+  "Content": "Vaughn Vernon has just published [Part II](http://dddcommunity.org/library/vernon_2011) of his Effective Aggregate Design series.\r\n\r\n* [Part I](http://dddcommunity.org/sites/default/files/pdf_articles/Vernon_2011_1.pdf) considers the modelling of an aggregate.\r\n* [Part II](http://dddcommunity.org/sites/default/files/pdf_articles/Vernon_2011_2.pdf) looks at the model and design issues of how different aggregates relate to each other."
+}
