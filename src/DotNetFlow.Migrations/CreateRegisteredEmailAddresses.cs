@@ -16,7 +16,6 @@ namespace DotNetFlow.Migrations
                               new Column("Email", DbType.String, 1000)
                 );
 
-            Database.AddIndex("RegisteredEmailAddresses", "Email");
             Database.AddUniqueConstraint("IX_RegisteredEmailAddresses_Unique_Email", "RegisteredEmailAddresses", "Email");
         }
 

@@ -45,7 +45,7 @@ namespace DotNetFlow.Utils
 
         private static IEnumerable<string> ReadModelTables
         {
-            get { return new[] { "Items", "RegisteredEmailAddresses", "RegisteredUsernames", "Submissions", "Users" }; }
+            get { return new[] { "Items", "RegisteredEmailAddresses", "RegisteredUsernames", "Submissions", "Users", "UrlSlugs" }; }
         }
     }
 }

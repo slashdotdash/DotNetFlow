@@ -18,6 +18,7 @@ namespace DotNetFlow.Core.Events
         public string Title { get; set; }
         public string RawContent { get; set; }
         public string HtmlContent { get; set; }
+        public string UrlSlug { get; set; }
 
         // Approval metadata
         public Guid ApprovedByUserId { get; set; }

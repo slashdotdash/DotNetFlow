@@ -1,65 +1,104 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DotNetFlow.Core.Web;
+﻿using DotNetFlow.Core.Web;
 using NUnit.Framework;
 
 namespace DotNetFlow.Specifications.Core.Web
 {
-    //https://github.com/henrik/slugalizer/blob/master/slugalizer.rb
+    /// <summary>
+    /// Test slugification (inspired by slugalizer Ruby gem)
+    /// </summary>
+    /// <see cref="https://github.com/henrik/slugalizer/blob/master/slugalizer.rb"/>
     [TestFixture]
     public class SlugifyFixtures
     {
         [Test]
-        public void Should_Transliterate_Characters()
+        public void Should_Slugify_Given_String()
         {
-            Assert.AreEqual("internationalization", new Slugify("Iñtërnâtiônàlizætiøn").GenerateSlug());
+            AssertSlugification("this-is-an-example", "This is an Example");
         }
 
         [Test]
-        public void Should_()
+        public void Should_Trim_Whitespace()
         {
-            Assert.AreEqual("", new Slugify("").GenerateSlug());
+            AssertSlugification("strip-preceeding-whitespace", " strip preceeding whitespace");
+            AssertSlugification("strip-trailing-whitespace", "strip trailing whitespace   ");
+            AssertSlugification("strip-inner-whitespace-too", "  strip   inner   whitespace  too   ");
         }
 
-        //[Test]
+        [Test]
         public void Should_Ignore_Valid_Slug()
         {
-            Assert.AreEqual("abc-1_2_3", new Slugify("abc-1_2_3").GenerateSlug());
+            AssertSlugification("abc-1_2_3", "abc-1_2_3");
         }
+
+        [Test]
+        public void Should_Combine_Separators()
+        {
+            AssertSlugification("a-b", "a - b");
+            AssertSlugification("a-b", "a--b");
+        }
+
+        [Test]
+        public void Should_Transliterate_Characters()
+        {
+            AssertSlugification("internationalization", "Iñtërnâtiônàlizætiøn");
+        }        
 
         [Test]
         public void Should_test_Accented_Characters()
         {
-            Assert.AreEqual("acegiklnuo", new Slugify("āčēģīķļņūö").GenerateSlug());
+            AssertSlugification("acegiklnuo", "āčēģīķļņūö");
         }
      
-        //[Test]
-        public void Should_Strip_Dashes()
+        [Test]
+        public void Should_Strip_Trailing_Dashes()
         {
-            Assert.AreEqual("i-love-c", new Slugify("I love C--").GenerateSlug());
+            AssertSlugification("without-trailing-dash", "without-trailing-dash--");
         }
 
-        //[Test]
-        public void Should_Leave_Pluses()
+        [Test]
+        public void Should_Strip_Preceeding_Dashes()
         {
-            Assert.AreEqual("i-love-c++", new Slugify("I love C++").GenerateSlug());
+            AssertSlugification("without-preceeding-dash", "--without-preceeding-dash");
+        }
+
+        [Test]
+        public void Should_Strip_Apostrophes()
+        {
+            AssertSlugification("users-comment", "User's Comment");
         }
 
         [Test]
         public void Should_Replace_Ampersand_With_And()
         {
-            Assert.AreEqual("this-and-that", new Slugify("this & that").GenerateSlug());
+            var slugify = new Slugify();
+            slugify.WithReplacement("&", "and");
+
+            Assert.AreEqual("this-and-that", slugify.GenerateSlug("this & that"));            
+        }
+
+        /// <summary>
+        /// Test domain-specific word replacements
+        /// </summary>
+        [Test]
+        public void Should_Replace_AspNet_And_C_Sharp()
+        {
+            var slugify = new Slugify();
+            slugify.WithReplacement("C#", "c sharp");
+            slugify.WithReplacement("ASP.NET", "asp dot net");
+
+            Assert.AreEqual("asp-dot-net-c-sharp", slugify.GenerateSlug("ASP.NET C#"));    
         }
 
         [Test]
-        public void Should_Replace_C_Sharp()
+        public void Should_Replace_dotNetFramework()
         {
-            Assert.AreEqual("asp-net-c-sharp", new Slugify("ASP.NET C#").GenerateSlug());
-        }
+            var slugify = new Slugify();
+            slugify.WithReplacement(".NET", "dot net");
 
-        //[Test]
+            Assert.AreEqual("microsoft-dot-net-framework", slugify.GenerateSlug("Microsoft .NET Framework"));
+        }        
+
+        [Test]
         public void Should_Remove_Trailing_Punctuation()
         {
             var inputs = new[]
@@ -70,14 +109,19 @@ namespace DotNetFlow.Specifications.Core.Web
                                 "Slug Me/",
                                 "Slug Me\\",
                                 "Slug Me-",
-                                "Slug Me_",
+                                "Slug Me",
                                 "Slug Me=",
                                 "Slug Me--",
                                 "Slug Me---,"
                             };
 
             foreach (var input in inputs)
-                Assert.AreEqual("slug-me", new Slugify(input).GenerateSlug());            
+                AssertSlugification("slug-me", input);
+        }
+
+        private static void AssertSlugification(string expected, string source)
+        {
+            Assert.AreEqual(expected, new Slugify().GenerateSlug(source));
         }
     }
 }

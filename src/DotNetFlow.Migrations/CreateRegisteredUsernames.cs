@@ -16,7 +16,6 @@ namespace DotNetFlow.Migrations
                               new Column("Username", DbType.String, 20)
                 );
 
-            Database.AddIndex("RegisteredUsernames", "Username");
             Database.AddUniqueConstraint("IX_RegisteredUsernames_Unique_Username", "RegisteredUsernames", "Username");
         }
 

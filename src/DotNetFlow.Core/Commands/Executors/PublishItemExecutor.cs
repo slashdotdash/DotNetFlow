@@ -10,7 +10,7 @@ namespace DotNetFlow.Core.Commands.Executors
         protected override void ExecuteInContext(IRepository context, PublishItemCommand command)
         {
             var submission = context.GetById<Item>(command.ItemId);
-            submission.Approve(command.ApprovedBy, command.PublishedAt);
+            submission.Approve(command.ApprovedBy, command.PublishedAt, command.UrlSlug);
 
             context.Save(submission, Guid.NewGuid());
         }

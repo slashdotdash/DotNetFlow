@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace DotNetFlow.Core.Web
 {
@@ -15,50 +14,84 @@ namespace DotNetFlow.Core.Web
     /// </example>
     /// <see cref="http://predicatet.blogspot.com/2009/04/improved-c-slug-generator-or-how-to.html"/>
     public sealed class Slugify
-    {
-        private readonly string _source;
-        private readonly string _separator;
+    {        
+        private readonly string _separator;        
 
-        private readonly IDictionary<string, string> _replacements = new Dictionary<string, string>
-        {
-            { "&", "and" },
-            { "c#", "c-sharp" },           
-        };
+        private readonly IDictionary<string, string> _replacements;
 
-        public Slugify(string source, string separator = "-")
+        public Slugify(string separator = "-")
         {
-            _source = source;
+            if (!new [] { "-", "_", "+" }.Contains(separator))
+                throw new ArgumentOutOfRangeException("separator");
+
             _separator = separator;
+            _replacements = new Dictionary<string, string>();
         }
-
-        public string GenerateSlug()
+        
+        public string GenerateSlug(string source)
         {
-            var str = RemoveAccent(_source).ToLower();
+            var str = RemoveAccent(source).ToLower();
 
-            str = _replacements.Aggregate(str, (current, pair) => current.Replace(pair.Key, pair.Value));
+            str = SubstituteReplacements(str);
+            str = StripApostrophes(str);
+            str = ReplaceNonSlugCharsWithSeparator(str);
+            str = RemoveDuplicateSeparator(str);
 
-            str = Regex.Replace(str, @"[^a-z0-9\s-]", " "); // Strip out any invalid chars          
-            str = Regex.Replace(str, @"\s+", " ").Trim();  // Convert multiple spaces into one space
-            str = Regex.Replace(str, @"\s", _separator);  // Replace spaces with the separator char (default is a hyphen "-")
-
+            str = TrimPreceedingAndTrailingSeparator(str);
+            
             return str;
         }
 
-        public string Clean()
+        private string SubstituteReplacements(string input)
         {
-            var input = HttpUtility.HtmlDecode(_source.Replace("&", "and"));
-            input = RemoveAccent(input);
+            return _replacements.Aggregate(input, RegexReplacement);            
+        }
 
-            var sb = new StringBuilder(Regex.Replace(input, @"[^\w\ ]", "").Trim());
-            sb.Replace("  ", " ").Replace(" ", "-");
+        private static string RegexReplacement(string input, KeyValuePair<string, string> replacement)
+        {
+            var searchFor = string.Format(@"^{0}\s|\s{0}\s|\s{0}$", Regex.Escape(replacement.Key));  // Ensure we escape search term in case it includes regex special chars
 
-            return sb.ToString().ToLower();
+            return Regex.Replace(input, searchFor, string.Concat(" ", replacement.Value, " "), RegexOptions.IgnoreCase);
+        }
+
+        private static string StripApostrophes(string input)
+        {
+            return input.Replace("'", string.Empty);
+        }
+
+        /// <summary>
+        /// Replace non-slug characters with the separator (default is a hyphen "-")
+        /// </summary>
+        private string ReplaceNonSlugCharsWithSeparator(string input)
+        {
+            return Regex.Replace(input, @"[^a-z0-9\-_\+]", _separator);
+        }
+        
+        private string RemoveDuplicateSeparator(string input)
+        {
+            return Regex.Replace(input, string.Concat(Regex.Escape(_separator), "{2,}"), _separator).Trim();               
+        }
+
+        private string TrimPreceedingAndTrailingSeparator(string input)
+        {
+            return Regex.Replace(input, string.Format("^{0}|{0}$", Regex.Escape(_separator)), string.Empty);
         }
 
         public string RemoveAccent(string input)
         {
             var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(input);
             return Encoding.ASCII.GetString(bytes);
+        }
+
+
+        /// <summary>
+        /// Replace all occurences of the given string with the replacement (e.g. & => and)
+        /// </summary>       
+        /// <returns>Itself to allow method chaining</returns>
+        public Slugify WithReplacement(string find, string replacement)
+        {
+            _replacements.Add(find, replacement);
+            return this;
         }
     }
 }

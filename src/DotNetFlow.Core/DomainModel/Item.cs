@@ -16,6 +16,7 @@ namespace DotNetFlow.Core.DomainModel
         private string _title, _rawContent, _htmlContent;
         private ApprovalStatus _status;
         private Guid _approvedBy;
+        private string _urlSlug;
 
         private static readonly Markdown Markdown = new Markdown(new MarkdownOptions
         {
@@ -49,7 +50,7 @@ namespace DotNetFlow.Core.DomainModel
             });
         }
 
-        public void Approve(Guid approvedBy, DateTime publishedAt)
+        public void Approve(Guid approvedBy, DateTime publishedAt, string urlSlug)
         {
             Guard.Against<InvalidOperationException>(_status == ApprovalStatus.Approved, "Item has already been approved");
             Guard.Against<ArgumentOutOfRangeException>(publishedAt > DateTime.UtcNow, "Publish date cannot be in the future");
@@ -63,6 +64,7 @@ namespace DotNetFlow.Core.DomainModel
                 Title = _title,
                 RawContent = _rawContent,
                 HtmlContent = _htmlContent,
+                UrlSlug = urlSlug,
                 SubmittedByUserId = _submittedByUserId,
                 SubmittedByUsername = _submittedByUsername,
                 SubmittedByFullName = _submittedByUserNamed,                

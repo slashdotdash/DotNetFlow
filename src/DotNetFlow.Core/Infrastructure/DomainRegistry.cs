@@ -36,12 +36,11 @@ namespace DotNetFlow.Core.Infrastructure
         private void ConfigureCqrsInfrastructure()
         {
             For<IStoreEvents>().Use(ConfigureEventStore);
+            For<IRepository>().Use<EventStoreRepository>();
             For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
             For<ICommandService>().Use(InitializeCommandService);
             For<IConstructAggregates>().Use<SimpleAggregateCreationStrategy>();
             For<IDetectConflicts>().Use<ConflictDetector>();
-            For<IRepository>().Use<EventStoreRepository>();            
-            For<IUniqueIdentifierGenerator>().Use(InitializeIdGenerator);
         }
 
         private static IStoreEvents ConfigureEventStore()
@@ -114,7 +113,8 @@ namespace DotNetFlow.Core.Infrastructure
         private void ConfigureServices()
         {
             For<IHashPasswords>().Use(c => new BCryptPasswordHashing());
-            For<IAuthenticationService>().Use<AuthenticationService>();            
+            For<IAuthenticationService>().Use<AuthenticationService>();
+            For<IGenerateUrlSlug>().Use<Slugifier>();
         }
 
         private void ConfigureReadModel()
@@ -123,6 +123,7 @@ namespace DotNetFlow.Core.Infrastructure
             For<IUserReadModelRepository>().Use<UserReadModelRepository>();
             For<IFindExistingUsername>().Use<FindExistingUsernameQuery>();
             For<IFindExistingEmailAddress>().Use<FindExistingEmailAddressQuery>();
+            For<IFindExistingUrlSlug>().Use<FindExistingUrlSlugQuery>();
             For<IQueryModel<PublishedItem>>().Use<LatestPublishedItemsQuery>();
         }
     }
