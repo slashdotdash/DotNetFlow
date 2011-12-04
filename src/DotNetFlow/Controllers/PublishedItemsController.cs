@@ -1,17 +1,16 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using DotNetFlow.Core.ReadModel.Models;
-using DotNetFlow.Core.ReadModel.Queries;
+using DotNetFlow.Core.Services;
 
 namespace DotNetFlow.Controllers
 {
     public class PublishedItemsController : Controller
     {
-        private readonly IQueryModel<PublishedItem> _latestPublishedItems;
+        private readonly IPublishedItemService _publishedItems;
 
-        public PublishedItemsController(IQueryModel<PublishedItem> latestPublishedItems)
+        public PublishedItemsController(IPublishedItemService publishedItems)
         {
-            _latestPublishedItems = latestPublishedItems;
+            _publishedItems = publishedItems;
         }
 
         //
@@ -19,7 +18,7 @@ namespace DotNetFlow.Controllers
 
         public ActionResult Index()
         {
-            var itemsByDate = _latestPublishedItems.Execute()
+            var itemsByDate = _publishedItems.LatestPublishedItems()
                 .OrderByDescending(item => item.PublishedAt)
                 // Group items by day published
                 .GroupBy(item => item.PublishedAt.Date);
@@ -32,8 +31,8 @@ namespace DotNetFlow.Controllers
 
         public ActionResult Show(string slug)
         {
-            //var item = _latestPublishedItems.GetItemBySlug(slug);
-            return View();
+            var item = _publishedItems.GetItemBySlug(slug);
+            return View(item);
         }
     }
 }

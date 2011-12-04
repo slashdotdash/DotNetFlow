@@ -27,6 +27,12 @@ namespace DotNetFlow.Features.Steps
             NavigateTo("/submit");
         }
 
+        [When(@"I visit the URL ""(.*)""")]
+        public void WhenIVisitTheUrl(string relativeUrl)
+        {
+            NavigateTo(relativeUrl);
+        }
+
         [Then(@"I should be on the home page")]
         public void ThenIShouldBeOnTheHomePage()
         {

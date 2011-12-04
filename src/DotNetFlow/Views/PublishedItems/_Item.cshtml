@@ -3,7 +3,7 @@
 <article>
     <header>
         <p style="float: right">Published at <time datetime="@Model.PublishedAt.ToString("s")" pubdate="pubdate">@String.Format("{0:t}", Model.PublishedAt)</time>
-        <h3>@Model.Title</h3>
+        <h3>@Html.RouteLink(Model.Title, "PublishedItem", new { slug = Model.UrlSlug }, new { title = Model.Title })</h3>
     </header>
 
     @Html.Raw(Model.HtmlContent)

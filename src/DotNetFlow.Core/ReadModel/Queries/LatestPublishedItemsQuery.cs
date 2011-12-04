@@ -5,7 +5,7 @@ using DotNetFlow.Core.ReadModel.Models;
 
 namespace DotNetFlow.Core.ReadModel.Queries
 {
-    public sealed class LatestPublishedItemsQuery : IQueryModel<PublishedItem>
+    public sealed class LatestPublishedItemsQuery
     {
         private readonly IUnitOfWork _unitOfWork;
 

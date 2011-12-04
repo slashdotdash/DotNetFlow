@@ -10,5 +10,6 @@ namespace DotNetFlow.Core.ReadModel.Models
         public string SubmittedByUser { get; set; }
         public string Title { get; set; }
         public string HtmlContent { get; set; }
+        public string UrlSlug { get; set; }
     }
 }

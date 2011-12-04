@@ -14,9 +14,8 @@ namespace DotNetFlow.Features.Events
         [BeforeTestRun]
         public static void ClearEventStore()
         {
-            new EventStoreCleaner().Execute();
-            new ReadModelCleaner().Execute();
-        } 
+            new DatabaseCleaner().Execute();
+        }
 
         /// <summary>
         /// Configure the CQRS environment once before running any integration tests

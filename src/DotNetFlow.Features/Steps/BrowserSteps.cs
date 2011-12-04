@@ -9,12 +9,6 @@ namespace DotNetFlow.Features.Steps
     [Binding]
     public class BrowserSteps
     {
-        [Given(@"I am on the login page")]
-        public void GivenIAmOnTheLoginPage()
-        {
-            WhenINavigateTo("/login");
-        }
-
         [When(@"I navigate to (.*)")]
         public void WhenINavigateTo(string relativeUrl)
         {

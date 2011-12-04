@@ -115,6 +115,7 @@ namespace DotNetFlow.Core.Infrastructure
             For<IHashPasswords>().Use(c => new BCryptPasswordHashing());
             For<IAuthenticationService>().Use<AuthenticationService>();
             For<IGenerateUrlSlug>().Use<Slugifier>();
+            For<IPublishedItemService>().Use<PublishedItemService>();
         }
 
         private void ConfigureReadModel()
@@ -124,7 +125,6 @@ namespace DotNetFlow.Core.Infrastructure
             For<IFindExistingUsername>().Use<FindExistingUsernameQuery>();
             For<IFindExistingEmailAddress>().Use<FindExistingEmailAddressQuery>();
             For<IFindExistingUrlSlug>().Use<FindExistingUrlSlugQuery>();
-            For<IQueryModel<PublishedItem>>().Use<LatestPublishedItemsQuery>();
         }
     }
 }

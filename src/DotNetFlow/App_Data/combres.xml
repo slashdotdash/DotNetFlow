@@ -44,7 +44,7 @@
                 defaultIgnorePipelineWhenDebug="true"
                 localChangeMonitorInterval="30"
                 remoteChangeMonitorInterval="60"
-                defaultCssMinifierRef="yui" 
+                defaultCssMinifierRef="off" 
                 defaultJSMinifierRef="msajax"
                 >
     
@@ -58,7 +58,7 @@
     </resourceSet>
     
     <resourceSet name="siteJs" type="js" minifierRef="msajax">
-      <resource path="~/scripts/jquery-1.7.min.js" minifierRef="off" />
+      <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
       <resource path="~/scripts/modernizr-1.7.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.validate.unobtrusive.min.js" minifierRef="off" />
@@ -66,8 +66,8 @@
 
     <resourceSet name="ie6Js" type="js" minifierRef="msajax">
       <resource path="~/scripts/pngfix.js" />
+      <resource path="~/scripts/jquery-1.7.1.min.js" minifierRef="off" />
       <resource path="~/scripts/jquery.helper.js" />
-      <resource path="~/scripts/jquery-1.7.min.js" minifierRef="off" />
     </resourceSet>
 
     <resourceSet name="ie6Css" type="css">
@@ -79,7 +79,7 @@
     </resourceSet>
     
     <resourceSet name="adminJs" type="js" minifierRef="msajax">
-      <resource path="~/Scripts/jquery-1.7.min.js" minifierRef="off" />
+      <resource path="~/Scripts/jquery-1.7.1.min.js" minifierRef="off" />
       <resource path="~/Scripts/jquery.cookie.js" />
       <resource path="~/Scripts/flashmessage.js" />
     </resourceSet>

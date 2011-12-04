@@ -15,12 +15,14 @@ namespace DotNetFlow.Migrations
                               new Column("SubmittedByUsername", DbType.String, 20),
                               new Column("SubmittedByFullName", DbType.String, 200),
                               new Column("Title", DbType.String, 140),
-                              new Column("HtmlContent", DbType.String, 2000)
+                              new Column("HtmlContent", DbType.String, 2000),
+                              new Column("UrlSlug", DbType.String, 1000)
                 );
 
             Database.AddIndex("Items", "PublishedAt");
             Database.AddIndex("Items", "SubmittedByUserId", "PublishedAt");
             Database.AddIndex("Items", "Title");
+            Database.AddIndex("Items", "UrlSlug");
         }
 
         public override void Down()

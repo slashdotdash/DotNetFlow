@@ -43,8 +43,8 @@
     <Reference Include="EventStore.Serialization.Json">
       <HintPath>..\packages\EventStore.Serialization.Json.3.0.11326.44\lib\net40\EventStore.Serialization.Json.dll</HintPath>
     </Reference>
-    <Reference Include="EventStore.Serialization.ServiceStack">
-      <HintPath>..\packages\EventStore.Serialization.ServiceStack.3.0.11305.44\lib\net40\EventStore.Serialization.ServiceStack.dll</HintPath>
+    <Reference Include="EventStore.Serialization.ServiceStack, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
+      <HintPath>..\packages\EventStore.Serialization.ServiceStack.3.0.11326.44\lib\net40\EventStore.Serialization.ServiceStack.dll</HintPath>
     </Reference>
     <Reference Include="FluentValidation, Version=3.2.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -97,6 +97,7 @@
     <Compile Include="Events\ItemPublishedEvent.cs" />
     <Compile Include="Events\NewItemSubmittedEvent.cs" />
     <Compile Include="Events\UserAccountRegisteredEvent.cs" />
+    <Compile Include="Exceptions\PublishedItemNotFoundException.cs" />
     <Compile Include="Extensions\RuleValidatorExtensions.cs" />
     <Compile Include="Extensions\UnitOfWorkExtensions.cs" />
     <Compile Include="Guard.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ReadModel\Models\Submission.cs" />
     <Compile Include="ReadModel\Models\UserAccountModel.cs" />
     <Compile Include="ReadModel\Queries\FindExistingUrlSlugQuery.cs" />
+    <Compile Include="ReadModel\Queries\GetPublishedItemByUrlSlugQuery.cs" />
     <Compile Include="ReadModel\Queries\IFindExistingUrlSlug.cs" />
     <Compile Include="ReadModel\Queries\FindExistingUsernameQuery.cs" />
     <Compile Include="ReadModel\Queries\IFindExistingEmailAddress.cs" />
@@ -147,6 +149,8 @@
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\IGenerateUrlSlug.cs" />
     <Compile Include="Services\IHashPasswords.cs" />
+    <Compile Include="Services\IPublishedItemService.cs" />
+    <Compile Include="Services\PublishedItemService.cs" />
     <Compile Include="Services\Slugifier.cs" />
     <Compile Include="Web\Slugify.cs" />
   </ItemGroup>

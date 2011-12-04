@@ -1,4 +1,5 @@
-﻿using DotNetFlow.Core.Commands;
+﻿using System;
+using DotNetFlow.Core.Commands;
 using DotNetFlow.Core.Infrastructure;
 using DotNetFlow.Features.Infrastructure;
 using NUnit.Framework;
@@ -13,25 +14,21 @@ namespace DotNetFlow.Features.Steps
         [Given(@"an anonymous visitor has submitted an item")]
         public void GivenAnAnonymousVisitorHasSubmittedAnItem()
         {
-            var idGenerator = ScenarioContext.Current.Get<IUniqueIdentifierGenerator>();
-
-            var submitNewItemCommand = new SubmitNewItemCommand
-            {
-                ItemId = idGenerator.GenerateNewId(),
-                Title = Faker.Lorem.Sentence(),
-                FullName = Faker.Name.FullName(),
-                Content = Faker.Lorem.Paragraph(),
-            };
-
-            new CommandExecutor().Execute(submitNewItemCommand);
-
-            ScenarioContext.Current.Set(submitNewItemCommand);
+            SubmitItem();
         }        
 
         [Given(@"I am on the submissions pending approval page")]
         public void GivenIAmOnTheSubmissionsPendingApprovalPage()
         {
             When("I navigate to /admin/pending");
+        }
+
+        [Given(@"an item with the title ""(.*)"" has been published")]
+        public void GivenAnItemWithTheTitleHasBeenPublished(string title)
+        {
+            SubmitItem(title: title);
+            Given("I am on the submissions pending approval page");
+            When("I approve the submission");
         }
 
         [When(@"I approve the submission")]
@@ -71,5 +68,22 @@ namespace DotNetFlow.Features.Steps
         {
             ScenarioContext.Current.Pending();
         }
+
+        private static void SubmitItem(string title = null, string content = null, string submittedByUser = null)
+        {
+            var idGenerator = ScenarioContext.Current.Get<IUniqueIdentifierGenerator>();
+
+            var submitNewItemCommand = new SubmitNewItemCommand
+            {
+                ItemId = idGenerator.GenerateNewId(),
+                Title = title ?? Faker.Lorem.Sentence(),
+                Content = content ?? Faker.Lorem.Paragraph(),
+                FullName = submittedByUser ?? Faker.Name.FullName(),
+            };
+
+            new CommandExecutor().Execute(submitNewItemCommand);
+
+            ScenarioContext.Current.Set(submitNewItemCommand);
+        }        
     }
 }

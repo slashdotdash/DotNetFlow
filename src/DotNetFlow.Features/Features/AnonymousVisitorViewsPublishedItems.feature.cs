@@ -65,13 +65,25 @@ namespace DotNetFlow.Features.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+  #line 7
+    testRunner.Given("a user account with approval permission has been registered");
+#line 8
+ testRunner.And("I am logged in as an approver");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("View list of items on homepage")]
         public virtual void ViewListOfItemsOnHomepage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View list of items on homepage", ((string[])(null)));
-#line 6
+#line 10
   this.ScenarioSetup(scenarioInfo);
+#line 6
+  this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
@@ -81,8 +93,10 @@ namespace DotNetFlow.Features.Features
         public virtual void ViewSinglePublishedItem()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View single published item", ((string[])(null)));
-#line 7
+#line 11
   this.ScenarioSetup(scenarioInfo);
+#line 6
+  this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
@@ -92,8 +106,16 @@ namespace DotNetFlow.Features.Features
         public virtual void SearchEngineFriendlyURLsForItems()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search engine friendly URLs for items", ((string[])(null)));
-#line 8
+#line 13
   this.ScenarioSetup(scenarioInfo);
+#line 6
+  this.FeatureBackground();
+#line 14
+ testRunner.Given("an item with the title \"Welcome to dotnetflow\" has been published");
+#line 15
+ testRunner.When("I visit the URL \"/items/welcome-to-dotnetflow\"");
+#line 16
+ testRunner.Then("I should see the published item");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -103,8 +125,10 @@ namespace DotNetFlow.Features.Features
         public virtual void PaginateThroughListOfItemsOnHomepage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Paginate through list of items on homepage", ((string[])(null)));
-#line 9
+#line 18
   this.ScenarioSetup(scenarioInfo);
+#line 6
+  this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
