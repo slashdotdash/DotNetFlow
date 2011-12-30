@@ -1,0 +1,9 @@
+{
+  "ItemId": "b7b58e72-f2f7-4fff-8fa2-9fc90005d5a7",
+  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
+  "Username": "ben",
+  "FullName": "Ben Smith",
+  "Title": "New NuGet.org Deployed",
+  "Content": "Phil Haack's last day at Microsoft wasn't the usual winding down that happens whilst clearing your desk. Instead he [announced the deployment of an updated version of the NuGet.org site](http://haacked.com/archive/2011/12/05/nuget_org_update.aspx), a complete rewrite using vanilla ASP.NET MVC 3.",
+  "SubmittedAt": "\/Date(1323169260000+0000)\/"
+}

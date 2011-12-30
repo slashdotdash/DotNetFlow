@@ -1,0 +1,9 @@
+{
+  "ItemId": "a43959de-ecbb-4eff-9649-9fc90005d5a3",
+  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
+  "Username": "ben",
+  "FullName": "Ben Smith",
+  "Title": "Jonathan Oliver's CQRS EventStore v3.0 release",
+  "Content": "Jonathan Oliver has [announced the v3.0 release of his CQRS EventStore](http://blog.jonathanoliver.com/2011/11/eventstore-v3-0-release/) persistence library for event sourcing. You can download the release as a [NuGet](http://nuget.org/List/Packages/EventStore) package or grab the source from [GitHub](https://github.com/joliver/EventStore).\r\n\r\nJonathan also recently [gave a talk about his EventStore](http://vimeo.com/31153808) at E-VAN ([slides available](http://www.slideshare.net/jonathanoliver/europe-virtual-altnet-eventstore-v3)).",
+  "SubmittedAt": "\/Date(1322645880000+0000)\/"
+}

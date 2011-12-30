@@ -37,8 +37,8 @@ namespace DotNetFlow.Features.Steps
             When("I press \"Approve\"");
         }
 
-        [Then(@"I should see the message ""Submission approved""")]
-        public void ThenIShouldSeeTheMessageSubmissionApproved()
+        [Then(@"I should see the notification message ""Submission approved""")]
+        public void ThenIShouldSeeTheNotificationMessageSubmissionApproved()
         {
             AssertFlashMessage("Submission approved");
         }
@@ -60,7 +60,6 @@ namespace DotNetFlow.Features.Steps
         public void ThenTheApprovedItemShouldAppearOnTheHomePage()
         {
             When("I navigate to /");
-
         }
 
         [Then(@"the published date should be set as today")]
@@ -79,6 +78,7 @@ namespace DotNetFlow.Features.Steps
                 Title = title ?? Faker.Lorem.Sentence(),
                 Content = content ?? Faker.Lorem.Paragraph(),
                 FullName = submittedByUser ?? Faker.Name.FullName(),
+                SubmittedAt = DateTime.UtcNow,
             };
 
             new CommandExecutor().Execute(submitNewItemCommand);

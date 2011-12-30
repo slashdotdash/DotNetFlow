@@ -85,7 +85,7 @@ namespace DotNetFlow.Features.Steps
             new CommandExecutor().Execute(registerUserCommand);
 
             ScenarioContext.Current.Set(registerUserCommand);
-            ScenarioContext.Current.Set("Username", userName);
+            ScenarioContext.Current.Set(userName, "Username");
         }
     }
 }

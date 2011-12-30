@@ -80,8 +80,8 @@
     
     <resourceSet name="adminJs" type="js" minifierRef="msajax">
       <resource path="~/Scripts/jquery-1.7.1.min.js" minifierRef="off" />
-      <resource path="~/Scripts/jquery.cookie.js" />
-      <resource path="~/Scripts/flashmessage.js" />
+      <resource path="~/Scripts/jquery.cookie.js" minifierRef="off" />
+      <resource path="~/Scripts/flashmessage.js" minifierRef="off" />
     </resourceSet>
   </resourceSets>
 </combres>

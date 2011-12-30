@@ -50,6 +50,7 @@ namespace DotNetFlow.Controllers
         public ActionResult Create(SubmitNewItemCommand command)
         {
             IncludeAuthenticatedUserDetails(command);
+            command.SubmittedAt = DateTime.UtcNow;
 
             if (ModelState.IsValid)
             {

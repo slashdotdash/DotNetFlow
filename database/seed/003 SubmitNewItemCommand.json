@@ -1,8 +1,0 @@
-{
-  "ItemId": "39caf10d-9f60-4d47-a3c1-9fad016ea5d9",
-  "UserId": "aacde67e-0ec4-47dc-94dd-9fad016ccbfa",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "Welcome to DotNetFlow",
-  "Content": "The new website for sharing .NET related news, events and announcements. In fact we welcome sharing of anything that might be of interest to fellow .NET developers.\r\n\r\nHave you:\r\n\r\n* Created a blog post about a Microsoft technology?\r\n* Released a NuGet library worth using?\r\n* Want to inform developers about some new tech, architecture pattern or alternative tool - NoSQL, CQRS, SOA, service buses or similar?\r\n\r\nThen post up a link here on [dotnetflow](http://www.dotnetflow.com) and share it with the .NET world."
-}

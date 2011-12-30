@@ -11,7 +11,7 @@ namespace DotNetFlow.Features.Events
     [Binding]
     public class IntegrationEvents
     {
-        [BeforeTestRun]
+        [BeforeScenario]
         public static void ClearEventStore()
         {
             new DatabaseCleaner().Execute();

@@ -32,14 +32,14 @@ namespace DotNetFlow.Core.DomainModel
             Id = id;
         }
 
-        public Item(Guid id, Guid? userId, string username, string fullName, string title, string content) : this(id)
+        public Item(Guid id, Guid? userId, string username, string fullName, string title, string content, DateTime submittedAt) : this(id)
         {
             var htmlContent = Markdown.Transform(content);
 
             RaiseEvent(new NewItemSubmittedEvent
             {
                 ItemId = id,
-                SubmittedAt = DateTime.Now,
+                SubmittedAt = submittedAt,
                 UserId = userId,
                 Username = username,
                 FullName = fullName,

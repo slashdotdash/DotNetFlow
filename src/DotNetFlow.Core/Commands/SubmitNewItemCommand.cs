@@ -15,5 +15,6 @@ namespace DotNetFlow.Core.Commands
         // Submission details
         public string Title { get; set; }
         public string Content { get; set; }
+        public DateTime SubmittedAt { get; set; }
     }
 }

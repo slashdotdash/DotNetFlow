@@ -1,9 +1,9 @@
 {
-  "UserId": "aacde67e-0ec4-47dc-94dd-9fad016ccbfa",
+  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
   "FullName": "Ben Smith",
   "Username": "ben",
   "Email": "ben@dotnetflow.com",
-  "Password": "$2a$10$TvyDlsfcV9gj4IlV5qmbPegNx4MCMVbt32id8xQNx6dRiKzlzNar2",
+  "Password": "$2a$10$3iix4wXTk51nbRBLAQMId.D2NnGZfgTBq0q2p9APqTWqUHhvcPCfW",
   "Website": "http://www.dotnetflow.com/",
   "Twitter": "dotnetflow"
 }

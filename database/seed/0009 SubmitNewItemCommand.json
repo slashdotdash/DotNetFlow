@@ -1,0 +1,9 @@
+{
+  "ItemId": "53ed8595-c0f1-47b6-b343-9fc90005d5a4",
+  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
+  "Username": "ben",
+  "FullName": "Ben Smith",
+  "Title": "Interview with Eric Evans, Udi Dahan and Diego Vega discussing CQRS and DDD",
+  "Content": "Udi Dahan has [just blogged](http://www.udidahan.com/2011/11/30/recording-of-joint-interview-with-eric-evans/) about a discussion between him and Eric Evans covering the topics of DDD and CQRS. The talk was recorded and a [video](http://vimeo.com/32647895) has been made available to watch courtesy of .dotNetMania (DNM).",
+  "SubmittedAt": "\/Date(1322728860000+0000)\/"
+}

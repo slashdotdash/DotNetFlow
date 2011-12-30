@@ -1,8 +1,0 @@
-{
-  "ItemId": "9fb35e8e-036c-4f63-b9ea-9fad0177a9eb",
-  "UserId": "aacde67e-0ec4-47dc-94dd-9fad016ccbfa",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "Bundling and minification support coming in ASP.NET 4",
-  "Content": "Scott Gu has just added the sixth installment of his blog series on the new features coming in ASP.NET 4. The latest post covers the new [bundling and minification support](http://weblogs.asp.net/scottgu/archive/2011/11/27/new-bundling-and-minification-support-asp-net-4-5-series.aspx).\r\n\r\n> ASP.NET is adding a feature that makes it easy to \"bundle\" or \"combine\" multiple CSS and JavaScript files into fewer HTTP requests. This causes the browser to request a lot fewer files and in turn reduces the time it takes to fetch them."
-}

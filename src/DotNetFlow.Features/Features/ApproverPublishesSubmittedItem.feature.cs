@@ -91,7 +91,7 @@ namespace DotNetFlow.Features.Features
 #line 13
  testRunner.When("I approve the submission");
 #line 14
- testRunner.Then("I should see the message \"Submission approved\"");
+ testRunner.Then("I should see the notification message \"Submission approved\"");
 #line 15
  testRunner.And("the submitted item should be removed from the pending approval list");
 #line 16
