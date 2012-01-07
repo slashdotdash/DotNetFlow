@@ -1,2 +1,3 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
+
