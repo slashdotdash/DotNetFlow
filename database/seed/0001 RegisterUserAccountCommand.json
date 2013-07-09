@@ -1,9 +1,9 @@
 {
-  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
-  "FullName": "Ben Smith",
-  "Username": "ben",
-  "Email": "ben@dotnetflow.com",
-  "Password": "$2a$10$3iix4wXTk51nbRBLAQMId.D2NnGZfgTBq0q2p9APqTWqUHhvcPCfW",
-  "Website": "http://www.dotnetflow.com/",
-  "Twitter": "dotnetflow"
+  "UserId": "ed92fdba-fd7a-4f7e-87e0-9fc90005d547",
+  "FullName": "DotNetFlow",
+  "Username": "dotnetflow",
+  "Email": "admin@dotnetflow.com",
+  "Password": "$2a$10$QzFVVtlR5WwawofyYG0OOO/sx5Rfd.BnI/i8bQqsoRy4Nt573U87q",
+  "Website": null,
+  "Twitter": null
 }

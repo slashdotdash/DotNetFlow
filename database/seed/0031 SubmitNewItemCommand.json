@@ -1,9 +1,0 @@
-{
-  "ItemId": "f68e3dca-06da-41d5-b4c3-9fc90005d5ab",
-  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "ASP.NET Security Update Shipping Thursday, Dec 29th",
-  "Content": "[Microsoft has released an advance notification security bulletin](http://weblogs.asp.net/scottgu/archive/2011/12/28/asp-net-security-update-shipping-thursday-dec-29th.aspx) announcing that an out-of-band security update to address an ASP.NET Security Vulnerability is to be released on December 29, 2011.",
-  "SubmittedAt": "\/Date(1325152320000+0000)\/"
-}

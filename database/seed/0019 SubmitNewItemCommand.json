@@ -1,9 +1,0 @@
-{
-  "ItemId": "b4586a58-1b6e-4cab-9044-9fc90005d5a7",
-  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "Previewing the Windows Store",
-  "Content": "Antoine Leblond [introduces the Windows Store](http://blogs.msdn.com/b/windowsstore/archive/2011/12/06/announcing-the-new-windows-store.aspx) in the first post of a new [Windows Store for developers blog](http://blogs.msdn.com/b/windowsstore/). The article includes details about the registration fee ($49 USD for individuals, $99 USD for companies) and revenue split between Microsoft and App developers.\r\n\r\n> The revenue share base is 70%, but when an app achieves $25k USD in revenue—aggregated across all sales in every market—that app moves to 80% revenue share for the lifetime of that app.",
-  "SubmittedAt": "\/Date(1323278940000+0000)\/"
-}

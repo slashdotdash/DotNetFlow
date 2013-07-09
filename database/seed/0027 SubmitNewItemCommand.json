@@ -1,9 +1,0 @@
-{
-  "ItemId": "4ab30308-697b-45ce-8147-9fc90005d5aa",
-  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "Effective Aggregate Design Part III by Vaughn Vernon",
-  "Content": "[Part III](http://dddcommunity.org/sites/default/files/pdf_articles/Vernon_2011_3.pdf) of Vaughn Vernon's [Effective Aggregate Design](http://dddcommunity.org/library/vernon_2011) series concludes with a discussion of the discovery process. How to recognize when a design problem is a hint of a new insight, and how different aggregate models are tried and then superseded.",
-  "SubmittedAt": "\/Date(1324491300000+0000)\/"
-}

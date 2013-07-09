@@ -1,9 +1,0 @@
-{
-  "ItemId": "0ac1591b-0abf-45f8-8968-9fc90005d5a9",
-  "UserId": "0fdc7c83-8652-4e74-909b-9fc90005d4c6",
-  "Username": "ben",
-  "FullName": "Ben Smith",
-  "Title": "Lessons Learnt Building a Shrinkwrap .NET Server Product",
-  "Content": "Paul Stovell writes about some of the lessons he has learnt [building a shrinkwrap .NET server product](http://www.paulstovell.com/lessons-learnt-bulding-octopus) called [Octopus](http://octopusdeploy.com/) for automated ASP.NET deployment.",
-  "SubmittedAt": "\/Date(1324035780000+0000)\/"
-}
